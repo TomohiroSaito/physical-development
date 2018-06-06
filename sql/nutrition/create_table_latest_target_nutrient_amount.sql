@@ -1,3 +1,5 @@
+DROP TABLE nutrition.latest_target_nutrient_amount;
+
 --最新目標栄養素量
 CREATE TABLE nutrition.latest_target_nutrient_amount (
   target_nutrient_amount_id INT,

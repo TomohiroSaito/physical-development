@@ -1,8 +1,10 @@
+DROP TABLE nutrition.manual_entry_of_nutrients;
+
 --栄養素の手動入力
 CREATE TABLE nutrition.manual_entry_of_nutrients (
   manual_entry_of_nutrients_id INT,
   meal_id INT,
-  nutrition_type VARCHAR(12),
+  nutrition_type VARCHAR(20),
   created_at DATE,
   updated_at DATE,
   PRIMARY KEY (manual_entry_of_nutrients_id),

@@ -1,3 +1,5 @@
+DROP TABLE nutrition.evaluation;
+
 --評価
 CREATE TABLE nutrition.evaluation (
   daily_nutrient_amount_id INT,
