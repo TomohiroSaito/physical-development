@@ -459,8 +459,8 @@ INSERT INTO nutrition.recommended_intake (age, sex_type, nutrition_type, recomme
 INSERT INTO nutrition.recommended_intake (age, sex_type, nutrition_type, recommended_intake, created_at, updated_at) VALUES (59, 'man', 'lipid', 25, now(), now());
 INSERT INTO nutrition.recommended_intake (age, sex_type, nutrition_type, recommended_intake, created_at, updated_at) VALUES (60, 'man', 'lipid', 25, now(), now());
 INSERT INTO nutrition.recommended_intake (age, sex_type, nutrition_type, recommended_intake, created_at, updated_at) VALUES (61, 'man', 'lipid', 25, now(), now());
-INSERT INTO nutrition.recommended_intake (age, sex_type, nutrition_type, recommended_intake, created_at, updated_at) VALUES (62 'man', 'lipid', 25, now(), now());
-INSERT INTO nutrition.recommended_intake (age, sex_type, nutrition_type, recommended_intake, created_at, updated_at) VALUES (63 'man', 'lipid', 25, now(), now());
+INSERT INTO nutrition.recommended_intake (age, sex_type, nutrition_type, recommended_intake, created_at, updated_at) VALUES (62, 'man', 'lipid', 25, now(), now());
+INSERT INTO nutrition.recommended_intake (age, sex_type, nutrition_type, recommended_intake, created_at, updated_at) VALUES (63, 'man', 'lipid', 25, now(), now());
 INSERT INTO nutrition.recommended_intake (age, sex_type, nutrition_type, recommended_intake, created_at, updated_at) VALUES (64, 'man', 'lipid', 25, now(), now());
 INSERT INTO nutrition.recommended_intake (age, sex_type, nutrition_type, recommended_intake, created_at, updated_at) VALUES (65, 'man', 'lipid', 25, now(), now());
 INSERT INTO nutrition.recommended_intake (age, sex_type, nutrition_type, recommended_intake, created_at, updated_at) VALUES (66, 'man', 'lipid', 25, now(), now());
