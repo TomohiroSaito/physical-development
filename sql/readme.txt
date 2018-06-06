@@ -1,0 +1,16 @@
+./nutrition/nutrition_schema.sql
+./user/user_schema.sql
+./user/sex_table.sql
+./user/user_table.sql
+./nutrition/nutrition_table.sql
+./nutrition/input_method_table.sql
+./nutrition/foodstuff_master_table.sql
+./nutrition/recommended_intake_table.sql
+./user/profile_table.sql
+./nutrition/target_nutrient_amount_table.sql
+./nutrition/latest_target_nutrient_amount_table.sql
+./nutrition/daily_nutrient_amount_table.sql
+./nutrition/evaluation_table.sql
+./nutrition/meal_table.sql
+./nutrition/foodstuff_table.sql
+./nutrition/manual_entry_of_nutrients_table.sql
