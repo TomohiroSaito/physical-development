@@ -1,4 +1,4 @@
-DROP TABLE nutrition.foodstuff_master;
+DROP TABLE IF EXISTS nutrition.foodstuff_master;
 
 --食材マスター
 CREATE TABLE nutrition.foodstuff_master (

@@ -1,4 +1,4 @@
-DROP TABLE account.profile;
+DROP TABLE IF EXISTS account.profile;
 
 --プロフィール
 CREATE TABLE account.profile (

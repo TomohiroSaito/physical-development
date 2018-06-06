@@ -1,4 +1,4 @@
-DROP TABLE nutrition.recommended_intake;
+DROP TABLE IF EXISTS nutrition.recommended_intake;
 
 --推奨摂取量
 CREATE TABLE nutrition.recommended_intake (

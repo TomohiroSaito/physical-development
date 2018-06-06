@@ -13,9 +13,9 @@ CREATE TABLE nutrition.foodstuff (
   FOREIGN KEY (foodstuff_master_id) REFERENCES nutrition.foodstuff_master (foodstuff_master_id)
 );
 
-DROP SEQUENCE foodstuff_foodstuff_id_SEQ;
+DROP SEQUENCE nutrition.foodstuff_foodstuff_id_SEQ;
 
-CREATE SEQUENCE foodstuff_foodstuff_id_SEQ
+CREATE SEQUENCE nutrition.foodstuff_foodstuff_id_SEQ
   INCREMENT BY 1
   MAXVALUE 2147483647
   START WITH 1

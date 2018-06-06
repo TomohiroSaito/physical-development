@@ -1,4 +1,4 @@
-DROP TABLE account.account;
+DROP TABLE IF EXISTS account.account;
 
 --会員
 CREATE TABLE account.account (
@@ -11,9 +11,9 @@ CREATE TABLE account.account (
   UNIQUE (login_id)
 );
 
-DROP SEQUENCE account_account_id_SEQ;
+DROP SEQUENCE account.account_account_id_SEQ;
 
-CREATE SEQUENCE account_account_id_SEQ
+CREATE SEQUENCE account.account_account_id_SEQ
   INCREMENT BY 1
   MAXVALUE 2147483647
   START WITH 1

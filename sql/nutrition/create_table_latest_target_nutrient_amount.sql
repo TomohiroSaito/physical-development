@@ -1,4 +1,4 @@
-DROP TABLE nutrition.latest_target_nutrient_amount;
+DROP TABLE IF EXISTS nutrition.latest_target_nutrient_amount;
 
 --最新目標栄養素量
 CREATE TABLE nutrition.latest_target_nutrient_amount (

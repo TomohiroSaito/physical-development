@@ -1,4 +1,4 @@
-DROP TABLE nutrition.meal;
+DROP TABLE IF EXISTS nutrition.meal;
 
 --食事
 CREATE TABLE nutrition.meal (
@@ -14,9 +14,9 @@ CREATE TABLE nutrition.meal (
   FOREIGN KEY (input_type) REFERENCES nutrition.input_method (input_type)
 );
 
-DROP SEQUENCE meal_meal_id_SEQ;
+DROP SEQUENCE nutrition.meal_meal_id_SEQ;
 
-CREATE SEQUENCE meal_meal_id_SEQ
+CREATE SEQUENCE nutrition.meal_meal_id_SEQ
   INCREMENT BY 1
   MAXVALUE 2147483647
   START WITH 1

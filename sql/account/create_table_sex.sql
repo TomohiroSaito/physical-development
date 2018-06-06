@@ -1,4 +1,4 @@
-DROP TABLE account.sex;
+DROP TABLE IF EXISTS account.sex;
 
 --性別
 CREATE TABLE account.sex (

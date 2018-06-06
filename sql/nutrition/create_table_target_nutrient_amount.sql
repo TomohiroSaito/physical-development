@@ -1,4 +1,4 @@
-DROP TABLE nutrition.target_nutrient_amount;
+ DROP TABLE IF EXISTS nutrition.target_nutrient_amount;
 
 --目標栄養素量
 CREATE TABLE nutrition.target_nutrient_amount (
@@ -13,9 +13,9 @@ CREATE TABLE nutrition.target_nutrient_amount (
   FOREIGN KEY (nutrition_type) REFERENCES nutrition.nutrition (nutrition_type)
 );
 
-DROP SEQUENCE target_nutrient_amount_target_nutrient_amount_id_SEQ;
+DROP SEQUENCE nutrition.target_nutrient_amount_target_nutrient_amount_id_SEQ;
 
-CREATE SEQUENCE target_nutrient_amount_target_nutrient_amount_id_SEQ
+CREATE SEQUENCE nutrition.target_nutrient_amount_target_nutrient_amount_id_SEQ
   INCREMENT BY 1
   MAXVALUE 2147483647
   START WITH 1

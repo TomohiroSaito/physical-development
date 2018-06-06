@@ -1,4 +1,4 @@
-DROP TABLE nutrition.nutrition;
+DROP TABLE IF EXISTS nutrition.nutrition;
 
 --栄養素
 CREATE TABLE nutrition.nutrition (

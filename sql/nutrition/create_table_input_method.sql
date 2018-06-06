@@ -1,4 +1,4 @@
-DROP TABLE nutrition.input_method;
+DROP TABLE IF EXISTS nutrition.input_method;
 
 --入力方法
 CREATE TABLE nutrition.input_method (

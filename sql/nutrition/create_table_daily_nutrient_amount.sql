@@ -1,4 +1,4 @@
-DROP TABLE nutrition.daily_nutrient_amount;
+DROP TABLE IF EXISTS nutrition.daily_nutrient_amount;
 
 --1日の栄養素量
 CREATE TABLE nutrition.daily_nutrient_amount (
@@ -14,9 +14,9 @@ CREATE TABLE nutrition.daily_nutrient_amount (
   UNIQUE (account_id, year_month_day)
 );
 
-DROP SEQUENCE daily_nutrient_amount_daily_nutrient_amount_id_SEQ;
+DROP SEQUENCE nutrition.daily_nutrient_amount_daily_nutrient_amount_id_SEQ;
 
-CREATE SEQUENCE daily_nutrient_amount_daily_nutrient_amount_id_SEQ
+CREATE SEQUENCE nutrition.daily_nutrient_amount_daily_nutrient_amount_id_SEQ
   INCREMENT BY 1
   MAXVALUE 2147483647
   START WITH 1

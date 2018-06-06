@@ -1,4 +1,4 @@
-DROP TABLE nutrition.manual_entry_of_nutrients;
+DROP TABLE IF EXISTS nutrition.manual_entry_of_nutrients;
 
 --栄養素の手動入力
 CREATE TABLE nutrition.manual_entry_of_nutrients (
@@ -12,10 +12,10 @@ CREATE TABLE nutrition.manual_entry_of_nutrients (
   FOREIGN KEY (nutrition_type) REFERENCES nutrition.nutrition (nutrition_type)
 );
 
-DROP SEQUENCE manual_entry_of_nutrients_manual_entry_of_nutrients_id_SEQ;
+DROP SEQUENCE nutrition.manual_entry_of_nutrients_manual_entry_of_nutrients_id_SEQ;
 
 
-CREATE SEQUENCE manual_entry_of_nutrients_manual_entry_of_nutrients_id_SEQ
+CREATE SEQUENCE nutrition.manual_entry_of_nutrients_manual_entry_of_nutrients_id_SEQ
   INCREMENT BY 1
   MAXVALUE 2147483647
   START WITH 1

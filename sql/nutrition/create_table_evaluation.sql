@@ -1,4 +1,4 @@
-DROP TABLE nutrition.evaluation;
+DROP TABLE IF EXISTS nutrition.evaluation;
 
 --評価
 CREATE TABLE nutrition.evaluation (
