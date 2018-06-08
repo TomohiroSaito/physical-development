@@ -20,3 +20,4 @@
 \i ./nutrition/insert_input_method.sql
 \i ./nutrition/insert_foodstuff_master.sql
 \i ./nutrition/insert_recommended_intake.sql
+ 

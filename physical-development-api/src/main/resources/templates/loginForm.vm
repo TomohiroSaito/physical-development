@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ログイン</title>
+</head>
+<body>
+	<div id="wrapper">
+		<h3>ログインフォーム</h3>
+		<p>${message}</p>
+		<c:if test="${param.containsKey('error')}">
+			<span style="color: red;">
+				<c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
+			</span>
+		</c:if>
+		<form:form action="/PhysicalDevelopment/authentication">
+			<table>
+				<tr>
+					<td><label for="username">ユーザー名</label></td>
+					<td><input type="text" id="username" name="username"></td>
+				</tr>
+				<tr>
+					<td><label for="password">パスワード</label></td>
+					<td><input type="password" id="password" name="password"></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><button>ログイン</button></td>
+				</tr>
+			</table>
+		</form:form>
+		<a href="http://localhost:8080/PhysicalDevelopment/memberRegistration">会員登録</a>
+	</div>
+</body>
+</html>
