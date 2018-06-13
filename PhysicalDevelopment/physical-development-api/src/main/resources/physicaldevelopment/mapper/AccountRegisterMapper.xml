@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="physicaldevelopment.datasource.mapper.AccountRegisterMapper">
+
+	<select id="insertAccountAccount" parameterType="physicaldevelopment.model.account.Account">
+		INSERT INTO account.account (
+			account_id,
+			login_id,
+			password,
+			created_at,
+			updated_at
+		) VALUES (
+			#{accountId.accountId},
+			#{authentication.loginId.loginId},
+			#{authentication.password.password},
+			now(),
+			now()
+		)
+	</select>
+
+	<select id="insertAccountProfile" parameterType="physicaldevelopment.model.account.Account">
+		INSERT INTO account.profile (
+			account_id,
+			sex_type,
+			birthday,
+			created_at,
+			updated_at
+		) VALUES (
+			#{accountId.accountId},
+			#{sex.name},
+			#{birthday.birthday},
+			now(),
+			now()
+		)
+	</select>
+
+	<select id="selectNextAccountId" parameterType="physicaldevelopment.model.account.Account" resultType="int">
+		SELECT nextval('account.account_account_id_SEQ')
+	</select>
+
+
+</mapper>

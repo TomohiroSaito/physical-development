@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<!-- <link rel="stylesheet" href="http://localhost:8080/PhysicalDevelopment/static/css/style.css"/> -->
+<title>ログイン</title>
+</head>
+<body>
+	<div id="main-content-wrap">
+		<div class="main-content">
+		<h2 class="page-title">食事登録確認</h2>
+			<table class="student-list-table">
+				<tr>
+					<td class="student-input-title input-name">食事名</td>
+					<td><p>${meal.mealName.mealName}</p></td>
+				</tr>
+				<tr>
+					<td class="student-input-tite input-name">エネルギー</td>
+					<td><p>${meal.oneMealOfNutrients.energyNutrientAmount.nutrientAmount}</p></td>
+				</tr>
+				<tr>
+					<td class="student-input-tite input-name">たんぱく質</td>
+					<td><p>${meal.oneMealOfNutrients.proteinNutrientAmount.nutrientAmount}</p></td>
+				</tr>
+				<tr>
+					<td class="student-input-tite input-name">脂質</td>
+					<td><p>${meal.oneMealOfNutrients.lipidNutrientAmount.nutrientAmount}</p></td>
+				</tr>
+				<tr>
+					<td class="student-input-tite input-name">炭水化物</td>
+					<td><p>${meal.oneMealOfNutrients.carbohydrateNutrientAmount.nutrientAmount}</p></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="登録" class="student-register-button"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:sec="http://www.springframework.org/schema/security"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd
+  http://www.springframework.org/schema/security
+  http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<!-- Spring Securityの処理を適用しないパスパターンを指定 -->
+	<sec:http pattern="classpath:/templates/*" security="none" />
+	<sec:http pattern="classpath:/css/*" security="none" />
+
+  	<sec:http>
+		<sec:form-login
+			login-page="/login"
+			login-processing-url="/authentication"
+		 	username-parameter="loginId"
+		 	password-parameter="password"/>
+		<sec:intercept-url pattern="/logoutSuccess" access="permitAll"/>
+		<sec:intercept-url pattern="/login" access="permitAll"/>
+		<sec:intercept-url pattern="/logout" access="permitAll" />
+		<sec:intercept-url pattern="/memberRegistration" access="permitAll"/>
+		<sec:intercept-url pattern="/newMemberRegister" access="permitAll"/>
+		<sec:intercept-url pattern="/checkedMemberRegister" access="permitAll"/>
+		<sec:intercept-url pattern="/sample" access="permitAll"/>
+		<sec:intercept-url pattern="/loginFailure" access="permitAll"/>
+		<sec:intercept-url pattern="/**" access="isAuthenticated()"/>
+		<sec:form-login default-target-url="/menu" />
+		<sec:form-login authentication-failure-url="/loginFailure" />
+		<sec:logout
+			logout-url="/auth/logout"
+			logout-success-url="/logoutSuccess" />
+		<sec:csrf disabled="true"/>
+	</sec:http>
+
+	<sec:authentication-manager>
+		<sec:authentication-provider
+			user-service-ref="accountUserDetailsService">
+			<sec:password-encoder ref="passwordEncoder" />
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+
+	<bean id="accountUserDetailsService" class="physicaldevelopment.service.AccountUserDetailsService"/>
+
+<!--	<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" /> -->
+ 	<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.password.NoOpPasswordEncoder" />
+
+
+
+
+
+</beans>

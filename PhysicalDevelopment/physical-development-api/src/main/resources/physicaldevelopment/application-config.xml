@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:jdbc="http://www.springframework/schema/jdbc"
+ xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xmlns:web-app="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.springframework.org/schema/mvc
+  http://www.springframework.org/schema/mvc/spring-mvc.xsd
+  http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/jdbc
+  http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="physicaldevelopment"/>
+
+    <mvc:annotation-driven />
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:physicaldevelopment/mybatis.xml" />
+	</bean>
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    	<property name="driverClassName"><value>org.postgresql.Driver</value></property>
+    	<property name="url"><value>jdbc:postgresql://localhost:5433/physical_development</value></property>
+    	<property name="username"><value>postgres</value></property>
+    	<property name="password"><value>postgres</value></property>
+    </bean>
+
+    <bean class="org.mybatis.spring.SqlSessionTemplate">
+    	<constructor-arg ref="sqlSessionFactory" />
+    </bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    	<property name="basePackage" value="physicaldevelopment" />
+    	<property name="annotationClass" value="physicaldevelopment.datasource.mapper.MyMapper" />
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    	<property name="dataSource" ref="dataSource" />
+    </bean>
+
+  	<bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+	  <property name="resourceLoaderPath" value="classpath:templates/" />
+	     <property name="velocityPropertiesMap">
+            <map>
+                <entry key="input.encoding" value="UTF-8" />
+                <entry key="output.encoding" value="UTF-8" />
+            </map>
+        </property>
+	</bean>
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="contentType" value="text/html; charset=UTF-8" />
+		<property name="suffix" value=".vm" />
+<!-- 		<property name="toolboxConfigLocation" value="classpath:physicaldevelopment/velocityConfig.xml" />
+ -->	</bean>
+
+</beans>

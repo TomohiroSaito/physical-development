@@ -1,0 +1,10 @@
+server:
+  contextPath: /PhysicalDevelopment/
+security: 
+  user: 
+    name: saito
+    password: saito
+spring:
+  resources:
+    static-locations: classpath:/static/
+ 

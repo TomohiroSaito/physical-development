@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<!-- <link rel="stylesheet" href="http://localhost:8080/PhysicalDevelopment/static/css/style.css"/> -->
+<title>ログイン</title>
+</head>
+<body>
+	<div id="main-content-wrap">
+		<div class="main-content">
+		<h2 class="page-title">食事登録</h2>
+		<form class="student-register-form" action="/PhysicalDevelopment/checkNutritionManualRegister" method="post">
+		<input type="radio" name="inputType" value="AUTO" />自動入力
+		<input type="radio" name="inputType" value="MANUAL" checked/>手動入力
+			<table class="student-list-table">
+				<tr>
+					<td class="student-input-title input-name">食事名</td>
+					<td><input type="text" name="mealName.mealName" class="student-input-name"></td>
+				</tr>
+				<tr>
+					<td class="student-input-tite input-name">エネルギー</td>
+					<td><input type="text" name="oneMealOfNutrients.energyNutrientAmount.nutrientAmount" class="studnet-input-name"></td>
+				</tr>
+				<tr>
+					<td class="student-input-tite input-name">たんぱく質</td>
+					<td><input type="text" name="oneMealOfNutrients.proteinNutrientAmount.nutrientAmount" class="studnet-input-name"></td>
+				</tr>
+				<tr>
+					<td class="student-input-tite input-name">脂質</td>
+					<td><input type="text" name="oneMealOfNutrients.lipidNutrientAmount.nutrientAmount" class="studnet-input-name"></td>
+				</tr>
+				<tr>
+					<td class="student-input-tite input-name">炭水化物</td>
+					<td><input type="text" name="oneMealOfNutrients.carbohydrateNutrientAmount.nutrientAmount" class="studnet-input-name"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="登録" class="student-register-button"></td>
+				</tr>
+			</table>
+		</form>
+		</div>
+	</div>
+</body>
+</html>
