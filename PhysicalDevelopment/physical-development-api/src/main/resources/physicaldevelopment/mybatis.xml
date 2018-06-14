@@ -19,5 +19,7 @@
 	<mappers>
 		<mapper resource="physicaldevelopment/mapper/AccountMapper.xml" />
 		<mapper resource="physicaldevelopment/mapper/AccountRegisterMapper.xml" />
+		<mapper resource="physicaldevelopment/mapper/MealRegisterMapper.xml" />
+		<mapper resource="physicaldevelopment/mapper/TargetNutritionMapper.xml" />
 	</mappers>
 </configuration>

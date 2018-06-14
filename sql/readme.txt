@@ -11,6 +11,7 @@
 \i ./nutrition/create_table_latest_target_nutrient_amount.sql
 \i ./nutrition/create_table_daily_nutrient_amount.sql
 \i ./nutrition/create_table_evaluation.sql
+\i ./nutrition/create_table_daily_nutrient_amount_x_target_nutrient_amount.sql
 \i ./nutrition/create_table_meal.sql
 \i ./nutrition/create_table_foodstuff.sql
 \i ./nutrition/create_table_manual_entry_of_nutrients.sql

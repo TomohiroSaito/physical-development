@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import physicaldevelopment.model.account.Account;
-import physicaldevelopment.model.account.profile.Birthday;
 import physicaldevelopment.service.AccountRegisterRepository;
 
 @SessionAttributes(value="accountSession")
@@ -24,11 +23,9 @@ public class AccountRegisterController {
 	}
 
 	@RequestMapping(path="/newMemberRegister", method=RequestMethod.POST)
-	public String newMemberRegister(@ModelAttribute Account account , Model model, String year, String month, String day) {
-		Birthday birthday = new Birthday(year, month, day);
-		account.setBirthday(birthday);
+	public String newMemberRegister(@ModelAttribute Account account , Model model) {
+		account.getBirthday().asBirthday();
 		model.addAttribute("accountSession", account);
-//		setAccount(account);
 
 		return "accountregister/checkMemberRegistration";
 	}
@@ -40,8 +37,4 @@ public class AccountRegisterController {
 		return "showMessage";
 	}
 
-	@ModelAttribute("accountSession")
-	public Account setAccount(Account account) {
-		return account;
-	}
 }

@@ -10,9 +10,6 @@
   http://www.springframework.org/schema/security
   http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<!-- Spring Securityの処理を適用しないパスパターンを指定 -->
-	<sec:http pattern="classpath:/templates/*" security="none" />
-	<sec:http pattern="classpath:/css/*" security="none" />
 
   	<sec:http>
 		<sec:form-login
@@ -28,6 +25,9 @@
 		<sec:intercept-url pattern="/checkedMemberRegister" access="permitAll"/>
 		<sec:intercept-url pattern="/sample" access="permitAll"/>
 		<sec:intercept-url pattern="/loginFailure" access="permitAll"/>
+
+		<sec:intercept-url pattern="/resouces/**" access="permitAll"/>
+
 		<sec:intercept-url pattern="/**" access="isAuthenticated()"/>
 		<sec:form-login default-target-url="/menu" />
 		<sec:form-login authentication-failure-url="/loginFailure" />
@@ -36,6 +36,11 @@
 			logout-success-url="/logoutSuccess" />
 		<sec:csrf disabled="true"/>
 	</sec:http>
+
+		<!-- Spring Securityの処理を適用しないパスパターンを指定 -->
+<!-- 	<sec:http pattern="classpath:/templates/*" security="none" />
+	<sec:http pattern="/css/*" security="none" />
+ -->
 
 	<sec:authentication-manager>
 		<sec:authentication-provider

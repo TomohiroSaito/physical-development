@@ -5,29 +5,46 @@ import java.util.Date;
 
 public class Birthday {
 	private Date birthday;
-	String year;
-	String month;
-	String day;
-	String stringBirthday;
+	private String year;
+	private String month;
+	private String day;
 
 	public Birthday() {}
-	public Birthday(String stringYear, String stringMonth, String stringDay) {
-		int intYear = Integer.parseInt(stringYear);
-		int intMonth = Integer.parseInt(stringMonth);
-		int intDay = Integer.parseInt(stringDay);
-		this.birthday = new Date(intYear-1900, intMonth-1, intDay);
-		this.stringBirthday = new SimpleDateFormat("yyyy'年'MM'月'dd'日'").format(this.birthday);
-	}
 
 	public Date getBirthday() {
-		return birthday;
+		return this.birthday;
 	}
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 
+	public void asBirthday() {
+		int intYear = Integer.parseInt(year);
+		int intMonth = Integer.parseInt(month);
+		int intDay = Integer.parseInt(day);
+		this.birthday = new Date(intYear-1900, intMonth-1, intDay);
+	}
+
 	public String getBirthdayString() {
-		return stringBirthday;
+		return new SimpleDateFormat("yyyy'年'MM'月'dd'日'").format(this.birthday);
+	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
 	}
 }

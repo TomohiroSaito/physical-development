@@ -10,6 +10,25 @@
 		<div class="main-content">
 		<h2 class="page-title">食事登録</h2>
 		<form class="student-register-form" action="/PhysicalDevelopment/checkNutritionManualRegister" method="post">
+<script>
+
+//今日の日付データを変数に格納
+var today=new Date();
+
+//年・月・日・曜日を取得する
+var year = today.getFullYear();
+var month = today.getMonth()+1;
+var day = today.getDate();
+document.write(year+"年"+month+"月"+day+"日 ");
+document.write("<input type=\"hidden\" name=\"yearMonthDay.year\" value=" + year + ">");
+document.write("<input type=\"hidden\" name=\"yearMonthDay.month\" value=" + month + ">");
+document.write("<input type=\"hidden\" name=\"yearMonthDay.day\" value=" + day + ">");
+
+</script>
+
+		<p>${orderOfMeals}食目</p>
+		<input type="hidden" name="strOrderOfMeals" value="${orderOfMeals}" />
+
 		<input type="radio" name="inputType" value="AUTO" />自動入力
 		<input type="radio" name="inputType" value="MANUAL" checked/>手動入力
 			<table class="student-list-table">

@@ -5,6 +5,7 @@ CREATE TABLE nutrition.manual_entry_of_nutrients (
   manual_entry_of_nutrients_id INT,
   meal_id INT NOT NULL,
   nutrition_type VARCHAR(20) NOT NULL,
+  nutrition_amount INT NOT NULL,
   created_at DATE NOT NULL,
   updated_at DATE NOT NULL,
   PRIMARY KEY (manual_entry_of_nutrients_id),

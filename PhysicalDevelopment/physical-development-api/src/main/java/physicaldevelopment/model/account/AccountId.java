@@ -7,6 +7,10 @@ public class AccountId {
 		this.accountId = accountId;
 	}
 
+	public AccountId() {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+
 	public int getAccountId() {
 		return accountId;
 	}

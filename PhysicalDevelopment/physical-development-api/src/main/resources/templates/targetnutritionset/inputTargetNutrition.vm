@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<!-- <link rel="stylesheet" href="http://localhost:8080/PhysicalDevelopment/static/css/style.css"/> -->
+<title>ログイン</title>
+</head>
+<body>
+	<div id="main-content-wrap">
+		<div class="main-content">
+		<h2 class="page-title">目標設定</h2>
+		<form class="student-register-form" action="/PhysicalDevelopment/checkTargetNutrition" method="post">
+			<table class="student-list-table">
+				<tr>
+<!--					<input type="hidden" name="energyNutrientAmount.nutrition.name" value="ENERGY"> -->
+					<td class="student-input-tite input-name">エネルギー</td>
+					<td><input type="text" name="energyNutrientAmount.nutrientAmount" class="studnet-input-name">kcal</td>
+				</tr>
+				<tr>
+<!--					<input type="hidden" name="proteinNutrientAmount.nutrition.name" value="PROTEIN"> -->
+					<td class="student-input-tite input-name">たんぱく質</td>
+					<td><input type="text" name="proteinNutrientAmount.nutrientAmount" class="studnet-input-name">g</td>
+				</tr>
+				<tr>
+<!--					<input type="hidden" name="lipidNutrientAmount.nutrition.name" value="LIPID"> -->
+					<td class="student-input-tite input-name">脂質</td>
+					<td><input type="text" name="lipidNutrientAmount.nutrientAmount" class="studnet-input-name">g</td>
+				</tr>
+				<tr>
+<!--					<input type="hidden" name="carbohydrateNutrientAmount.nutrition.name" value="CARBOHYDRATE"> -->
+					<td class="student-input-tite input-name">炭水化物</td>
+					<td><input type="text" name="carbohydrateNutrientAmount.nutrientAmount" class="studnet-input-name">g</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="設定" class="student-register-button"></td>
+				</tr>
+			</table>
+		</form>
+		</div>
+	</div>
+</body>
+</html>
