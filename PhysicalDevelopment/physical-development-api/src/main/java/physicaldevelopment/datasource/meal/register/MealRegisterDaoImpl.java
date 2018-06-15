@@ -12,28 +12,28 @@ public class MealRegisterDaoImpl implements MealRegisterDao {
 	@Autowired
 	MealRegisterMapper mealRegisterMapper;
 
-	public void registerMealManual(Meal meal, int dailyNutrientAmountId, int manualEntryOfNutrientsId) {
+	public void registerMealManual(Meal meal, Integer dailyNutrientAmountId, Integer manualEntryOfNutrientsId) {
 		mealRegisterMapper.insertMeal(meal, dailyNutrientAmountId);
 		mealRegisterMapper.insertMealManual(meal, manualEntryOfNutrientsId);
 	}
 
 	@Override
-	public int selectNextMealId() {
+	public Integer selectNextMealId() {
 		return mealRegisterMapper.selectNextMealId();
 	}
 
 	@Override
-	public int selectDailyNutrientAmountId(YearMonthDay yearMonthDay, int accountId) {
+	public Integer selectDailyNutrientAmountId(YearMonthDay yearMonthDay, Integer accountId) {
 		return mealRegisterMapper.selectDailyNutrientAmountId(yearMonthDay, accountId);
 	}
 
 	@Override
-	public int selectNextManualEntryOfNutrients() {
+	public Integer selectNextManualEntryOfNutrients() {
 		return mealRegisterMapper.selectNextManualEntryOfNutrientsId();
 	}
 
 	@Override
-	public int selectNextOrderOfMeals() {
+	public Integer selectMaxOrderOfMeals() {
 		return mealRegisterMapper.selectNextOrderOfMeals();
 	}
 

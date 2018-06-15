@@ -5,16 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import physicaldevelopment.model.account.Account;
-import physicaldevelopment.service.account.AccountRepository;
+import physicaldevelopment.service.account.AccountService;
 
 @Controller
 public class SampleController {
     @Autowired
-    AccountRepository accountRepository;
+    AccountService accountService;
 
     @RequestMapping("/sample")
     public Account loadUserByUsername() {
-            Account account = accountRepository.findOne("saito");
+            Account account = accountService.findOne("saito");
             return account;
     }
 

@@ -1,49 +1,41 @@
 package physicaldevelopment.model.targetnutrition;
 
 import physicaldevelopment.model.account.AccountId;
-import physicaldevelopment.model.nutrition.NutrientAmount;
 
 public class TargetNutrition {
-	private TargetNutrientAmountId targetNutrientAmountId;
 	private AccountId accountId;
-	private NutrientAmount energyNutrientAmount;
-	private NutrientAmount proteinNutrientAmount;
-	private NutrientAmount lipidNutrientAmount;
-	private NutrientAmount carbohydrateNutrientAmount;
-	public TargetNutrientAmountId getTargetNutrientAmountId() {
-		return targetNutrientAmountId;
-	}
-	public void setTargetNutrientAmountId(TargetNutrientAmountId targetNutrientAmountId) {
-		this.targetNutrientAmountId = targetNutrientAmountId;
-	}
+	private TargetNutrientAmount energyTargetNutrientAmount;
+	private TargetNutrientAmount proteinTargetNutrientAmount;
+	private TargetNutrientAmount lipidTargetNutrientAmount;
+	private TargetNutrientAmount carbohydrateTargetNutrientAmount;
 	public AccountId getAccountId() {
 		return accountId;
 	}
 	public void setAccountId(AccountId accountId) {
 		this.accountId = accountId;
 	}
-	public NutrientAmount getEnergyNutrientAmount() {
-		return energyNutrientAmount;
+	public TargetNutrientAmount getEnergyTargetNutrientAmount() {
+		return energyTargetNutrientAmount;
 	}
-	public void setEnergyNutrientAmount(NutrientAmount energyNutrientAmount) {
-		this.energyNutrientAmount = energyNutrientAmount;
+	public void setEnergyTargetNutrientAmount(TargetNutrientAmount energyTargetNutrientAmount) {
+		this.energyTargetNutrientAmount = energyTargetNutrientAmount;
 	}
-	public NutrientAmount getProteinNutrientAmount() {
-		return proteinNutrientAmount;
+	public TargetNutrientAmount getProteinTargetNutrientAmount() {
+		return proteinTargetNutrientAmount;
 	}
-	public void setProteinNutrientAmount(NutrientAmount proteinNutrientAmount) {
-		this.proteinNutrientAmount = proteinNutrientAmount;
+	public void setProteinTargetNutrientAmount(TargetNutrientAmount proteinTargetNutrientAmount) {
+		this.proteinTargetNutrientAmount = proteinTargetNutrientAmount;
 	}
-	public NutrientAmount getLipidNutrientAmount() {
-		return lipidNutrientAmount;
+	public TargetNutrientAmount getLipidTargetNutrientAmount() {
+		return lipidTargetNutrientAmount;
 	}
-	public void setLipidNutrientAmount(NutrientAmount lipidNutrientAmount) {
-		this.lipidNutrientAmount = lipidNutrientAmount;
+	public void setLipidTargetNutrientAmount(TargetNutrientAmount lipidTargetNutrientAmount) {
+		this.lipidTargetNutrientAmount = lipidTargetNutrientAmount;
 	}
-	public NutrientAmount getCarbohydrateNutrientAmount() {
-		return carbohydrateNutrientAmount;
+	public TargetNutrientAmount getCarbohydrateTargetNutrientAmount() {
+		return carbohydrateTargetNutrientAmount;
 	}
-	public void setCarbohydrateNutrientAmount(NutrientAmount carbohydrateNutrientAmount) {
-		this.carbohydrateNutrientAmount = carbohydrateNutrientAmount;
+	public void setCarbohydrateTargetNutrientAmount(TargetNutrientAmount carbohydrateTargetNutrientAmount) {
+		this.carbohydrateTargetNutrientAmount = carbohydrateTargetNutrientAmount;
 	}
 }

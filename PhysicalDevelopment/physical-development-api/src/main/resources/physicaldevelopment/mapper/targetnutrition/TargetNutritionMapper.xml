@@ -28,7 +28,7 @@
 			created_at,
 			updated_at
 		) VALUES (
-			#{targetNutrition.targetNutrientAmountId.targetNutrientAmountId},
+			#{targetNutrientAmountId.targetNutrientAmountId},
 			#{targetNutrition.accountId.accountId},
 			#{nutrientAmount.nutrition.name},
 			#{nutrientAmount.nutrientAmount},

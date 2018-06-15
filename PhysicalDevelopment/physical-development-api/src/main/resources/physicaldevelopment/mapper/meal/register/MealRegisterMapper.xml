@@ -42,15 +42,15 @@
 		)
 	</select>
 
-	<select id="selectNextMealId" resultType="int">
+	<select id="selectNextMealId" resultType="Integer">
 		SELECT nextval('nutrition.meal_meal_id_SEQ')
 	</select>
 
-	<select id="selectNextManualEntryOfNutrientsId" resultType="int">
+	<select id="selectNextManualEntryOfNutrientsId" resultType="Integer">
 		SELECT nextval('nutrition.manual_entry_of_nutrients_manual_entry_of_nutrients_id_SEQ')
 	</select>
 
-	<select id="selectDailyNutrientAmountId" parameterType="physicaldevelopment.model.primitive.YearMonthDay" resultType="int">
+	<select id="selectDailyNutrientAmountId" parameterType="physicaldevelopment.model.primitive.YearMonthDay" resultType="Integer">
 		SELECT
 			daily_nutrient_amount_id
 		FROM
@@ -61,9 +61,9 @@
 			year_month_day = #{yearMonthDay.yearMonthDay}
 	</select>
 
-	<select id="selectNextOrderOfMeals" resultType="int">
+	<select id="selectNextOrderOfMeals" resultType="Integer">
 		SELECT
-			COALESCE(max(order_of_meals), 0) + 1
+			max(order_of_meals)
 		FROM
 			nutrition.meal
 	</select>

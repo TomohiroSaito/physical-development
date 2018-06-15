@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import physicaldevelopment.model.account.Account;
-import physicaldevelopment.service.account.register.AccountRegisterRepository;
+import physicaldevelopment.service.account.register.AccountRegisterService;
 
 @SessionAttributes(value="accountSession")
 @Controller
 public class AccountRegisterController {
 	@Autowired
-	AccountRegisterRepository accountRegisterRepository;
+	AccountRegisterService accountRegisterService;
 
 	@RequestMapping("/memberRegistration")
 	public String memberRegistration(Model model) {
@@ -32,7 +32,7 @@ public class AccountRegisterController {
 
 	@RequestMapping("/checkedMemberRegister")
 	public String checkedMemberRegister(Model model, @ModelAttribute("accountSession") Account account) {
-		accountRegisterRepository.registerAccount(account);
+		accountRegisterService.registerAccount(account);
 		model.addAttribute("message", "isert succesess!!!");
 		return "showMessage";
 	}

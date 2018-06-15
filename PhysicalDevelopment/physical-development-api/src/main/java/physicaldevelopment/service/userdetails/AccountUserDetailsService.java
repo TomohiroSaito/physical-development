@@ -13,18 +13,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import physicaldevelopment.model.account.Account;
-import physicaldevelopment.service.account.AccountRepository;
+import physicaldevelopment.service.account.AccountService;
 
 @Service
 public class AccountUserDetailsService implements UserDetailsService {
 
     @Autowired
-    AccountRepository accountRepository;
+    AccountService accountService;
 
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username)
                     throws UsernameNotFoundException {
-            Account account = Optional.ofNullable(accountRepository.findOne(username))
+            Account account = Optional.ofNullable(accountService.findOne(username))
                             .orElseThrow(() -> new UsernameNotFoundException("user not found."));
             return new AccountUserDetails(account, getAuthorities(account));
     }

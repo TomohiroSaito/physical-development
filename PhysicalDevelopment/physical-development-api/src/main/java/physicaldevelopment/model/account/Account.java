@@ -12,9 +12,19 @@ public class Account {
 	private Birthday birthday;
 	private Sex sex;
 	public Account() {}
-	public Account(int accountId) {
-		this.accountId = new AccountId(accountId);
+	public Account( AccountId accountId,Account accont) {
+		this.accountId =   accountId;
+		this.authentication = accont.getAuthentication();
+		this.birthday = accont.getBirthday();
 	}
+
+	public Account(AccountId accountId, Authentication authentication, Birthday birthday, Sex sex) {
+		this.accountId =   accountId;
+		this.authentication = authentication;
+		this.birthday = birthday;
+		this.sex = sex;
+	}
+
 	public Account(LoginId loginId, Password password) {
 		this.authentication = new Authentication(loginId, password);
 	}

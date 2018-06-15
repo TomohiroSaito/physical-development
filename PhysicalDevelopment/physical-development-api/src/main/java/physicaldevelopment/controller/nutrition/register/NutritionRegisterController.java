@@ -1,6 +1,10 @@
 package physicaldevelopment.controller.nutrition.register;
 
+import java.security.Principal;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,24 +12,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import physicaldevelopment.datasource.meal.register.MealRegisterDao;
+import physicaldevelopment.model.account.authentication.LoginId;
 import physicaldevelopment.model.meal.Meal;
 import physicaldevelopment.model.meal.OrderOfMeals;
 import physicaldevelopment.model.nutrition.Nutrition;
-import physicaldevelopment.service.meal.register.MealRegisterRepository;
+import physicaldevelopment.model.primitive.YearMonthDay;
+import physicaldevelopment.service.meal.register.MealRegisterService;
+import physicaldevelopment.service.userdetails.AccountUserDetails;
 
 @SessionAttributes(value="nutritionSession")
 @Controller
 public class NutritionRegisterController {
 	@Autowired
-	MealRegisterRepository mealRegisterRepository;
-
-	@Autowired
-	MealRegisterDao mealRegisterDao;
+	MealRegisterService mealRegisterService;
 
 	@RequestMapping("/inputNutritionRegister")
-	public String inputNutritionRegister(Model model) {
-		int orderOfMeals = mealRegisterDao.selectNextOrderOfMeals();
+	public String inputNutritionRegister(Model model, Principal principal) {
+		Authentication auth = (Authentication)principal;
+        AccountUserDetails accountUserDetails = (AccountUserDetails)auth.getPrincipal();
+        LoginId loginId = new LoginId(accountUserDetails.getUsername());
+        Date today = new Date();
+        model.addAttribute("today", today.getTime());
+		int orderOfMeals = mealRegisterService.selectNextOrderOfMeals(new YearMonthDay(today), loginId);
 //		int orderOfMeals = 1;
 		model.addAttribute("orderOfMeals", orderOfMeals);
 		return "nutritionregister/inputNutritionRegister";
@@ -45,7 +53,7 @@ public class NutritionRegisterController {
 
 	@RequestMapping("/confirmNutritionRegister")
 	public String confirmNutritionRegister(Model model, @ModelAttribute("nutritionSession") Meal meal) {
-		mealRegisterRepository.registerMealManual(meal);
+		mealRegisterService.registerMealManual(meal);
 		model.addAttribute("message", "isert meal succesess!!!");
 		return "showMessage";
 	}

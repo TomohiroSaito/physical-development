@@ -4,14 +4,14 @@ import physicaldevelopment.model.meal.Meal;
 import physicaldevelopment.model.primitive.YearMonthDay;
 
 public interface MealRegisterDao {
-	void registerMealManual(Meal meal, int dailyNutrientAmount, int manualEntryOfNutrientsId);
+	void registerMealManual(Meal meal, Integer dailyNutrientAmount, Integer manualEntryOfNutrientsId);
 
-	int selectNextMealId();
+	Integer selectNextMealId();
 
-	int selectNextManualEntryOfNutrients();
+	Integer selectNextManualEntryOfNutrients();
 
-	int selectDailyNutrientAmountId(YearMonthDay yearMonthDay, int accountId);
+	Integer selectDailyNutrientAmountId(YearMonthDay yearMonthDay, Integer accountId);
 
-	int selectNextOrderOfMeals();
+	Integer selectMaxOrderOfMeals();
 
 }

@@ -36,7 +36,7 @@
 		)
 	</select>
 
-	<select id="selectNextAccountId" parameterType="physicaldevelopment.model.account.Account" resultType="int">
+	<select id="selectNextAccountId" parameterType="physicaldevelopment.model.account.Account" resultType="Integer">
 		SELECT nextval('account.account_account_id_SEQ')
 	</select>
 

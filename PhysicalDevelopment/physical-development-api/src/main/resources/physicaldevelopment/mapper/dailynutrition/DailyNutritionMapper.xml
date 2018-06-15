@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="physicaldevelopment.datasource.mapper.dailynutrition.DailyNutritionMapper">
+
+	<select id="selectNextDailyNutrientAmountId" resultType="Integer">
+		SELECT nextval('nutrition.daily_nutrient_amount_daily_nutrient_amount_id_SEQ')
+	</select>
+
+	<select id="insertDailyNutrition">
+		INSERT INTO
+			nutrition.daily_nutrient_amount
+		(
+			daily_nutrient_amount_id,
+			account_id,
+			year_month_day,
+			created_at,
+			updated_at
+		) VALUES (
+			#{dailyNutrientAmountId.dailyNutrientAmountId},
+			#{accountId.accountId},
+			#{yearMothDay.yearMonthDay},
+			now(),
+			now()
+		)
+	</select>
+
+	<select id="insertEvaluation">
+		INSERT INTO
+			nutrition.evaluation
+		(
+			daily_nutrient_amount_id,
+			score,
+			energy_high_and_low,
+			not_subject_to_evaluation,
+			created_at,
+			updated_at
+		) VALUES (
+			#{dailyNutrientAmountId.dailyNutrientAmountId},
+			0,
+			0,
+			false,
+			now(),
+			now()
+		)
+	</select>
+
+</mapper>

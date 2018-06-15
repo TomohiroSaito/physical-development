@@ -13,19 +13,19 @@
 				<table class="student-list-table">
 					<tr>
 						<td class="student-input-tite input-name">エネルギー</td>
-						<td><p>${targetNutrition.energyNutrientAmount.nutrientAmount}</p></td>
+						<td><p>${targetNutrition.energyTargetNutrientAmount.nutrientAmount.nutrientAmount}</p></td>
 					</tr>
 					<tr>
 						<td class="student-input-tite input-name">たんぱく質</td>
-						<td><p>${targetNutrition.proteinNutrientAmount.nutrientAmount}</p></td>
+						<td><p>${targetNutrition.proteinTargetNutrientAmount.nutrientAmount.nutrientAmount}</p></td>
 					</tr>
 					<tr>
 						<td class="student-input-tite input-name">脂質</td>
-						<td><p>${targetNutrition.lipidNutrientAmount.nutrientAmount}</p></td>
+						<td><p>${targetNutrition.lipidTargetNutrientAmount.nutrientAmount.nutrientAmount}</p></td>
 					</tr>
 					<tr>
 						<td class="student-input-tite input-name">炭水化物</td>
-						<td><p>${targetNutrition.carbohydrateNutrientAmount.nutrientAmount}</p></td>
+						<td><p>${targetNutrition.carbohydrateTargetNutrientAmount.nutrientAmount.nutrientAmount}</p></td>
 					</tr>
 					<tr>
 						<td><button>戻る</button></td>

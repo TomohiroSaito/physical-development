@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import physicaldevelopment.model.account.authentication.LoginId;
 import physicaldevelopment.model.nutrition.Nutrition;
 import physicaldevelopment.model.targetnutrition.TargetNutrition;
-import physicaldevelopment.service.targetnutrition.TargetNutritionRepository;
+import physicaldevelopment.service.targetnutrition.TargetNutritionService;
 import physicaldevelopment.service.userdetails.AccountUserDetails;
 
 @SessionAttributes("targetNutritionSession")
 @Controller
 public class TargetNutritionController {
 	@Autowired
-	TargetNutritionRepository targetNutritionRepository;
+	TargetNutritionService targetNutritionService;
 
 
 	@RequestMapping("/inputTargetNutrition")
@@ -31,10 +31,10 @@ public class TargetNutritionController {
 
 	@RequestMapping(path="/checkTargetNutrition", method=RequestMethod.POST)
 	public String checkNutritionManualRegister(@ModelAttribute TargetNutrition targetNutrition , Model model) {
-		targetNutrition.getEnergyNutrientAmount().setNutrition(Nutrition.ENERGY);
-		targetNutrition.getProteinNutrientAmount().setNutrition(Nutrition.PROTEIN);
-		targetNutrition.getLipidNutrientAmount().setNutrition(Nutrition.LIPID);
-		targetNutrition.getCarbohydrateNutrientAmount().setNutrition(Nutrition.CARBOHYDRATE);
+		targetNutrition.getEnergyTargetNutrientAmount().getNutrientAmount().setNutrition(Nutrition.ENERGY);
+		targetNutrition.getProteinTargetNutrientAmount().getNutrientAmount().setNutrition(Nutrition.PROTEIN);
+		targetNutrition.getLipidTargetNutrientAmount().getNutrientAmount().setNutrition(Nutrition.LIPID);
+		targetNutrition.getCarbohydrateTargetNutrientAmount().getNutrientAmount().setNutrition(Nutrition.CARBOHYDRATE);
 		model.addAttribute("targetNutritionSession", targetNutrition);
 		return "targetnutrition/checkTargetNutrition";
 	}
@@ -45,7 +45,7 @@ public class TargetNutritionController {
         AccountUserDetails accountUserDetails = (AccountUserDetails)auth.getPrincipal();
         LoginId loginId = new LoginId();;
         loginId.setLoginId(accountUserDetails.getUsername());
-		targetNutritionRepository.setTargetNutrition(targetNutrition, loginId);
+		targetNutritionService.setTargetNutrition(targetNutrition, loginId);
 		model.addAttribute("message", "isert target succesess!!!");
 		return "showMessage";
 	}

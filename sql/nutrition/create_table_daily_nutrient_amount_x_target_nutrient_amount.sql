@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS nutrition.daily_nutrient_amount_x_target_nutrient_amount;
 --1日の栄養素量x目標栄養素量
 CREATE TABLE nutrition.daily_nutrient_amount_x_target_nutrient_amount (
 
-  daily_nutrient_amount_x_target_nutrient_amount_id INT,
+  daily_nutrient_amount_x_target_nutrient_amount_id SERIAL,
   daily_nutrient_amount_id INT NOT NULL,
   target_nutrient_amount_id INT NOT NULL,
   created_at DATE NOT NULL,
@@ -13,12 +13,3 @@ CREATE TABLE nutrition.daily_nutrient_amount_x_target_nutrient_amount (
   FOREIGN KEY (target_nutrient_amount_id) REFERENCES nutrition.target_nutrient_amount (target_nutrient_amount_id),
   UNIQUE (daily_nutrient_amount_id, target_nutrient_amount_id)
 );
-
-DROP SEQUENCE nutrition.daily_nutrient_amount_x_target_nutrient_amount_id_SEQ;
-
-CREATE SEQUENCE nutrition.daily_nutrient_amount_x_target_nutrient_amount_id_SEQ
-  INCREMENT BY 1
-  MAXVALUE 2147483647
-  START WITH 1
-  NO CYCLE
-;

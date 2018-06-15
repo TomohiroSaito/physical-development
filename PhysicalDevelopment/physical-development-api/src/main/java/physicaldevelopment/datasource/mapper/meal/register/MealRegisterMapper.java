@@ -10,16 +10,16 @@ import physicaldevelopment.model.primitive.YearMonthDay;
 @Repository
 @MyMapper
 public interface MealRegisterMapper {
-	void insertMeal(@Param("meal") Meal meal, @Param("dailyNutrientAmountId") int dailyNutrientAmountId);
+	void insertMeal(@Param("meal") Meal meal, @Param("dailyNutrientAmountId") Integer dailyNutrientAmountId);
 
-	void insertMealManual(@Param("meal") Meal meal, @Param("manualEntryOfNutrientsId") int manualEntryOfNutrientsId);
+	void insertMealManual(@Param("meal") Meal meal, @Param("manualEntryOfNutrientsId") Integer manualEntryOfNutrientsId);
 
-	int selectNextMealId();
+	Integer selectNextMealId();
 
-	int selectNextManualEntryOfNutrientsId();
+	Integer selectNextManualEntryOfNutrientsId();
 
-	int selectDailyNutrientAmountId(@Param("yearMonthDay") YearMonthDay yearMonthDay, @Param("accountId") int accountId);
+	Integer selectDailyNutrientAmountId(@Param("yearMonthDay") YearMonthDay yearMonthDay, @Param("accountId") Integer accountId);
 
-	int selectNextOrderOfMeals();
+	Integer selectNextOrderOfMeals();
 
 }

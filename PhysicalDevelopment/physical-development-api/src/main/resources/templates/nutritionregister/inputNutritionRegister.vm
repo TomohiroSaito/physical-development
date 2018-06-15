@@ -13,7 +13,7 @@
 <script>
 
 //今日の日付データを変数に格納
-var today=new Date();
+var today=new Date(${today});
 
 //年・月・日・曜日を取得する
 var year = today.getFullYear();

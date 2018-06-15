@@ -8,6 +8,12 @@ public class YearMonthDay {
 	private String month;
 	private String day;
 
+	public YearMonthDay() {}
+
+	public YearMonthDay(Date yearMonthDay) {
+		this.yearMonthDay = yearMonthDay;
+	}
+
 	public void asYearMonthDay() {
 		int intYear = Integer.parseInt(year);
 		int intMonth = Integer.parseInt(month);
@@ -16,7 +22,7 @@ public class YearMonthDay {
 	}
 
 	public Date getYearMonthDay() {
-		return yearMonthDay;
+		return this.yearMonthDay;
 	}
 
 	public void setYearMonthDay(Date yearMonthDay) {
