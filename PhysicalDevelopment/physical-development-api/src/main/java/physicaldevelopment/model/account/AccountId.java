@@ -8,7 +8,6 @@ public class AccountId {
 	}
 
 	public AccountId() {
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
 	public int getAccountId() {

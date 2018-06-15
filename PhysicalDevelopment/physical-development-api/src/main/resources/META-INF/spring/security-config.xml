@@ -49,7 +49,7 @@
 		</sec:authentication-provider>
 	</sec:authentication-manager>
 
-	<bean id="accountUserDetailsService" class="physicaldevelopment.service.AccountUserDetailsService"/>
+	<bean id="accountUserDetailsService" class="physicaldevelopment.service.userdetails.AccountUserDetailsService"/>
 
 <!--	<bean id="passwordEncoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" /> -->

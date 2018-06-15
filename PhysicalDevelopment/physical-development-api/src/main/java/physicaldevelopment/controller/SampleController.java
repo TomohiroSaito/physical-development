@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import physicaldevelopment.model.account.Account;
-import physicaldevelopment.service.AccountRepository;
+import physicaldevelopment.service.account.AccountRepository;
 
 @Controller
 public class SampleController {
