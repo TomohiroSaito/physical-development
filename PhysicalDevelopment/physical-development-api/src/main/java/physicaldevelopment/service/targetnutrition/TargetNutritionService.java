@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import physicaldevelopment.datasource.targetnutrition.TargetNutritionDao;
 import physicaldevelopment.model.account.AccountId;
 import physicaldevelopment.model.account.authentication.LoginId;
+import physicaldevelopment.model.targetnutrition.TargetNutrientAmount;
 import physicaldevelopment.model.targetnutrition.TargetNutrientAmountId;
 import physicaldevelopment.model.targetnutrition.TargetNutrition;
 
@@ -15,22 +16,61 @@ public class TargetNutritionService {
 	TargetNutritionDao targetNutritionDao;
 
 	public void setTargetNutrition(TargetNutrition targetNutrition, LoginId loginId) {
-		AccountId accountId = new AccountId();
-		accountId.setAccountId(targetNutritionDao.selectAccountId(loginId));
-		targetNutrition.setAccountId(accountId);
+		AccountId accountId = new AccountId(targetNutritionDao.selectAccountId(loginId));
 		TargetNutrientAmountId targetNutrientAmountId = new TargetNutrientAmountId();
+
 		targetNutrientAmountId.setTargetNutrientAmountId(targetNutritionDao.selectNextTargetNutrientAmountId());
 		targetNutrition.getEnergyTargetNutrientAmount().setTargetNutrientAmountId(targetNutrientAmountId);
-		targetNutritionDao.insertEnergyTargetNutrition(targetNutrition);
+		targetNutritionDao.insertEnergyTargetNutrition(accountId, targetNutrition);
+		TargetNutrientAmountId existTargetNutrientAmountId = targetNutritionDao.selectEnergyTargetNutritionId(accountId);
+		if(null == existTargetNutrientAmountId) {
+			targetNutritionDao.insertLatestTargetNutrientAmount(targetNutrientAmountId);
+		}
+		if(!(null == existTargetNutrientAmountId)) {
+			targetNutritionDao.updateLatestTargetNutrientAmount(targetNutrientAmountId, existTargetNutrientAmountId);
+		}
+
 		targetNutrientAmountId.setTargetNutrientAmountId(targetNutritionDao.selectNextTargetNutrientAmountId());
 		targetNutrition.getProteinTargetNutrientAmount().setTargetNutrientAmountId(targetNutrientAmountId);
-		targetNutritionDao.insertProteinTargetNutrition(targetNutrition);
+		targetNutritionDao.insertProteinTargetNutrition(accountId, targetNutrition);
+		existTargetNutrientAmountId = targetNutritionDao.selectProteinTargetNutritionId(accountId);
+		if(null == existTargetNutrientAmountId) {
+			targetNutritionDao.insertLatestTargetNutrientAmount(targetNutrientAmountId);
+		}
+		if(!(null == existTargetNutrientAmountId)) {
+			targetNutritionDao.updateLatestTargetNutrientAmount(targetNutrientAmountId, existTargetNutrientAmountId);
+		}
+
 		targetNutrientAmountId.setTargetNutrientAmountId(targetNutritionDao.selectNextTargetNutrientAmountId());
 		targetNutrition.getLipidTargetNutrientAmount().setTargetNutrientAmountId(targetNutrientAmountId);
-		targetNutritionDao.insertLipidTargetNutrition(targetNutrition);
+		targetNutritionDao.insertLipidTargetNutrition(accountId, targetNutrition);
+		existTargetNutrientAmountId = targetNutritionDao.selectLipidTargetNutritionId(accountId);
+		if(null == existTargetNutrientAmountId) {
+			targetNutritionDao.insertLatestTargetNutrientAmount(targetNutrientAmountId);
+		}
+		if(!(null == existTargetNutrientAmountId)) {
+			targetNutritionDao.updateLatestTargetNutrientAmount(targetNutrientAmountId, existTargetNutrientAmountId);
+		}
+
 		targetNutrientAmountId.setTargetNutrientAmountId(targetNutritionDao.selectNextTargetNutrientAmountId());
 		targetNutrition.getCarbohydrateTargetNutrientAmount().setTargetNutrientAmountId(targetNutrientAmountId);
-		targetNutritionDao.insertCarbohydrateTargetNutrition(targetNutrition);
+		targetNutritionDao.insertCarbohydrateTargetNutrition(accountId, targetNutrition);
+		existTargetNutrientAmountId = targetNutritionDao.selectCarbohydrateTargetNutritionId(accountId);
+		if(null == existTargetNutrientAmountId) {
+			targetNutritionDao.insertLatestTargetNutrientAmount(targetNutrientAmountId);
+		}
+		if(!(null == existTargetNutrientAmountId)) {
+			targetNutritionDao.updateLatestTargetNutrientAmount(targetNutrientAmountId, existTargetNutrientAmountId);
+		}
 
+	}
+
+	public TargetNutrition selectTargetNutrientAmount(AccountId accountId) {
+		TargetNutrientAmount energyTargetNutrientAmount = targetNutritionDao.selectEnergyTargetNutrition(accountId);
+		TargetNutrientAmount proteinTargetNutrientAmount = targetNutritionDao.selectProteinTargetNutrition(accountId);
+		TargetNutrientAmount lipidTargetNutrientAmount = targetNutritionDao.selectLipidTargetNutrition(accountId);
+		TargetNutrientAmount carbohydrateTargetNutrientAmount = targetNutritionDao.selectCarbohydrateTargetNutrition(accountId);
+		TargetNutrition targetNutrition = new TargetNutrition(energyTargetNutrientAmount, proteinTargetNutrientAmount, lipidTargetNutrientAmount, carbohydrateTargetNutrientAmount);
+		return targetNutrition;
 	}
 }

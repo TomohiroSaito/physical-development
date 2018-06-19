@@ -29,12 +29,164 @@
 			updated_at
 		) VALUES (
 			#{targetNutrientAmountId.targetNutrientAmountId},
-			#{targetNutrition.accountId.accountId},
+			#{accountId.accountId},
 			#{nutrientAmount.nutrition.name},
 			#{nutrientAmount.nutrientAmount},
 			now(),
 			now()
 		)
+	</select>
+
+	<select id="insertLatestTargetNutrientAmount">
+		INSERT INTO
+			nutrition.latest_target_nutrient_amount
+		(
+			target_nutrient_amount_id,
+			created_at,
+			updated_at
+		) VALUES (
+			#{targetNutrientAmountId.targetNutrientAmountId},
+			now(),
+			now()
+		)
+	</select>
+
+	<resultMap id="targetNutrientAmount" type="physicaldevelopment.model.targetnutrition.TargetNutrientAmount">
+		<result property="nutrientAmount.nutrientAmount" column="target_nutrient_amount" />
+	</resultMap>
+
+	<select id="selectEnergyTargetNutrition" resultMap="targetNutrientAmount">
+		SELECT
+			nutrition_type,
+			target_nutrient_amount
+		FROM
+			nutrition.target_nutrient_amount as target
+		JOIN
+			nutrition.latest_target_nutrient_amount as latest_target
+		ON
+			target.target_nutrient_amount_id = latest_target.target_nutrient_amount_id
+		WHERE
+			nutrition_type = 'ENERGY'
+		AND
+			account_id = #{accountId.accountId}
+	</select>
+	<select id="selectProteinTargetNutrition" resultMap="targetNutrientAmount">
+		SELECT
+			nutrition_type,
+			target_nutrient_amount
+		FROM
+			nutrition.target_nutrient_amount as target
+		JOIN
+			nutrition.latest_target_nutrient_amount as latest_target
+		ON
+			target.target_nutrient_amount_id = latest_target.target_nutrient_amount_id
+		WHERE
+			nutrition_type = 'PROTEIN'
+		AND
+			account_id = #{accountId.accountId}
+	</select>
+	<select id="selectLipidTargetNutrition" resultMap="targetNutrientAmount">
+		SELECT
+			nutrition_type,
+			target_nutrient_amount
+		FROM
+			nutrition.target_nutrient_amount as target
+		JOIN
+			nutrition.latest_target_nutrient_amount as latest_target
+		ON
+			target.target_nutrient_amount_id = latest_target.target_nutrient_amount_id
+		WHERE
+			nutrition_type = 'LIPID'
+		AND
+			account_id = #{accountId.accountId}
+	</select>
+	<select id="selectCarbohydrateTargetNutrition" resultMap="targetNutrientAmount">
+		SELECT
+			nutrition_type,
+			target_nutrient_amount
+		FROM
+			nutrition.target_nutrient_amount as target
+		JOIN
+			nutrition.latest_target_nutrient_amount as latest_target
+		ON
+			target.target_nutrient_amount_id = latest_target.target_nutrient_amount_id
+		WHERE
+			nutrition_type = 'CARBOHYDRATE'
+		AND
+			account_id = #{accountId.accountId}
+	</select>
+
+	<resultMap id="targetNutrientAmountId" type="physicaldevelopment.model.targetnutrition.TargetNutrientAmountId">
+		<result property="targetNutrientAmountId" column="target_nutrient_amount_id" />
+	</resultMap>
+
+	<select id="selectEnergyTargetNutritionId" resultMap="targetNutrientAmountId">
+		SELECT
+			target.target_nutrient_amount_id as target_nutrient_amount_id
+		FROM
+			nutrition.target_nutrient_amount as target
+		JOIN
+			nutrition.latest_target_nutrient_amount as latest_target
+		ON
+			target.target_nutrient_amount_id = latest_target.target_nutrient_amount_id
+		WHERE
+			nutrition_type = 'ENERGY'
+		AND
+			account_id = #{accountId.accountId}
+	</select>
+	<select id="selectProteinTargetNutritionId" resultMap="targetNutrientAmountId">
+		SELECT
+			target.target_nutrient_amount_id
+		FROM
+			nutrition.target_nutrient_amount as target
+		JOIN
+			nutrition.latest_target_nutrient_amount as latest_target
+		ON
+			target.target_nutrient_amount_id = latest_target.target_nutrient_amount_id
+		WHERE
+			nutrition_type = 'PROTEIN'
+		AND
+			account_id = #{accountId.accountId}
+	</select>
+	<select id="selectLipidTargetNutritionId" resultMap="targetNutrientAmountId">
+		SELECT
+			target.target_nutrient_amount_id
+		FROM
+			nutrition.target_nutrient_amount as target
+		JOIN
+			nutrition.latest_target_nutrient_amount as latest_target
+		ON
+			target.target_nutrient_amount_id = latest_target.target_nutrient_amount_id
+		WHERE
+			nutrition_type = 'LIPID'
+		AND
+			account_id = #{accountId.accountId}
+	</select>
+	<select id="selectCarbohydrateTargetNutritionId" resultMap="targetNutrientAmountId">
+		SELECT
+			target.target_nutrient_amount_id
+		FROM
+			nutrition.target_nutrient_amount as target
+		JOIN
+			nutrition.latest_target_nutrient_amount as latest_target
+		ON
+			target.target_nutrient_amount_id = latest_target.target_nutrient_amount_id
+		WHERE
+			nutrition_type = 'CARBOHYDRATE'
+		AND
+			account_id = #{accountId.accountId}
+	</select>
+
+
+	<select id="updateLatestTargetNutrientAmount">
+		UPDATE
+			nutrition.latest_target_nutrient_amount
+		SET
+			target_nutrient_amount_id = #{targetNutrientAmountId.targetNutrientAmountId},
+			created_at = now(),
+			updated_at = now()
+		WHERE
+			target_nutrient_amount_id = #{existTargetNutrientAmountId.targetNutrientAmountId}
 	</select>
 
 </mapper>

@@ -24,16 +24,16 @@
 		<sec:intercept-url pattern="/newMemberRegister" access="permitAll"/>
 		<sec:intercept-url pattern="/checkedMemberRegister" access="permitAll"/>
 		<sec:intercept-url pattern="/sample" access="permitAll"/>
-		<sec:intercept-url pattern="/loginFailure" access="permitAll"/>
-
+<!-- 		<sec:intercept-url pattern="/loginFailure" access="permitAll"/>
+ -->
 		<sec:intercept-url pattern="/resouces/**" access="permitAll"/>
 
-		<sec:intercept-url pattern="/**" access="isAuthenticated()"/>
-		<sec:form-login default-target-url="/menu" />
-		<sec:form-login authentication-failure-url="/loginFailure" />
+<!-- 		<sec:form-login default-target-url="/toppage" />
+ -->		<!-- <sec:form-login authentication-failure-url="/loginFailure" /> -->
 		<sec:logout
 			logout-url="/auth/logout"
-			logout-success-url="/logoutSuccess" />
+			logout-success-url="/" />
+		<sec:intercept-url pattern="/**" access="isAuthenticated()"/>
 		<sec:csrf disabled="true"/>
 	</sec:http>
 

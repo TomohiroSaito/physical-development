@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import physicaldevelopment.datasource.targetnutrition.TargetNutritionDao;
+import physicaldevelopment.model.account.AccountId;
 import physicaldevelopment.model.account.authentication.LoginId;
 import physicaldevelopment.model.meal.Meal;
 import physicaldevelopment.model.meal.OrderOfMeals;
@@ -26,6 +28,9 @@ public class NutritionRegisterController {
 	@Autowired
 	MealRegisterService mealRegisterService;
 
+	@Autowired
+	TargetNutritionDao targetNutritionDao;
+
 	@RequestMapping("/inputNutritionRegister")
 	public String inputNutritionRegister(Model model, Principal principal) {
 		Authentication auth = (Authentication)principal;
@@ -33,7 +38,8 @@ public class NutritionRegisterController {
         LoginId loginId = new LoginId(accountUserDetails.getUsername());
         Date today = new Date();
         model.addAttribute("today", today.getTime());
-		int orderOfMeals = mealRegisterService.selectNextOrderOfMeals(new YearMonthDay(today), loginId);
+        YearMonthDay yearMonthDay = new YearMonthDay(today);
+		int orderOfMeals = mealRegisterService.selectNextOrderOfMeals(yearMonthDay, loginId);
 //		int orderOfMeals = 1;
 		model.addAttribute("orderOfMeals", orderOfMeals);
 		return "nutritionregister/inputNutritionRegister";
@@ -52,10 +58,14 @@ public class NutritionRegisterController {
 	}
 
 	@RequestMapping("/confirmNutritionRegister")
-	public String confirmNutritionRegister(Model model, @ModelAttribute("nutritionSession") Meal meal) {
-		mealRegisterService.registerMealManual(meal);
+	public String confirmNutritionRegister(Model model, @ModelAttribute("nutritionSession") Meal meal, Principal principal) {
+		Authentication auth = (Authentication)principal;
+        AccountUserDetails accountUserDetails = (AccountUserDetails)auth.getPrincipal();
+        LoginId loginId = new LoginId(accountUserDetails.getUsername());
+		AccountId accountId = new AccountId(targetNutritionDao.selectAccountId(loginId));
+		mealRegisterService.registerMeal(meal, accountId);
 		model.addAttribute("message", "isert meal succesess!!!");
-		return "showMessage";
+		return "redirect:";
 	}
 
 

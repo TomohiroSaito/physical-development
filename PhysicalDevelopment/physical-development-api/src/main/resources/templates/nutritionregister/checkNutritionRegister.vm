@@ -2,11 +2,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<!-- <link rel="stylesheet" href="http://localhost:8080/PhysicalDevelopment/static/css/style.css"/> -->
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/style.css">
 <title>ログイン</title>
 </head>
 <body>
 	<div id="main-content-wrap">
+	<header>
+		<h1><a href="/PhysicalDevelopment/"><img class="header_logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG"></a></h1>
+		<p class="nav-link"><a href="/PhysicalDevelopment/inputNutritionRegister" class="nav-link-text">食事登録</a></p>
+		<p class="nav-link"><a href="/PhysicalDevelopment/inputTargetNutrition" class="nav-link-text">目標設定</a></p>
+		<p class="nav-link"><a href="/PhysicalDevelopment/" class="nav-link-text">1カ月の評価</a></p>
+		<p class="nav-link"><a href="/PhysicalDevelopment/auth/logout" class="nav-link-text">ログアウト</a></p>
+	</header>
+
 		<div class="main-content">
 		<h2 class="page-title">食事登録確認</h2>
 			<form class="student-register-form" action="/PhysicalDevelopment/confirmNutritionRegister" method="post">

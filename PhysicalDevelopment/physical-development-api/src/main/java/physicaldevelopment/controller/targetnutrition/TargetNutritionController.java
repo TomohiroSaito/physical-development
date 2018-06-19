@@ -47,7 +47,7 @@ public class TargetNutritionController {
         loginId.setLoginId(accountUserDetails.getUsername());
 		targetNutritionService.setTargetNutrition(targetNutrition, loginId);
 		model.addAttribute("message", "isert target succesess!!!");
-		return "showMessage";
+		return "redirect:";
 	}
 
 

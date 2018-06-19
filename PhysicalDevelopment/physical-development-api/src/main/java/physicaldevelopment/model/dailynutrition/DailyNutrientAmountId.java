@@ -3,6 +3,8 @@ package physicaldevelopment.model.dailynutrition;
 public class DailyNutrientAmountId {
 	private Integer dailyNutrientAmountId;
 
+	public DailyNutrientAmountId() {}
+
 	public DailyNutrientAmountId(Integer dailyNutrientAmountId) {
 		this.dailyNutrientAmountId = dailyNutrientAmountId;
 	}

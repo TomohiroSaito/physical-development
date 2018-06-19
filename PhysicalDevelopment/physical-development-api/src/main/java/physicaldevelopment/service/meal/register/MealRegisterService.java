@@ -7,6 +7,7 @@ import physicaldevelopment.datasource.meal.register.MealRegisterDao;
 import physicaldevelopment.datasource.targetnutrition.TargetNutritionDao;
 import physicaldevelopment.model.account.AccountId;
 import physicaldevelopment.model.account.authentication.LoginId;
+import physicaldevelopment.model.dailynutrition.DailyNutrientAmountId;
 import physicaldevelopment.model.meal.Meal;
 import physicaldevelopment.model.meal.MealId;
 import physicaldevelopment.model.primitive.YearMonthDay;
@@ -23,19 +24,26 @@ public class MealRegisterService {
 	@Autowired
 	TargetNutritionDao targetNutritionDao;
 
-	public void registerMealManual(Meal meal) {
+	public void registerMeal(Meal meal, AccountId accountId) {
 		Integer mealId = mealRegisterDao.selectNextMealId();
-		Integer manualEntryOfNutrientsId = mealRegisterDao.selectNextManualEntryOfNutrients();
-		Integer dailyNutrientAmountId = mealRegisterDao.selectDailyNutrientAmountId(meal.getYearMonthDay(), 1);
+		Integer dailyNutrientAmountId = mealRegisterDao.selectDailyNutrientAmountId(meal.getYearMonthDay(), accountId);
 		meal.setMealId(new MealId(mealId));
-		mealRegisterDao.registerMealManual(meal, dailyNutrientAmountId, manualEntryOfNutrientsId);
+		Integer manualEntryOfNutrientsId = mealRegisterDao.selectNextManualEntryOfNutrients();
+		mealRegisterDao.registerMeal(meal, dailyNutrientAmountId, manualEntryOfNutrientsId);
+		mealRegisterDao.insertEnergyMealManual(meal, manualEntryOfNutrientsId, meal.getOneMealOfNutrients().getEnergyNutrientAmount());
+		manualEntryOfNutrientsId = mealRegisterDao.selectNextManualEntryOfNutrients();
+		mealRegisterDao.insertProteinMealManual(meal, manualEntryOfNutrientsId, meal.getOneMealOfNutrients().getProteinNutrientAmount());
+		manualEntryOfNutrientsId = mealRegisterDao.selectNextManualEntryOfNutrients();
+		mealRegisterDao.insertLipidMealManual(meal, manualEntryOfNutrientsId, meal.getOneMealOfNutrients().getLipidNutrientAmount());
+		manualEntryOfNutrientsId = mealRegisterDao.selectNextManualEntryOfNutrients();
+		mealRegisterDao.insertCarbohydrateMealManual(meal, manualEntryOfNutrientsId, meal.getOneMealOfNutrients().getCarbohydrateNutrientAmount());
+
 	}
 
 	public int selectNextOrderOfMeals(YearMonthDay yearMonthDay, LoginId loginId) {
-		Integer maxOrderOfMeals = mealRegisterDao.selectMaxOrderOfMeals();
+		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutrientAmountId(yearMonthDay, loginId);
+		Integer maxOrderOfMeals = mealRegisterDao.selectMaxOrderOfMeals(dailyNutrientAmountId);
 		if(null == maxOrderOfMeals) {
-			AccountId accountId = new AccountId(targetNutritionDao.selectAccountId(loginId));
-			dailyNutritionService.newDailyNutrition(yearMonthDay, accountId);
 			maxOrderOfMeals = 0;
 		}
 		return 	maxOrderOfMeals + 1;

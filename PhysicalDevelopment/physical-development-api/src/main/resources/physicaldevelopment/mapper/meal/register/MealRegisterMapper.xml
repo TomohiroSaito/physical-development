@@ -24,7 +24,7 @@
 		)
 	</select>
 
-	<select id="insertMealManual" parameterType="physicaldevelopment.model.meal.Meal">
+	<select id="insertEnergyMealManual" parameterType="physicaldevelopment.model.meal.Meal">
 		INSERT INTO nutrition.manual_entry_of_nutrients (
 			manual_entry_of_nutrients_id,
 			meal_id,
@@ -35,8 +35,59 @@
 		) VALUES (
 			#{manualEntryOfNutrientsId},
 			#{meal.mealId.mealId},
-			#{meal.oneMealOfNutrients.energyNutrientAmount.nutrition.name},
-			#{meal.oneMealOfNutrients.energyNutrientAmount.nutrientAmount},
+			#{energyNutrientAmount.nutrition.name},
+			#{energyNutrientAmount.nutrientAmount},
+			now(),
+			now()
+		)
+	</select>
+	<select id="insertProteinMealManual" parameterType="physicaldevelopment.model.meal.Meal">
+		INSERT INTO nutrition.manual_entry_of_nutrients (
+			manual_entry_of_nutrients_id,
+			meal_id,
+			nutrition_type,
+			nutrition_amount,
+			created_at,
+			updated_at
+		) VALUES (
+			#{manualEntryOfNutrientsId},
+			#{meal.mealId.mealId},
+			#{proteinNutrientAmount.nutrition.name},
+			#{proteinNutrientAmount.nutrientAmount},
+			now(),
+			now()
+		)
+	</select>
+	<select id="insertLipidMealManual" parameterType="physicaldevelopment.model.meal.Meal">
+		INSERT INTO nutrition.manual_entry_of_nutrients (
+			manual_entry_of_nutrients_id,
+			meal_id,
+			nutrition_type,
+			nutrition_amount,
+			created_at,
+			updated_at
+		) VALUES (
+			#{manualEntryOfNutrientsId},
+			#{meal.mealId.mealId},
+			#{lipidNutrientAmount.nutrition.name},
+			#{lipidNutrientAmount.nutrientAmount},
+			now(),
+			now()
+		)
+	</select>
+	<select id="insertCarbohydrateMealManual" parameterType="physicaldevelopment.model.meal.Meal">
+		INSERT INTO nutrition.manual_entry_of_nutrients (
+			manual_entry_of_nutrients_id,
+			meal_id,
+			nutrition_type,
+			nutrition_amount,
+			created_at,
+			updated_at
+		) VALUES (
+			#{manualEntryOfNutrientsId},
+			#{meal.mealId.mealId},
+			#{carbohydrateNutrientAmount.nutrition.name},
+			#{carbohydrateNutrientAmount.nutrientAmount},
 			now(),
 			now()
 		)
@@ -56,16 +107,18 @@
 		FROM
 			nutrition.daily_nutrient_amount
 		WHERE
-			account_id = #{accountId}
+			account_id = #{accountId.accountId}
 		AND
 			year_month_day = #{yearMonthDay.yearMonthDay}
 	</select>
 
-	<select id="selectNextOrderOfMeals" resultType="Integer">
+	<select id="selectMaxOrderOfMeals" resultType="Integer">
 		SELECT
 			max(order_of_meals)
 		FROM
 			nutrition.meal
+		WHERE
+			daily_nutrient_amount_id = #{dailyNutrientAmountId.dailyNutrientAmountId}
 	</select>
 
 

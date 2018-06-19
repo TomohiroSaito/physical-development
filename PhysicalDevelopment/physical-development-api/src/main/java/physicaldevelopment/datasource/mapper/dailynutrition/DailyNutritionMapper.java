@@ -1,11 +1,14 @@
 package physicaldevelopment.datasource.mapper.dailynutrition;
 
+import java.util.Date;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import physicaldevelopment.datasource.mapper.MyMapper;
 import physicaldevelopment.model.account.AccountId;
 import physicaldevelopment.model.dailynutrition.DailyNutrientAmountId;
+import physicaldevelopment.model.nutrition.NutrientAmount;
 import physicaldevelopment.model.primitive.YearMonthDay;
 
 @MyMapper
@@ -18,5 +21,15 @@ public interface DailyNutritionMapper {
 			@Param("yearMothDay") YearMonthDay yearMothDay);
 
 	void insertEvaluation(@Param("dailyNutrientAmountId") DailyNutrientAmountId dailyNutrientAmountId);
+
+	DailyNutrientAmountId selectDailyNutrientAmountId(@Param("date") Date date, @Param("accountId") AccountId accountId);
+
+	NutrientAmount selectEnergyTotalNutrientAmountPerDay(@Param("dailyNutrientAmountId") DailyNutrientAmountId dailyNutrientAmountId);
+
+	NutrientAmount selectProteinTotalNutrientAmountPerDay(@Param("dailyNutrientAmountId") DailyNutrientAmountId dailyNutrientAmountId);
+
+	NutrientAmount selectLipidTotalNutrientAmountPerDay(@Param("dailyNutrientAmountId") DailyNutrientAmountId dailyNutrientAmountId);
+
+	NutrientAmount selectCarbohydrateTotalNutrientAmountPerDay(@Param("dailyNutrientAmountId") DailyNutrientAmountId dailyNutrientAmountId);
 
 }

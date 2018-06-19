@@ -34,7 +34,7 @@ public class AccountRegisterController {
 	public String checkedMemberRegister(Model model, @ModelAttribute("accountSession") Account account) {
 		accountRegisterService.registerAccount(account);
 		model.addAttribute("message", "isert succesess!!!");
-		return "showMessage";
+		return "redirect:";
 	}
 
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LogoutController {
 	@RequestMapping("/logoutSuccess")
 	public String logoutSuccess(Model model) {
-		model.addAttribute("message", "logoutSuccess is okay!");
+		model.addAttribute("message", "ログアウトしました。");
 		return "logout/logoutDisp";
 	}
 

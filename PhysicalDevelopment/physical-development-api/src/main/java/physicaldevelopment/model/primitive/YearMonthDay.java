@@ -1,5 +1,6 @@
 package physicaldevelopment.model.primitive;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class YearMonthDay {
@@ -19,6 +20,12 @@ public class YearMonthDay {
 		int intMonth = Integer.parseInt(month);
 		int intDay = Integer.parseInt(day);
 		this.yearMonthDay = new Date(intYear-1900, intMonth-1, intDay);
+	}
+
+	@Override
+	public String toString() {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM月dd日");
+		return simpleDateFormat.format(yearMonthDay.getTime());
 	}
 
 	public Date getYearMonthDay() {

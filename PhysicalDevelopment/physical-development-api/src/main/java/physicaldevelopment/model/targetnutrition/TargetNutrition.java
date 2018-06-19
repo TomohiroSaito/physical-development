@@ -1,18 +1,19 @@
 package physicaldevelopment.model.targetnutrition;
 
-import physicaldevelopment.model.account.AccountId;
-
 public class TargetNutrition {
-	private AccountId accountId;
 	private TargetNutrientAmount energyTargetNutrientAmount;
 	private TargetNutrientAmount proteinTargetNutrientAmount;
 	private TargetNutrientAmount lipidTargetNutrientAmount;
 	private TargetNutrientAmount carbohydrateTargetNutrientAmount;
-	public AccountId getAccountId() {
-		return accountId;
-	}
-	public void setAccountId(AccountId accountId) {
-		this.accountId = accountId;
+
+	public TargetNutrition() {}
+	public TargetNutrition(TargetNutrientAmount energyTargetNutrientAmount,
+			TargetNutrientAmount proteinTargetNutrientAmount, TargetNutrientAmount lipidTargetNutrientAmount,
+			TargetNutrientAmount carbohydrateTargetNutrientAmount) {
+			this.energyTargetNutrientAmount = energyTargetNutrientAmount;
+			this.proteinTargetNutrientAmount = proteinTargetNutrientAmount;
+			this.lipidTargetNutrientAmount = lipidTargetNutrientAmount;
+			this.carbohydrateTargetNutrientAmount = carbohydrateTargetNutrientAmount;
 	}
 	public TargetNutrientAmount getEnergyTargetNutrientAmount() {
 		return energyTargetNutrientAmount;

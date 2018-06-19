@@ -46,4 +46,92 @@
 		)
 	</select>
 
+	<resultMap id="dailyNutrientAmountId" type="physicaldevelopment.model.dailynutrition.DailyNutrientAmountId">
+		<result property="dailyNutrientAmountId" column="daily_nutrient_amount_id" />
+	</resultMap>
+
+	<select id="selectDailyNutrientAmountId" resultMap="dailyNutrientAmountId">
+		SELECT
+			daily_nutrient_amount_id
+		FROM
+			nutrition.daily_nutrient_amount
+		WHERE
+			year_month_day = #{date}
+		AND
+			account_id = #{accountId.accountId}
+	</select>
+
+	<resultMap id="totalNutrientAmountPerDay" type="physicaldevelopment.model.nutrition.NutrientAmount">
+		<result property="nutrientAmount" column="nutrient_amount" />
+	</resultMap>
+
+	<select id="selectEnergyTotalNutrientAmountPerDay" resultMap="totalNutrientAmountPerDay">
+		SELECT
+			nutrition_type,
+			sum(nutrition_amount) as nutrient_amount
+		FROM
+			nutrition.manual_entry_of_nutrients as manual_nutrients
+		JOIN
+			nutrition.meal as meal
+		ON
+			manual_nutrients.meal_id = meal.meal_id
+		WHERE
+			nutrition_type = 'ENERGY'
+		AND
+			daily_nutrient_amount_id = #{dailyNutrientAmountId.dailyNutrientAmountId}
+		GROUP BY
+			nutrition_type
+	</select>
+	<select id="selectProteinTotalNutrientAmountPerDay" resultMap="totalNutrientAmountPerDay">
+		SELECT
+			nutrition_type,
+			sum(nutrition_amount) as nutrient_amount
+		FROM
+			nutrition.manual_entry_of_nutrients as manual_nutrients
+		JOIN
+			nutrition.meal as meal
+		ON
+			manual_nutrients.meal_id = meal.meal_id
+		WHERE
+			nutrition_type = 'PROTEIN'
+		AND
+			daily_nutrient_amount_id = #{dailyNutrientAmountId.dailyNutrientAmountId}
+		GROUP BY
+			nutrition_type
+	</select>
+	<select id="selectLipidTotalNutrientAmountPerDay" resultMap="totalNutrientAmountPerDay">
+		SELECT
+			nutrition_type,
+			sum(nutrition_amount) as nutrient_amount
+		FROM
+			nutrition.manual_entry_of_nutrients as manual_nutrients
+		JOIN
+			nutrition.meal as meal
+		ON
+			manual_nutrients.meal_id = meal.meal_id
+		WHERE
+			nutrition_type = 'LIPID'
+		AND
+			daily_nutrient_amount_id = #{dailyNutrientAmountId.dailyNutrientAmountId}
+		GROUP BY
+			nutrition_type
+	</select>
+	<select id="selectCarbohydrateTotalNutrientAmountPerDay" resultMap="totalNutrientAmountPerDay">
+		SELECT
+			nutrition_type,
+			sum(nutrition_amount) as nutrient_amount
+		FROM
+			nutrition.manual_entry_of_nutrients as manual_nutrients
+		JOIN
+			nutrition.meal as meal
+		ON
+			manual_nutrients.meal_id = meal.meal_id
+		WHERE
+			nutrition_type = 'CARBOHYDRATE'
+		AND
+			daily_nutrient_amount_id = #{dailyNutrientAmountId.dailyNutrientAmountId}
+		GROUP BY
+			nutrition_type
+	</select>
+
 </mapper>
