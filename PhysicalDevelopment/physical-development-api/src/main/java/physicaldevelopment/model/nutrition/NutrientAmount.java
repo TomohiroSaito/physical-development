@@ -1,8 +1,12 @@
 package physicaldevelopment.model.nutrition;
 
 public class NutrientAmount {
-	private int nutrientAmount;
+	private Integer nutrientAmount;
 	private Nutrition nutrition;
+	public NutrientAmount() {}
+	public NutrientAmount(Integer nutrientAmount) {
+		this.nutrientAmount = nutrientAmount;
+	}
 	public int getNutrientAmount() {
 		return nutrientAmount;
 	}

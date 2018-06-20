@@ -3,6 +3,8 @@ package physicaldevelopment.controller.account.register;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,7 +25,10 @@ public class AccountRegisterController {
 	}
 
 	@RequestMapping(path="/newMemberRegister", method=RequestMethod.POST)
-	public String newMemberRegister(@ModelAttribute Account account , Model model) {
+	public String newMemberRegister(@Validated @ModelAttribute Account account , BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			return "accountregister/memberRegistration";
+		}
 		account.getBirthday().asBirthday();
 		model.addAttribute("accountSession", account);
 

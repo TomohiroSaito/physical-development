@@ -9,19 +9,34 @@ header {
 	padding: 8px 0 8px 8px;
 	color: #ffffff;
 	background-color: #99ccff;
-	display: flex;
 	width: 100%;
-	height: 36px;
+	height: 82px;
 }
 
 header h1 {
+	margin: 10px;
 	font-size: 24px;
 }
 
 a {
 	display: block;
-	text-decoration: none;
+/*	text-decoration: none;*/
 	color: inherit;
+}
+
+div {
+	display: block;
+}
+
+.h1 {
+	float: left;
+}
+
+.header-nav-links {
+/*	float: right;*/
+	display: flex;
+	margin-top: 20px;
+	margin-left: 1000px;
 }
 
 .nav-link {
@@ -30,15 +45,48 @@ a {
 	font-size: 17px;
 }
 
-.nav-link-text {
+.nomal-font {
+	font-weight: normal;
 }
 
 .page-title {
-	margin: 0 auto 100px auto;
-	color: #a9c4eb;
-	font-size: 48px;
-	width: 700px;
-	text-align: center;
+	width: 600px;
+	font-size: 40px;
+	margin: 20px;
+/*	float: left;*/
+}
+
+.daily-nutrition-link {
+	color: blue;
+	padding: 10px;
+}
+
+.daily-links {
+	display: flex;
+/*	float: right;*/
+	margin: 10px;
+}
+
+.wrapper-content {
+	position: relative;
+	width: 1040px;
+	height: 480px;
+	margin: 0 auto;
+
+}
+
+.nest-wrapper-content {
+	margin: auto;
+	height: 240px;
+}
+
+.top-layer {
+/*	float: center;*/
+	display: flex;
+}
+
+.second-layer {
+/*	float: center;*/
 }
 
 .student-square-text {
@@ -54,53 +102,21 @@ a {
 	letter-spacing: 3px;
 }
 
-.student-libraly {
-}
-
-.student-register {
-}
-
-.main-content {
-	margin: 150px;
-}
-
 /*student_libraly*/
 
-.student-list-table th {
-	background-color: #a9c4eb;
-	width: 120px;
-	height: 30px;
-	color: #ffffff;
-	border: 1px #ffffff solid;
-}
 
 .student-list-table {
 	margin: 0 auto;
-	border-left: 1px #a9c4eb solid;
-	border-bottom: 1px #a9c4eb solid;
-	border-right: 1px #a9c4eb solid;
-	border-collapse: collapse;
 }
-
-.table-col-name {
-}
-
-/* .table-border-setting {
-	border-left: 1px #a9c4eb solid;
-	border-bottom: 1px #a9c4eb solid;
-	border-right: 1px #a9c4eb solid;
-} */
 
 /*student_register*/
 
 .student-input-title {
 	display: inline-block;
-	background-color: #a9c4eb;
 	width: 250px;
 	height: 30px;
 	font-size: 19px;
 	text-align: center;
-	color: #ffffff;
 	padding: 9px 0;
 	font-weight: bold;
 }
@@ -128,7 +144,7 @@ a {
 }
 
 .student-register-form {
-	padding: 0 240px 0 100px;
+	padding: 0 240px 0 200px;
 }
 
 .student-input-name {
@@ -198,4 +214,9 @@ a {
 
 .top-page-link:hover {
 	background:#777777;
+}
+
+.header_logo {
+	width: 210px;
+	height: 58px;
 }

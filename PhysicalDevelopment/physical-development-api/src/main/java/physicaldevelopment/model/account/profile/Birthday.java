@@ -3,10 +3,15 @@ package physicaldevelopment.model.account.profile;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 public class Birthday {
 	private Date birthday;
+	@NotNull(message="必須です。")
 	private String year;
+	@NotNull(message="必須です。")
 	private String month;
+	@NotNull(message="必須です。")
 	private String day;
 
 	public Birthday() {}

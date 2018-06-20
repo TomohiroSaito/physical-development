@@ -1,5 +1,7 @@
 package physicaldevelopment.model.account;
 
+import javax.validation.Valid;
+
 import physicaldevelopment.model.account.authentication.Authentication;
 import physicaldevelopment.model.account.authentication.LoginId;
 import physicaldevelopment.model.account.authentication.Password;
@@ -8,8 +10,11 @@ import physicaldevelopment.model.primitive.Sex;
 
 public class Account {
 	private AccountId accountId;
+	@Valid
 	private Authentication authentication;
+	@Valid
 	private Birthday birthday;
+	@Valid
 	private Sex sex;
 	public Account() {}
 	public Account( AccountId accountId,Account accont) {

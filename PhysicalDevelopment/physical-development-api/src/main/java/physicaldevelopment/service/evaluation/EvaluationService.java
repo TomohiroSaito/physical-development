@@ -25,9 +25,15 @@ public class EvaluationService {
 	TargetNutritionService targetNutritionService;
 
 	public Evaluation calcEvaluation(Date date, AccountId accountId) {
-		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutritionId(date, accountId);
-		TotalNutrientAmountPerDay totalNutrientAmountPerDay = dailyNutritionService.createTotalNutrientAmountPerDay(dailyNutrientAmountId);
 		 TargetNutrition targetNutrition = targetNutritionService.selectTargetNutrientAmount(accountId);
+		 if(null == targetNutrition) {
+			 return null;
+		 }
+		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutritionId(date, accountId);
+		if(null == dailyNutrientAmountId) {
+			return new Evaluation(new Score(0), new EnergyHighAndLow(0), new NotSubjectToEvaluation());
+		}
+		TotalNutrientAmountPerDay totalNutrientAmountPerDay = dailyNutritionService.createTotalNutrientAmountPerDay(dailyNutrientAmountId);
 
 
 		int dayEnergy = totalNutrientAmountPerDay.getEnergyNutrientAmount().getNutrientAmount();
@@ -47,7 +53,7 @@ public class EvaluationService {
 
 		int scoreEvaluation = calcScoreEvaluation(energyHighAndLow, proteinHighAndLow, lipidHighAndLow, carbohydrateHighAndLow);
 
-		return new Evaluation(new Score(scoreEvaluation), new EnergyHighAndLow(energyHighAndLow), new NotSubjectToEvaluation());
+		return new Evaluation(new Score(scoreEvaluation), new EnergyHighAndLow(energyHighAndLow), new NotSubjectToEvaluation(false));
 
 	}
 

@@ -67,6 +67,9 @@ public class TargetNutritionService {
 
 	public TargetNutrition selectTargetNutrientAmount(AccountId accountId) {
 		TargetNutrientAmount energyTargetNutrientAmount = targetNutritionDao.selectEnergyTargetNutrition(accountId);
+		if(null == energyTargetNutrientAmount) {
+			return null;
+		}
 		TargetNutrientAmount proteinTargetNutrientAmount = targetNutritionDao.selectProteinTargetNutrition(accountId);
 		TargetNutrientAmount lipidTargetNutrientAmount = targetNutritionDao.selectLipidTargetNutrition(accountId);
 		TargetNutrientAmount carbohydrateTargetNutrientAmount = targetNutritionDao.selectCarbohydrateTargetNutrition(accountId);

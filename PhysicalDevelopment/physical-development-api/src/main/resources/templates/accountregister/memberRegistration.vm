@@ -6,15 +6,23 @@
 <title>会員登録</title>
 </head>
 <body>
-	<header>
-		<h1><a href="/PhysicalDevelopment/"><img class="header_logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG"></a></h1>
-		<p class="nav-link"><a href="/PhysicalDevelopment/inputNutritionRegister" class="nav-link-text">食事登録</a></p>
-		<p class="nav-link"><a href="/PhysicalDevelopment/inputTargetNutrition" class="nav-link-text">目標設定</a></p>
-		<p class="nav-link"><a href="/PhysicalDevelopment/" class="nav-link-text">1カ月の評価</a></p>
-		<p class="nav-link"><a href="/PhysicalDevelopment/auth/logout" class="nav-link-text">ログアウト</a></p>
+	<header class="header">
+			<h1 class="h1"><a class="heade-contents-a" href="/PhysicalDevelopment/"><img class="header_logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG"></a></h1>
+		<div class="header-nav-links">
+			<p class="nav-link "><a href="/PhysicalDevelopment/inputNutritionRegister" class="">食事登録</a></p>
+			<p class="nav-link"><a href="/PhysicalDevelopment/inputTargetNutrition" class="">目標設定</a></p>
+			<p class="nav-link"><a href="/PhysicalDevelopment/" class="">1カ月の評価</a></p>
+			<p class="nav-link nomal-font"><a href="/PhysicalDevelopment/auth/logout" class="nav-link-text-normal">ログアウト</a></p>
+		</div>
 	</header>
-	<div id="wrapper">
-		<h3>会員登録</h3>
+	<div class="wrapper-content">
+		<div class="nest-wrapper-content">
+		<h2>会員登録</h2>
+		<div id="messages">
+			<form th:action="@{/PhysicalDevelopment/newMemberRegister}" th:object="${account}" class="form" method="post">
+				<errors path="*" />
+			</form>
+		</div>
 		<form action="/PhysicalDevelopment/newMemberRegister" method="post">
 			<table>
         <tr>

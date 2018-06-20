@@ -15,7 +15,6 @@ public class TotalNutrientAmountPerDay extends Product {
 		this.carbohydrateNutrientAmount = carbohydrateNutrientAmount;
 	}
 	public TotalNutrientAmountPerDay() {
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 	public NutrientAmount getEnergyNutrientAmount() {
 		return energyNutrientAmount;
@@ -40,5 +39,12 @@ public class TotalNutrientAmountPerDay extends Product {
 	}
 	public void setCarbohydrateNutrientAmount(NutrientAmount carbohydrateNutrientAmount) {
 		this.carbohydrateNutrientAmount = carbohydrateNutrientAmount;
+	}
+	public void makeOneWithZero() {
+		this.energyNutrientAmount = new NutrientAmount(0);
+		this.proteinNutrientAmount = new NutrientAmount(0);
+		this.lipidNutrientAmount = new NutrientAmount(0);
+		this.carbohydrateNutrientAmount = new NutrientAmount(0);
+
 	}
 }

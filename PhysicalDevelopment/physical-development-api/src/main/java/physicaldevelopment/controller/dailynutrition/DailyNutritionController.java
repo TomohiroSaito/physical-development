@@ -39,7 +39,7 @@ public class DailyNutritionController {
 	@Autowired
 	EvaluationService evaluationService;
 
-	@RequestMapping(path="/")
+	@RequestMapping(path={"/", "toppage"})
 	public String toppage(Principal principal, Model model) {
 		Authentication auth = (Authentication)principal;
         AccountUserDetails accountUserDetails = (AccountUserDetails)auth.getPrincipal();
@@ -49,6 +49,9 @@ public class DailyNutritionController {
 		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutritionId(today, accountId);
 		TotalNutrientAmountPerDay totalNutrientAmountPerDay = dailyNutritionService.createTotalNutrientAmountPerDay(dailyNutrientAmountId);
 		TargetNutrition targetNutrition = targetNutritionService.selectTargetNutrientAmount(accountId);
+		if(null == targetNutrition) {
+			return "redirect:inputTargetNutrition";
+		}
 		DailyNutrition dailyNutrition = new DailyNutrition(totalNutrientAmountPerDay, targetNutrition, new YearMonthDay(today));
 		model.addAttribute("dailyNutrition", dailyNutrition);
 		Evaluation evaluation = evaluationService.calcEvaluation(today, accountId);

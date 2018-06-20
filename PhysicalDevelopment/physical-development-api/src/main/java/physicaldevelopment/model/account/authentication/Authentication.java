@@ -1,7 +1,11 @@
 package physicaldevelopment.model.account.authentication;
 
+import javax.validation.Valid;
+
 public class Authentication {
+	@Valid
 	private LoginId loginId;
+	@Valid
 	private Password password;
 
 	public Authentication() {}

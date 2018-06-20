@@ -1,6 +1,11 @@
 package physicaldevelopment.model.account.authentication;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class LoginId {
+	@NotNull(message="必須です。")
+	@Min(6)
 	private String loginId;
 
 	public LoginId(String loginId) {

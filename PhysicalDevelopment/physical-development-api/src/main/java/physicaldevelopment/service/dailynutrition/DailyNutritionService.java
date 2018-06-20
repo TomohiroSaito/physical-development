@@ -31,9 +31,21 @@ public class DailyNutritionService {
 
 	public TotalNutrientAmountPerDay createTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId) {
 		NutrientAmount energyNutrientAmount = dailyNutritionDao.selectEnergyTotalNutrientAmountPerDay(dailyNutrientAmountId);
+		if(null == energyNutrientAmount) {
+			energyNutrientAmount = new NutrientAmount(0);
+		}
 		NutrientAmount proteinNutrientAmount = dailyNutritionDao.selectProteinTotalNutrientAmountPerDay(dailyNutrientAmountId);
+		if(null == proteinNutrientAmount) {
+			proteinNutrientAmount = new NutrientAmount(0);
+		}
 		NutrientAmount lipidNutrientAmount = dailyNutritionDao.selectLipidTotalNutrientAmountPerDay(dailyNutrientAmountId);
+		if(null == lipidNutrientAmount) {
+			lipidNutrientAmount = new NutrientAmount(0);
+		}
 		NutrientAmount carbohydrateNutrientAmount = dailyNutritionDao.selectCarbohydrateTotalNutrientAmountPerDay(dailyNutrientAmountId);
+		if(null == carbohydrateNutrientAmount) {
+			carbohydrateNutrientAmount = new NutrientAmount(0);
+		}
 		TotalNutrientAmountPerDay totalNutrientAmountPerDay = new TotalNutrientAmountPerDay(energyNutrientAmount, proteinNutrientAmount, lipidNutrientAmount, carbohydrateNutrientAmount);
 		return totalNutrientAmountPerDay;
 	}

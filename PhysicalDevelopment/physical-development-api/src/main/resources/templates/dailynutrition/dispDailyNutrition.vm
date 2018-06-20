@@ -11,12 +11,14 @@
 <title>ログイン</title>
 </head>
 <body>
-	<header>
-		<h1><a href="/PhysicalDevelopment/"><img class="header_logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG"></a></h1>
-		<p class="nav-link"><a href="/PhysicalDevelopment/inputNutritionRegister" class="nav-link-text">食事登録</a></p>
-		<p class="nav-link"><a href="/PhysicalDevelopment/inputTargetNutrition" class="nav-link-text">目標設定</a></p>
-		<p class="nav-link"><a href="/PhysicalDevelopment/" class="nav-link-text">1カ月の評価</a></p>
-		<p class="nav-link"><a href="/PhysicalDevelopment/auth/logout" class="nav-link-text">ログアウト</a></p>
+	<header class="header">
+			<h1 class="h1"><a class="heade-contents-a" href="/PhysicalDevelopment/"><img class="header_logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG"></a></h1>
+		<div class="header-nav-links">
+			<p class="nav-link "><a href="/PhysicalDevelopment/inputNutritionRegister" class="">食事登録</a></p>
+			<p class="nav-link"><a href="/PhysicalDevelopment/inputTargetNutrition" class="">目標設定</a></p>
+			<p class="nav-link"><a href="/PhysicalDevelopment/" class="">1カ月の評価</a></p>
+			<p class="nav-link nomal-font"><a href="/PhysicalDevelopment/auth/logout" class="nav-link-text-normal">ログアウト</a></p>
+		</div>
 	</header>
 
 
@@ -36,12 +38,19 @@ energy_remaining = energy_target - energy_today;
 protein_remaining = protein_target - protein_today;
 lipid_remaining = lipid_target - lipid_today;
 carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
-
 </script>
 
-	<div id="main-content-wrap">
+	<div class="main-content-wrap">
 		<div class="main-content">
-		<h2 class="page-title">${yearMonthDay}の摂取栄養素</h2>
+		<div class="top-layer">
+			<h2 class="page-title">${yearMonthDay}の摂取栄養素</h2>
+			<div class="daily-links">
+				<p class="daily-nutrition-link"><a class="" href="/PhysicalDevelopment/">食事一覧</a></p>
+				<p class="daily-nutrition-link"><a class="" href="/PhysicalDevelopment/inputTargetNutrition">目標設定</a></p>
+				<p class="daily-nutrition-link"><a class="" href="/PhysicalDevelopment/">1ヵ月の評価</a></p>
+			</div>
+		</div>
+		<div class="second-layer">
 		<p>本日の点数: ${evaluation.score.score}点</p>
 				<table class="student-list-table">
 					<tr>
@@ -51,17 +60,6 @@ carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 						<td>脂質: <span id="lipid_target"></span>g</td>
 						<td>炭水化物: <span id="carbohydrate_target"></span>g</td>
 					</tr>
-<script>
-	var span = document.getElementById('energy_target');
-	span.innerHTML = '' + energy_target + '';
-	span = document.getElementById('protein_target');
-	span.innerHTML = '' + protein_target + '';
-	span = document.getElementById('lipid_target');
-	span.innerHTML = '' + lipid_target + '';
-	span = document.getElementById('carbohydrate_target');
-	span.innerHTML = '' + carbohydrate_target + '';
-</script>
-
 					<tr>
 						<td class="student-input-tite input-name">本日</td>
 						<td>エネルギー: <span id="energy_today"></span>kcal</td>
@@ -69,18 +67,6 @@ carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 						<td>脂質: <span id="lipid_today"></span>g</td>
 						<td>炭水化物: <span id="carbohydrate_today"></span>g</td>
 					</tr>
-
-<script>
-	var span = document.getElementById('energy_today');
-	span.innerHTML = '' + energy_today + '';
-	span = document.getElementById('protein_today');
-	span.innerHTML = '' + protein_today + '';
-	span = document.getElementById('lipid_today');
-	span.innerHTML = '' + lipid_today + '';
-	span = document.getElementById('carbohydrate_today');
-	span.innerHTML = '' + carbohydrate_today + '';
-</script>
-
 					<tr>
 						<td class="student-input-tite input-name">残り</td>
 						<td>エネルギー: <span id="energy_remaining"></span>kcal</td>
@@ -89,20 +75,14 @@ carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 						<td>炭水化物: <span id="carbohydrate_remaining"></span>g</td>
 					</tr>
 				</table>
+			</div>
 		</div>
 	</div>
-<script>
-	var span = document.getElementById('energy_remaining');
-	span.innerHTML = '' + energy_remaining + '';
-	span = document.getElementById('protein_remaining');
-	span.innerHTML = '' + protein_remaining + '';
-	span = document.getElementById('lipid_remaining');
-	span.innerHTML = '' + lipid_remaining + '';
-	span = document.getElementById('carbohydrate_remaining');
-	span.innerHTML = '' + carbohydrate_remaining + '';
+
+<script type="text/javascript" src="/PhysicalDevelopment/resouces/javascript/dailynutrition/table_mapping.js">
 </script>
 
-<div id="jqPlot-sample" style="height: 300px; width: 300px;"></div>
+<div id="jqPlot-sample" style="height: 600px; width: 1200px;"></div>
 
 <script>
 energy_percent = energy_today / energy_target * 100;
@@ -135,5 +115,18 @@ jQuery( function() {
 } );
 </script>
 
+<div id="my_bar_chart" style="height: 300px; width: 600px;"></div>
+
+<script>
+var myBarChart = new Chart(ctx, {
+	type: 'bar';
+	data: data,
+	options: options
+});
+
+var div = document.getElementById('my_bar_chart');
+div.innerHTML = myBarChart ';
+
+</script>
 </body>
 </html>
