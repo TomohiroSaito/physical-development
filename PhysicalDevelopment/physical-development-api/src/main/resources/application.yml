@@ -5,6 +5,9 @@ security:
     name: saito
     password: saito
 spring:
-  resources:
-    static-locations: classpath:/static/
- 
+ resources:
+  static-locations: classpath:/static/
+ messages:
+  basename: messages
+  cache-seconds: -1
+  encoding: UTF-8

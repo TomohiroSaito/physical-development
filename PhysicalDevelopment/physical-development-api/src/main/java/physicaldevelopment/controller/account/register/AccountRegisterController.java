@@ -1,9 +1,12 @@
 package physicaldevelopment.controller.account.register;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +20,7 @@ import physicaldevelopment.service.account.register.AccountRegisterService;
 @Controller
 public class AccountRegisterController {
 	@Autowired
-	AccountRegisterService accountRegisterService;
+	private AccountRegisterService accountRegisterService;
 
 	@RequestMapping("/memberRegistration")
 	public String memberRegistration(Model model) {
@@ -25,8 +28,10 @@ public class AccountRegisterController {
 	}
 
 	@RequestMapping(path="/newMemberRegister", method=RequestMethod.POST)
-	public String newMemberRegister(@Validated @ModelAttribute Account account , BindingResult result, Model model) {
-		if(result.hasErrors()) {
+	public String newMemberRegister(@Validated @ModelAttribute Account account , BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			List<ObjectError> errors = bindingResult.getAllErrors();
+			model.addAttribute("errors", errors);
 			return "accountregister/memberRegistration";
 		}
 		account.getBirthday().asBirthday();

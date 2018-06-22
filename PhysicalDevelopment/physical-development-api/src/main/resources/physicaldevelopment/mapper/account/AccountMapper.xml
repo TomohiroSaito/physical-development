@@ -29,4 +29,13 @@
 			account.account.login_id = #{login_id}
 	</select>
 
+	<select id="existLoginId" resultType="Integer">
+		SELECT
+			count(login_id)
+		FROM
+			account.account
+		WHERE
+			login_id = #{loginId.loginId}
+	</select>
+
 </mapper>

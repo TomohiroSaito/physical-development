@@ -1,21 +1,27 @@
 package physicaldevelopment.model.account;
 
 import javax.validation.Valid;
+import javax.validation.constraints.AssertTrue;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import physicaldevelopment.model.account.authentication.Authentication;
 import physicaldevelopment.model.account.authentication.LoginId;
 import physicaldevelopment.model.account.authentication.Password;
 import physicaldevelopment.model.account.profile.Birthday;
 import physicaldevelopment.model.primitive.Sex;
+import physicaldevelopment.service.annotation.LoginIdValid;
 
+@LoginIdValid
 public class Account {
 	private AccountId accountId;
 	@Valid
 	private Authentication authentication;
 	@Valid
 	private Birthday birthday;
-	@Valid
 	private Sex sex;
+	@NotEmpty(message="性別を選択してください。")
+	private String stringSex;
 	public Account() {}
 	public Account( AccountId accountId,Account accont) {
 		this.accountId =   accountId;
@@ -57,8 +63,39 @@ public class Account {
 	public void setSex(Sex sex) {
 		this.sex = sex;
 	}
+	public String getStringSex() {
+		return stringSex;
+	}
+	public void setStringSex(String stringSex) {
+		Sex sex = Sex.getTypeByValue(stringSex);
+		if(sex == null) {
+			sex = Sex.OTHER;
+		}
+		this.sex = sex;
+		this.stringSex = stringSex;
+	}
+
+	@AssertTrue(message="性別を正しく入力してください。")
+	public boolean isConditionSex() {
+		if(sex.name() == "OTHER") {
+			return false;
+		}
+		return true;
+	}
+
+	@AssertTrue(message="日付を正しく入力してください。")
+	public boolean isConditionBirthday() {
+		boolean result = true;
+		try {
+			birthday.checkFormatDate();
+		} catch(Exception e) {
+			result = false;
+		}
+		return result;
+	}
+
+
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 	public boolean isAdmin() {
