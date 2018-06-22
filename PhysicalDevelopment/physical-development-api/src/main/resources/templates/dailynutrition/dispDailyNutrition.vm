@@ -79,6 +79,34 @@ carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 		</div>
 	</div>
 
+<script type="text/javascript" language="javascript">
+	function onButtonClick() {
+		check1 = document.form1.Checkbox1.checked;
+		check2 = document.form1.Checkbox2.checked;
+
+		target = document.getElementById("output");
+		if(check1 == true) {
+			target.innerHTML = "チェック項目1がチェックされています。<br />";
+		} else {
+			target.innerHTML = "チェック項目1がチェックされていません。<br />";
+		}
+		if(check2 == true) {
+			target.innerHTML += "チェック項目2がチェックされています。<br />";
+		} else {
+			target.innerHTML += "チェック項目2がチェックされていません。<br />";
+		}
+</script>
+
+
+	<form name="form1" action="">
+		<input id="Checkbox1" type="checkbox" /><label for="Checkbox1">チェック項目</label><br />
+		<input id="Checkbox2" type="checkbox" /><label for="Checkbox2">チェック項目</label><br />
+		<input type="button" value="Exec" onclick="onButtonClick();" />
+	</form>
+
+	<div id="output"></div>
+
+
 <script type="text/javascript" src="/PhysicalDevelopment/resouces/javascript/dailynutrition/table_mapping.js">
 </script>
 
