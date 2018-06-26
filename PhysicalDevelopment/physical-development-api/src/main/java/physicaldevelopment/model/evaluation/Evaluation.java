@@ -4,7 +4,11 @@ public class Evaluation {
 	private Score score;
 	private EnergyHighAndLow energyHighAndLow;
 	private NotSubjectToEvaluation notSubjectToEvaluation;
-	public Evaluation() {}
+	public Evaluation(Evaluation evaluation, NotSubjectToEvaluation notSubjectToEvaluation) {
+		this.score = evaluation.getScore();
+		this.energyHighAndLow = evaluation.getEnergyHighAndLow();
+		this.notSubjectToEvaluation = evaluation.getNotSubjectToEvaluation();
+	}
 	public Evaluation(Score score, EnergyHighAndLow energyHighAndLow,
 			NotSubjectToEvaluation notSubjectToEvaluation) {
 		this.score = score;

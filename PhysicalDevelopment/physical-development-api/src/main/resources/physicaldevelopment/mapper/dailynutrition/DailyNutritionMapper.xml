@@ -20,7 +20,7 @@
 		) VALUES (
 			#{dailyNutrientAmountId.dailyNutrientAmountId},
 			#{accountId.accountId},
-			#{yearMothDay.yearMonthDay},
+			#{date},
 			now(),
 			now()
 		)
@@ -132,6 +132,19 @@
 			daily_nutrient_amount_id = #{dailyNutrientAmountId.dailyNutrientAmountId}
 		GROUP BY
 			nutrition_type
+	</select>
+
+	<resultMap id="notSubjectToEvaluation" type="physicaldevelopment.model.evaluation.NotSubjectToEvaluation">
+		<result property="notSubjectToEvaluation" column="not_subject_to_evaluation" />
+	</resultMap>
+
+	<select id="selectNotSubjectToEvaluation" resultMap="notSubjectToEvaluation">
+		SELECT
+			not_subject_to_evaluation
+		FROM
+			nutrition.evaluation
+		WHERE
+			daily_nutrient_amount_id = #{dailyNutrientAmountId.dailyNutrientAmountId}
 	</select>
 
 </mapper>

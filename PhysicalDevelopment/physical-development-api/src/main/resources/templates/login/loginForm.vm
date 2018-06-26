@@ -3,38 +3,46 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/style.css">
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/loginlogout/login.css">
 <title>ログイン</title>
 </head>
 <body>
 	<header class="header">
-			<h1 class="h1"><a class="heade-contents-a" href="/PhysicalDevelopment/"><img class="header_logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG"></a></h1>
-		<div class="header-nav-links">
-			<p class="nav-link "><a href="/PhysicalDevelopment/inputNutritionRegister" class="">食事登録</a></p>
-			<p class="nav-link"><a href="/PhysicalDevelopment/inputTargetNutrition" class="">目標設定</a></p>
-			<p class="nav-link"><a href="/PhysicalDevelopment/" class="">1カ月の評価</a></p>
-			<p class="nav-link nomal-font"><a href="/PhysicalDevelopment/auth/logout" class="nav-link-text-normal">ログアウト</a></p>
+		<div class="contents">
+			<h1 class="h1">
+				<a class="heade-contents-a" href="/PhysicalDevelopment/">
+					<img class="header-logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG">
+				</a>
+			</h1>
+			<div class="header-nav-link">
+				<p class="header-nav-link-text"><a href="/PhysicalDevelopment/inputNutritionRegister" class="">食事登録</a></p>
+				<p class="header-nav-link-text"><a href="/PhysicalDevelopment/inputTargetNutrition" class="">目標設定</a></p>
+				<p class="header-nav-link-text"><a href="/PhysicalDevelopment/" class="">1カ月の評価</a></p>
+				<p class="header-nav-link-text nav-link nomal-font"><a href="/PhysicalDevelopment/auth/logout" class="nav-link-text-normal">ログアウト</a></p>
+			</div>
 		</div>
 	</header>
-	<div id="main-content-wrap">
-		<div class="main-content">
-		<h2 class="page-title"><img class="logo_img" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG"></h2>
-		<form class="student-register-form" action="/PhysicalDevelopment/authentication" method="post">
+	<div class="main-contents">
+		<h2 class="login-page-title">
+			<img class="login-logo-img" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG">
+		</h2>
+
+		<form class="login-form" action="/PhysicalDevelopment/authentication" method="post">
 			<table class="student-list-table">
 				<tr>
-					<td class="student-input-title input-name">ID</td>
-					<td><input type="text" id="loginId" name="loginId" class="student-input-name"></td>
+					<td class="login-input-title">ID</td>
+					<td><input type="text" id="loginId" name="loginId" class="login-input-text"></td>
 				</tr>
 				<tr>
-					<td class="student-input-title input-name">パスワード</td>
-					<td><input type="password" id="password" name="password" class="student-input-name"></td>
+					<td class="login-input-title">パスワード</td>
+					<td><input type="password" id="password" name="password" class="login-input-text"></td>
 				</tr>
 				<tr>
-					<td><p class="nav-link"><a href="http://localhost:8080/PhysicalDevelopment/memberRegistration" class="nav-link-text">会員登録</a></p></td>
-					<td><input type="submit" value="ログイン" class="student-register-button"></td>
+					<td class="login-table-data-title login-table-data-title-transition"><p class="nav-link"><a href="http://localhost:8080/PhysicalDevelopment/memberRegistration" class="nav-link-text">会員登録</a></p></td>
+					<td class="login-table-data-button"><input type="submit" value="ログイン" class="student-register-button"></td>
 				</tr>
 			</table>
 		</form>
-		</div>
 	</div>
 </body>
 </html>

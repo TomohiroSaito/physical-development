@@ -41,7 +41,8 @@ public class MealRegisterService {
 	}
 
 	public int selectNextOrderOfMeals(YearMonthDay yearMonthDay, LoginId loginId) {
-		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutrientAmountId(yearMonthDay, loginId);
+		AccountId accountId = new AccountId(targetNutritionDao.selectAccountId(loginId));
+		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutritionId(yearMonthDay.getYearMonthDay(), accountId);
 		Integer maxOrderOfMeals = mealRegisterDao.selectMaxOrderOfMeals(dailyNutrientAmountId);
 		if(null == maxOrderOfMeals) {
 			maxOrderOfMeals = 0;

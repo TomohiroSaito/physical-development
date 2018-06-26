@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+
+table {
+	border-collapse: separate;
+	border-spacing: 10px;
+	column-rule: solid 6px;
+}
+
+.daily-nutrition-title-wrap {
+	display: flex;
+	width: auto;
+	justify-content: space-between;
+}
+
+.daily-links {
+	display: flex;
+/*	float: right;*/
+	margin: 10px;
+}
+
+.daily-nutrition-link {
+	color: blue;
+	padding: 10px;
+}
+
+.daily-information {
+	display: flex;
+	width: auto;
+	justify-content: space-between;
+}
+
+.evaluation-score-paragraph {
+	display: flex;
+	align-items: center;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.evaluation-score-content {
+	color: #ff188a;
+}
+
+.page-title {
+	width: 600px;
+	font-size: 40px;
+	margin: 20px;
+/*	float: left;*/
+}
+
+.daily-nutrition-table {
+	font-size: 20px;
+}
+
+.daily-nutrition-table-data-title {
+	font-weight: bold;
+}

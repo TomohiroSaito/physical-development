@@ -17,6 +17,7 @@ import physicaldevelopment.model.dailynutrition.DailyNutrientAmountId;
 import physicaldevelopment.model.dailynutrition.DailyNutrition;
 import physicaldevelopment.model.dailynutrition.TotalNutrientAmountPerDay;
 import physicaldevelopment.model.evaluation.Evaluation;
+import physicaldevelopment.model.evaluation.NotSubjectToEvaluation;
 import physicaldevelopment.model.primitive.YearMonthDay;
 import physicaldevelopment.model.targetnutrition.TargetNutrition;
 import physicaldevelopment.service.dailynutrition.DailyNutritionService;
@@ -24,8 +25,8 @@ import physicaldevelopment.service.evaluation.EvaluationService;
 import physicaldevelopment.service.targetnutrition.TargetNutritionService;
 import physicaldevelopment.service.userdetails.AccountUserDetails;
 
-@SessionAttributes("dailyNutritionSession")
 @Controller
+@SessionAttributes("dailyNutritionSession")
 public class DailyNutritionController {
 	@Autowired
 	DailyNutritionService dailyNutritionService;
@@ -56,8 +57,24 @@ public class DailyNutritionController {
 		model.addAttribute("dailyNutrition", dailyNutrition);
 		Evaluation evaluation = evaluationService.calcEvaluation(today, accountId);
 		model.addAttribute("evaluation", evaluation);
+//		setEvaluation(evaluation);
 		model.addAttribute("yearMonthDay", new YearMonthDay(today));
 		return "dailynutrition/dispDailyNutrition";
 	}
+
+	@RequestMapping("/notSubjectToEvaluation")
+	public String checkedMemberRegister(Model model, String judge) {
+		if(judge.equals("not")) {
+		NotSubjectToEvaluation notSubjectToEvaluation = new NotSubjectToEvaluation(true);
+		model.addAttribute("notSubjectToEvaluation", notSubjectToEvaluation);
+		}
+		return "dailynutrition/evaluation";
+	}
+
+//	@ModelAttribute("dailyNutritionSession")
+//	private Evaluation setEvaluation(Evaluation evaluation) {
+//		return evaluation;
+//	}
+
 
 }

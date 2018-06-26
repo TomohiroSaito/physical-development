@@ -8,11 +8,10 @@ import org.springframework.stereotype.Service;
 import physicaldevelopment.datasource.dailynutrition.DailyNutritionDao;
 import physicaldevelopment.datasource.targetnutrition.TargetNutritionDao;
 import physicaldevelopment.model.account.AccountId;
-import physicaldevelopment.model.account.authentication.LoginId;
 import physicaldevelopment.model.dailynutrition.DailyNutrientAmountId;
 import physicaldevelopment.model.dailynutrition.TotalNutrientAmountPerDay;
+import physicaldevelopment.model.evaluation.NotSubjectToEvaluation;
 import physicaldevelopment.model.nutrition.NutrientAmount;
-import physicaldevelopment.model.primitive.YearMonthDay;
 
 @Service
 public class DailyNutritionService {
@@ -22,13 +21,15 @@ public class DailyNutritionService {
 	@Autowired
 	TargetNutritionDao targetNutritionDao;
 
-	public DailyNutrientAmountId newDailyNutrition(YearMonthDay yearMothDay, AccountId accountId) {
+	//1日の栄養素を新規作成する
+	public DailyNutrientAmountId newDailyNutrition(Date date, AccountId accountId) {
 		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionDao.selectNextDailyNutrientAmountId();
-		dailyNutritionDao.insertDailyNutrition(dailyNutrientAmountId, accountId, yearMothDay);
+		dailyNutritionDao.insertDailyNutrition(dailyNutrientAmountId, accountId, date);
 		dailyNutritionDao.insertEvaluation(dailyNutrientAmountId);
 		return dailyNutrientAmountId;
 	}
 
+	//1日の栄養素の合計値を計算して返す
 	public TotalNutrientAmountPerDay createTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId) {
 		NutrientAmount energyNutrientAmount = dailyNutritionDao.selectEnergyTotalNutrientAmountPerDay(dailyNutrientAmountId);
 		if(null == energyNutrientAmount) {
@@ -50,18 +51,29 @@ public class DailyNutritionService {
 		return totalNutrientAmountPerDay;
 	}
 
+	//1日の栄養素IDを取得する
 	public DailyNutrientAmountId selectDailyNutritionId(Date date, AccountId accountId) {
 		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionDao.selectDailyNutrientAmountId(date, accountId);
+		if(null == dailyNutrientAmountId) {
+			dailyNutrientAmountId = newDailyNutrition(date, accountId);
+		}
 		return dailyNutrientAmountId;
 	}
 
-	public DailyNutrientAmountId selectDailyNutrientAmountId(YearMonthDay yearMonthDay, LoginId loginId) {
-		AccountId accountId = new AccountId(targetNutritionDao.selectAccountId(loginId));
-		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionDao.selectDailyNutrientAmountId(yearMonthDay.getYearMonthDay(), accountId);
-		if(null == dailyNutrientAmountId) {
-			dailyNutrientAmountId = newDailyNutrition(yearMonthDay, accountId);
-		}
-		return dailyNutrientAmountId;
+	//selectDailyNutritionIdと同じことをやっていた
+//	public DailyNutrientAmountId selectDailyNutrientAmountId(YearMonthDay yearMonthDay, LoginId loginId) {
+//		AccountId accountId = new AccountId(targetNutritionDao.selectAccountId(loginId));
+//		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionDao.selectDailyNutrientAmountId(yearMonthDay.getYearMonthDay(), accountId);
+//		if(null == dailyNutrientAmountId) {
+//			dailyNutrientAmountId = newDailyNutrition(yearMonthDay.getYearMonthDay(), accountId);
+//		}
+//		return dailyNutrientAmountId;
+//	}
+
+	//評価対象外を取得
+	public NotSubjectToEvaluation selectNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId) {
+		dailyNutritionDao.selectNotSubjectToEvaluation(dailyNutrientAmountId);
+		return null;
 	}
 
 

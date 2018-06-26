@@ -8,16 +8,21 @@
 <script language="javascript" type="text/javascript" src="/PhysicalDevelopment/resouces/jquery/plugins/jqplot.categoryAxisRenderer.js"></script>
 <link rel="stylesheet" type="text/css" href="/PhysicalDevelopment/resouces/jquery/jquery.jqplot.min.css" />
 <link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/style.css">
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/dailynutrition/daily_nutrition.css">
 <title>ログイン</title>
 </head>
 <body>
 	<header class="header">
-			<h1 class="h1"><a class="heade-contents-a" href="/PhysicalDevelopment/"><img class="header_logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG"></a></h1>
-		<div class="header-nav-links">
-			<p class="nav-link "><a href="/PhysicalDevelopment/inputNutritionRegister" class="">食事登録</a></p>
-			<p class="nav-link"><a href="/PhysicalDevelopment/inputTargetNutrition" class="">目標設定</a></p>
-			<p class="nav-link"><a href="/PhysicalDevelopment/" class="">1カ月の評価</a></p>
-			<p class="nav-link nomal-font"><a href="/PhysicalDevelopment/auth/logout" class="nav-link-text-normal">ログアウト</a></p>
+			<h1 class="h1">
+				<a class="header-contents-a" href="/PhysicalDevelopment/">
+					<img class="header-logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG">
+				</a>
+			</h1>
+		<div class="header-nav-link">
+			<p class="header-nav-link-text"><a href="/PhysicalDevelopment/inputNutritionRegister" class="">食事登録</a></p>
+			<p class="header-nav-link-text"><a href="/PhysicalDevelopment/inputTargetNutrition" class="">目標設定</a></p>
+			<p class="header-nav-link-text"><a href="/PhysicalDevelopment/" class="">1カ月の評価</a></p>
+			<p class="header-nav-link-text nav-link nomal-font"><a href="/PhysicalDevelopment/auth/logout" class="nav-link-text-normal">ログアウト</a></p>
 		</div>
 	</header>
 
@@ -40,69 +45,78 @@ lipid_remaining = lipid_target - lipid_today;
 carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 </script>
 
-	<div class="main-content-wrap">
-		<div class="main-content">
-		<div class="top-layer">
-			<h2 class="page-title">${yearMonthDay}の摂取栄養素</h2>
-			<div class="daily-links">
-				<p class="daily-nutrition-link"><a class="" href="/PhysicalDevelopment/">食事一覧</a></p>
-				<p class="daily-nutrition-link"><a class="" href="/PhysicalDevelopment/inputTargetNutrition">目標設定</a></p>
-				<p class="daily-nutrition-link"><a class="" href="/PhysicalDevelopment/">1ヵ月の評価</a></p>
-			</div>
-		</div>
-		<div class="second-layer">
-		<p>本日の点数: ${evaluation.score.score}点</p>
-				<table class="student-list-table">
-					<tr>
-						<td class="student-input-tite input-name">目標</td>
-						<td>エネルギー: <span id="energy_target"></span>kcal</td>
-						<td>たんぱく質: <span id="protein_target"></span>g</td>
-						<td>脂質: <span id="lipid_target"></span>g</td>
-						<td>炭水化物: <span id="carbohydrate_target"></span>g</td>
-					</tr>
-					<tr>
-						<td class="student-input-tite input-name">本日</td>
-						<td>エネルギー: <span id="energy_today"></span>kcal</td>
-						<td>たんぱく質: <span id="protein_today"></span>g</td>
-						<td>脂質: <span id="lipid_today"></span>g</td>
-						<td>炭水化物: <span id="carbohydrate_today"></span>g</td>
-					</tr>
-					<tr>
-						<td class="student-input-tite input-name">残り</td>
-						<td>エネルギー: <span id="energy_remaining"></span>kcal</td>
-						<td>たんぱく質: <span id="protein_remaining"></span>g</td>
-						<td>脂質: <span id="lipid_remaining"></span>g</td>
-						<td>炭水化物: <span id="carbohydrate_remaining"></span>g</td>
-					</tr>
-				</table>
-			</div>
+	<div class="daily-nutrition-title-wrap">
+		<h2 class="page-title">
+			${yearMonthDay}の摂取栄養素
+		</h2>
+		<div class="daily-links">
+			<p class="daily-nutrition-link">
+				<a class="" href="/PhysicalDevelopment/">食事一覧</a>
+			</p>
+			<p class="daily-nutrition-link">
+				<a class="" href="/PhysicalDevelopment/inputTargetNutrition">目標設定</a>
+			</p>
+			<p class="daily-nutrition-link">
+				<a class="" href="/PhysicalDevelopment/">1ヵ月の評価</a>
+			</p>
 		</div>
 	</div>
+	<div class="daily-information">
+		#parse("dailynutrition/evaluation.vm")
+		<table class="daily-nutrition-table" rules="groups">
 
-<script type="text/javascript" language="javascript">
-	function onButtonClick() {
-		check1 = document.form1.Checkbox1.checked;
-		check2 = document.form1.Checkbox2.checked;
+			<tfoot>
+				<tr>
+					<td class="daily-nutrition-table-data-title">残り</td>
+					<td class="daily-nutrition-table-data-content">
+						エネルギー: <span id="energy_remaining"></span>kcal
+					</td>
+					<td class="daily-nutrition-table-data-content">
+						たんぱく質: <span id="protein_remaining"></span>g
+					</td>
+					<td class="daily-nutrition-table-data-content">
+						脂質: <span id="lipid_remaining"></span>g
+					</td>
+					<td class="daily-nutrition-table-data-content">
+						炭水化物: <span id="carbohydrate_remaining"></span>g
+					</td>
+				</tr>
+			</tfoot>
 
-		target = document.getElementById("output");
-		if(check1 == true) {
-			target.innerHTML = "チェック項目1がチェックされています。<br />";
-		} else {
-			target.innerHTML = "チェック項目1がチェックされていません。<br />";
-		}
-		if(check2 == true) {
-			target.innerHTML += "チェック項目2がチェックされています。<br />";
-		} else {
-			target.innerHTML += "チェック項目2がチェックされていません。<br />";
-		}
-</script>
-
-
-	<form name="form1" action="">
-		<input id="Checkbox1" type="checkbox" /><label for="Checkbox1">チェック項目</label><br />
-		<input id="Checkbox2" type="checkbox" /><label for="Checkbox2">チェック項目</label><br />
-		<input type="button" value="Exec" onclick="onButtonClick();" />
-	</form>
+			<tbody>
+				<tr>
+					<td class="daily-nutrition-table-data-title">目標</td>
+					<td class="daily-nutrition-table-data-content">
+						エネルギー: <span id="energy_target"></span>kcal
+					</td>
+					<td class="daily-nutrition-table-data-content">
+						たんぱく質: <span id="protein_target"></span>g
+					</td>
+					<td class="daily-nutrition-table-data-content">
+						脂質: <span id="lipid_target"></span>g
+					</td>
+					<td class="daily-nutrition-table-data-content">
+						炭水化物: <span id="carbohydrate_target"></span>g
+					</td>
+				</tr>
+				<tr>
+					<td class="daily-nutrition-table-data-title">本日</td>
+					<td class="daily-nutrition-table-data-content">
+						エネルギー: <span id="energy_today"></span>kcal
+					</td>
+					<td class="daily-nutrition-table-data-content">
+						たんぱく質: <span id="protein_today"></span>g
+					</td>
+					<td class="daily-nutrition-table-data-content">
+						脂質: <span id="lipid_today"></span>g
+					</td>
+					<td class="daily-nutrition-table-data-content">
+						炭水化物: <span id="carbohydrate_today"></span>g
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
 	<div id="output"></div>
 
@@ -143,18 +157,41 @@ jQuery( function() {
 } );
 </script>
 
-<div id="my_bar_chart" style="height: 300px; width: 600px;"></div>
+<input type="checkbox" name="no_subject_to_evaluation" value="no_subject_to_evaluation" onchange="myfunc(this.value)"/>評価対象外にする
 
 <script>
-var myBarChart = new Chart(ctx, {
-	type: 'bar';
-	data: data,
-	options: options
-});
+	function myfunc(value) {
+		var url = "http://localhost:8080/PhysicalDevelopment/notSubjectToEvaluation";
+		var xmlHttpRequest = new XMLHttpRequest();
+		xmlHttpRequest.open("POST", url);
+		xmlHttpRequest.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+		xmlHttpRequest.send('judge=not');
 
-var div = document.getElementById('my_bar_chart');
-div.innerHTML = myBarChart ';
-
+		xmlHttpRequest.onreadystatechange  = function() {
+			if(xmlHttpRequest.readyState === 4 && xmlHttpRequest.status === 200) {
+				console.log(xmlHttpRequest.responseText);
+				console.log("success!");
+			}
+		}
+		console.log("myfunc");
+	}
 </script>
+
+<script>
+$.ajax({
+	url: "https://api.github.com/search/repositories?q=javascript",
+	type: "GET",
+
+	success: function(data) {
+		console.log("success!");
+		console.log(data);
+	},
+
+	error: function(err) {
+
+	}
+});
+</script>
+
 </body>
 </html>

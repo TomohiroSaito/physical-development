@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import physicaldevelopment.datasource.mapper.dailynutrition.DailyNutritionMapper;
 import physicaldevelopment.model.account.AccountId;
 import physicaldevelopment.model.dailynutrition.DailyNutrientAmountId;
+import physicaldevelopment.model.evaluation.NotSubjectToEvaluation;
 import physicaldevelopment.model.nutrition.NutrientAmount;
-import physicaldevelopment.model.primitive.YearMonthDay;
 
 @Repository
 public class DailyNutritionDaoImpl implements DailyNutritionDao {
@@ -24,8 +24,8 @@ public class DailyNutritionDaoImpl implements DailyNutritionDao {
 
 	@Override
 	public void insertDailyNutrition(DailyNutrientAmountId nextDailyNutrientAmountId, AccountId accountId,
-			YearMonthDay yearMothDay) {
-		dailyNutritionMapper.insertDailyNutrition(nextDailyNutrientAmountId, accountId, yearMothDay);
+			Date date) {
+		dailyNutritionMapper.insertDailyNutrition(nextDailyNutrientAmountId, accountId, date);
 	}
 
 	@Override
@@ -56,6 +56,11 @@ public class DailyNutritionDaoImpl implements DailyNutritionDao {
 	@Override
 	public NutrientAmount selectCarbohydrateTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId) {
 		return dailyNutritionMapper.selectCarbohydrateTotalNutrientAmountPerDay(dailyNutrientAmountId);
+	}
+
+	@Override
+	public NotSubjectToEvaluation selectNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId) {
+		return dailyNutritionMapper.selectNotSubjectToEvaluation(dailyNutrientAmountId);
 	}
 
 }

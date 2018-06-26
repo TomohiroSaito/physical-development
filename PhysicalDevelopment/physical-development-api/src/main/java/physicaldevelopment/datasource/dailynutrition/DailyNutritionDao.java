@@ -4,14 +4,14 @@ import java.util.Date;
 
 import physicaldevelopment.model.account.AccountId;
 import physicaldevelopment.model.dailynutrition.DailyNutrientAmountId;
+import physicaldevelopment.model.evaluation.NotSubjectToEvaluation;
 import physicaldevelopment.model.nutrition.NutrientAmount;
-import physicaldevelopment.model.primitive.YearMonthDay;
 
 public interface DailyNutritionDao {
 	DailyNutrientAmountId selectNextDailyNutrientAmountId();
 
 	void insertDailyNutrition(DailyNutrientAmountId nextDailyNutrientAmountId, AccountId accountId,
-			YearMonthDay yearMothDay);
+			Date date);
 
 	void insertEvaluation(DailyNutrientAmountId dailyNutrientAmountId);
 
@@ -24,4 +24,6 @@ public interface DailyNutritionDao {
 	NutrientAmount selectLipidTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId);
 
 	NutrientAmount selectCarbohydrateTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId);
+
+	NotSubjectToEvaluation selectNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId);
 }

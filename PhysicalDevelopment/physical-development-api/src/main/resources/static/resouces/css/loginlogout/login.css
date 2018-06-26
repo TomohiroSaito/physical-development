@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+
+.page-title {
+	width: 600px;
+	font-size: 40px;
+	margin: 20px;
+/*	float: left;*/
+}
+
+.login-page-title {
+	text-align: center;
+	margin: 150px 0 100px 0;
+}
+
+.login-logo-img {
+	height: 130px;
+}
+
+.student-list-table {
+	margin: 0 auto;
+}
+
+.login-input-title {
+	display: inline-block;
+	width: 250px;
+	height: 30px;
+	font-size: 19px;
+	text-align: center;
+	padding: 9px 0;
+	font-weight: bold;
+	margin: 0 0 20px 0;
+}
+
+.login-input-text {
+	margin: 0 0 0 30px;
+	width: 670px;
+	height: 35px;
+	border-radius: 5px;
+}
+
+.student-register-button {
+	font-size: 14px;
+	width: 100px;
+	height: 30px;
+	float: right;
+	margin: 0 40px 0 0;
+}
+
+.login-table-data-title {
+	font-weight: bold;
+	font-size: 18px;
+/*	padding-right: 250px;*/
+	padding-left: 50px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.login-table-data-title-transition {
+	text-align:left;
+	padding-left: 0;
+	margin-left: 100px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	display: inline-block;
+}
+
+.login-table-data-button {
+	text-align: right;
+	border-radius: 5px;
+	padding: 8px 16px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 50px;
+	margin-right: 100px;
+/*	cursor: pointer;*/
+}

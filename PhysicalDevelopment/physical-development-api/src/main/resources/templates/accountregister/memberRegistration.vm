@@ -3,21 +3,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/style.css">
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/account/account_register.css">
 <title>会員登録</title>
 </head>
 <body>
 	<header class="header">
-			<h1 class="h1"><a class="heade-contents-a" href="/PhysicalDevelopment/"><img class="header_logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG"></a></h1>
-		<div class="header-nav-links">
-			<p class="nav-link "><a href="/PhysicalDevelopment/inputNutritionRegister" class="">食事登録</a></p>
-			<p class="nav-link"><a href="/PhysicalDevelopment/inputTargetNutrition" class="">目標設定</a></p>
-			<p class="nav-link"><a href="/PhysicalDevelopment/" class="">1カ月の評価</a></p>
-			<p class="nav-link nomal-font"><a href="/PhysicalDevelopment/auth/logout" class="nav-link-text-normal">ログアウト</a></p>
+		<div class="contents">
+			<h1 class="h1">
+				<a class="header-contents-a" href="/PhysicalDevelopment/">
+					<img class="header-logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG">
+				</a>
+			</h1>
+			<div class="header-nav-link">
+				<p class="header-nav-link-text"><a href="/PhysicalDevelopment/inputNutritionRegister" class="">食事登録</a></p>
+				<p class="header-nav-link-text"><a href="/PhysicalDevelopment/inputTargetNutrition" class="">目標設定</a></p>
+				<p class="header-nav-link-text"><a href="/PhysicalDevelopment/" class="">1カ月の評価</a></p>
+				<p class="header-nav-link-text nav-link nomal-font"><a href="/PhysicalDevelopment/auth/logout">ログアウト</a></p>
+			</div>
 		</div>
 	</header>
-	<div class="wrapper-content">
-		<div class="nest-wrapper-content">
-		<h2>会員登録</h2>
+	<div class="main-contents">
+		<h2 class="h2">会員登録</h2>
 
 		<div id="messages">
 		</div>
@@ -30,46 +36,50 @@ var defaultMessages = "";
 	document.getElementById("messages").innerHTML = defaultMessages;
 </script>
 
-		<form action="/PhysicalDevelopment/newMemberRegister" method="post">
-			<table>
-        <tr>
-          <td>性別</td>
-          <td>
-            <select name="stringSex">
-              <option value="MAN">男性</option>
-              <option value="WOMAN">女性</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>生年月日</td>
-          <td>
-            <select name="birthday.year" id="id_year">
-            </select>年
-            <select name="birthday.month" id="id_month">
-            </select>月
-            <select name="birthday.day" id="id_day">
-            </select>日
-          </td>
-        </tr>
-				<tr>
-					<td>ID</td>
-					<td><input type="text" id="login_id" name="authentication.loginId.loginId"></td>
+		<form class="member-register-form" action="/PhysicalDevelopment/newMemberRegister" method="post">
+			<table class="member-register-table">
+		        <tr class="member-register-table-line">
+		          <td class="member-register-table-data-title">性別</td>
+		          <td class="member-register-table-data-content">
+		            <select name="stringSex" class="member-register-table-data-input-select">
+		              <option value="MAN">男性</option>
+		              <option value="WOMAN">女性</option>
+		            </select>
+		          </td>
+		        </tr>
+		        <tr class="member-register-table-line">
+		          <td class="member-register-table-data-title">生年月日</td>
+		          <td class="member-register-table-data-content">
+		            <select name="birthday.year" id="id_year" class="member-register-table-data-input-select">
+		            </select>年
+		            <select name="birthday.month" id="id_month" class="member-register-table-data-input-select">
+		            </select>月
+		            <select name="birthday.day" id="id_day" class="member-register-table-data-input-select">
+		            </select>日
+		          </td>
+		        </tr>
+				<tr class="member-register-table-line">
+					<td class="member-register-table-data-title">ID</td>
+					<td class="member-register-table-data-content">
+						<input type="text" id="login_id" name="authentication.loginId.loginId" class="member-register-table-input-text">
+					</td>
 				</tr>
-				<tr>
-					<td>パスワード</td>
-					<td><input type="password" id="password" name="authentication.password.password"></td>
+				<tr class="member-register-table-line">
+					<td class="member-register-table-data-title">パスワード</td>
+					<td class="member-register-table-data-content">
+						<input type="password" id="password" name="authentication.password.password" class="member-register-table-input-text">
+					</td>
 				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td><button>会員登録</button></td>
+				<tr class="member-register-table-line member-register-table-button">
+					<td class="member-register-table-data-title member-register-table-data-title-transition"><a href="/PhysicalDevelopment/login">ログインへ</a></td>
+					<td class="member-register-table-data-content member-register-table-data-button">
+						<button class="member-register-table-data-button">会員登録</button>
+					</td>
 				</tr>
 			</table>
-			            <input type="text" name="${_csrf.parameterName}" value="${_csrf.token}" />
-
 		</form>
 	</div>
-  <script>
+ <script>
 (function() {
   'use strict';
 
@@ -99,7 +109,6 @@ var defaultMessages = "";
     return document.getElementById(id).innerHTML = opt;
   };
 
-
   /*
     関数設定（スタート数字[必須]、終了数字[必須]、表示id名[省略可能]、デフォルト数字[省略可能]）
    */
@@ -107,7 +116,6 @@ var defaultMessages = "";
   optionLoop(1, 12, 'id_month', this_month);
   optionLoop(1, 31, 'id_day', this_day);
 })();
-
 </script>
 </body>
 </html>
