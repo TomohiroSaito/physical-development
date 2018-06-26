@@ -54,3 +54,9 @@ table {
 .daily-nutrition-table-data-title {
 	font-weight: bold;
 }
+
+.daily-nutrition-graph {
+	height: 300px;
+	width: 900px;
+	margin: auto;
+}

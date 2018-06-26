@@ -124,7 +124,7 @@ carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 <script type="text/javascript" src="/PhysicalDevelopment/resouces/javascript/dailynutrition/table_mapping.js">
 </script>
 
-<div id="jqPlot-sample" style="height: 600px; width: 1200px;"></div>
+<div id="jqPlot-sample" class="daily-nutrition-graph"></div>
 
 <script>
 energy_percent = energy_today / energy_target * 100;
