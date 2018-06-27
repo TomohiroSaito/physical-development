@@ -25,7 +25,7 @@ public class DailyNutritionService {
 	public DailyNutrientAmountId newDailyNutrition(Date date, AccountId accountId) {
 		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionDao.selectNextDailyNutrientAmountId();
 		dailyNutritionDao.insertDailyNutrition(dailyNutrientAmountId, accountId, date);
-		dailyNutritionDao.insertEvaluation(dailyNutrientAmountId);
+//		dailyNutritionDao.insertEvaluation(dailyNutrientAmountId);
 		return dailyNutrientAmountId;
 	}
 
@@ -72,9 +72,7 @@ public class DailyNutritionService {
 
 	//評価対象外を取得
 	public NotSubjectToEvaluation selectNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId) {
-		dailyNutritionDao.selectNotSubjectToEvaluation(dailyNutrientAmountId);
-		return null;
+		return dailyNutritionDao.selectNotSubjectToEvaluation(dailyNutrientAmountId);
 	}
-
 
 }

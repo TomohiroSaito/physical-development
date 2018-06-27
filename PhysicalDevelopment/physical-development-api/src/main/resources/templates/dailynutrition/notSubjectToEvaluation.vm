@@ -1,0 +1,5 @@
+<input type="checkbox" name="no_subject_to_evaluation" value="no_subject_to_evaluation" id="no_subject_to_evaluation"
+#if(${evaluation.notSubjectToEvaluation.notSubjectToEvaluation})
+	checked="checked"
+#end
+ />

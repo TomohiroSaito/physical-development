@@ -1,5 +1,7 @@
 package physicaldevelopment.service.meal.register;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,7 @@ import physicaldevelopment.model.meal.Meal;
 import physicaldevelopment.model.meal.MealId;
 import physicaldevelopment.model.primitive.YearMonthDay;
 import physicaldevelopment.service.dailynutrition.DailyNutritionService;
+import physicaldevelopment.service.evaluation.EvaluationService;
 
 @Service
 public class MealRegisterService {
@@ -23,6 +26,9 @@ public class MealRegisterService {
 
 	@Autowired
 	TargetNutritionDao targetNutritionDao;
+
+	@Autowired
+	EvaluationService evaluationService;
 
 	public void registerMeal(Meal meal, AccountId accountId) {
 		Integer mealId = mealRegisterDao.selectNextMealId();
@@ -37,7 +43,8 @@ public class MealRegisterService {
 		mealRegisterDao.insertLipidMealManual(meal, manualEntryOfNutrientsId, meal.getOneMealOfNutrients().getLipidNutrientAmount());
 		manualEntryOfNutrientsId = mealRegisterDao.selectNextManualEntryOfNutrients();
 		mealRegisterDao.insertCarbohydrateMealManual(meal, manualEntryOfNutrientsId, meal.getOneMealOfNutrients().getCarbohydrateNutrientAmount());
-
+		//※日付の修正（今日ではなく、渡された日にする）
+		evaluationService.calcEvaluation(new Date(), accountId);
 	}
 
 	public int selectNextOrderOfMeals(YearMonthDay yearMonthDay, LoginId loginId) {

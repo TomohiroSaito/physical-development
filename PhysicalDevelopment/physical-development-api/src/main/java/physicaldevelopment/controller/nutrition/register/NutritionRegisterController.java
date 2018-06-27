@@ -59,10 +59,13 @@ public class NutritionRegisterController {
 
 	@RequestMapping("/confirmNutritionRegister")
 	public String confirmNutritionRegister(Model model, @ModelAttribute("nutritionSession") Meal meal, Principal principal) {
+		//会員IDの取得
 		Authentication auth = (Authentication)principal;
         AccountUserDetails accountUserDetails = (AccountUserDetails)auth.getPrincipal();
         LoginId loginId = new LoginId(accountUserDetails.getUsername());
 		AccountId accountId = new AccountId(targetNutritionDao.selectAccountId(loginId));
+
+		//食事の登録
 		mealRegisterService.registerMeal(meal, accountId);
 		model.addAttribute("message", "isert meal succesess!!!");
 		return "redirect:";

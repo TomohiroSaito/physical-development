@@ -13,6 +13,7 @@ public interface DailyNutritionDao {
 	void insertDailyNutrition(DailyNutrientAmountId nextDailyNutrientAmountId, AccountId accountId,
 			Date date);
 
+	//後で消す
 	void insertEvaluation(DailyNutrientAmountId dailyNutrientAmountId);
 
 	DailyNutrientAmountId selectDailyNutrientAmountId(Date date, AccountId accountId);

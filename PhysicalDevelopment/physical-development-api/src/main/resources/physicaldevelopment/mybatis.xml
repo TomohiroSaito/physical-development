@@ -22,5 +22,6 @@
 		<mapper resource="physicaldevelopment/mapper/meal/register/MealRegisterMapper.xml" />
 		<mapper resource="physicaldevelopment/mapper/targetnutrition/TargetNutritionMapper.xml" />
 		<mapper resource="physicaldevelopment/mapper/dailynutrition/DailyNutritionMapper.xml" />
+		<mapper resource="physicaldevelopment/mapper/evaluation/EvaluationMapper.xml" />
 	</mappers>
 </configuration>

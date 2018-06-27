@@ -1,9 +1,8 @@
-#if(${evaluation.notSubjectToEvaluation.notSubjectEvaluation})
-<p class="evaluation-score">
-	本日の点数:-
-</p>
-#else
 <p class="evaluation-score-paragraph">
-	本日の点数:<span class="evaluation-score-content">${evaluation.score.score}</span>
+	本日の点数:
+	#if(${evaluation.notSubjectToEvaluation.notSubjectToEvaluation})
+		 -
+	#else
+		<span class="evaluation-score-content">${evaluation.score.score}</span>
+	#end
 </p>
-#end

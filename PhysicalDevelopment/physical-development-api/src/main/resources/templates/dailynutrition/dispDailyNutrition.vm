@@ -62,7 +62,12 @@ carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 		</div>
 	</div>
 	<div class="daily-information">
-		#parse("dailynutrition/evaluation.vm")
+		<script>
+			var notSubjectToEvaluation = ${evaluation.notSubjectToEvaluation.notSubjectToEvaluation}
+		</script>
+		<div id="evaluation">
+			#parse("dailynutrition/evaluation.vm")
+		</div>
 		<table class="daily-nutrition-table" rules="groups">
 
 			<tfoot>
@@ -118,13 +123,15 @@ carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 		</table>
 	</div>
 
-	<div id="output"></div>
+	<div id="output">
+	</div>
 
 
 <script type="text/javascript" src="/PhysicalDevelopment/resouces/javascript/dailynutrition/table_mapping.js">
 </script>
 
-<div id="jqPlot-sample" class="daily-nutrition-graph"></div>
+	<div id="jqPlot-sample" class="daily-nutrition-graph">
+	</div>
 
 <script>
 energy_percent = energy_today / energy_target * 100;
@@ -133,64 +140,12 @@ lipid_percent = lipid_today / lipid_target * 100;
 carbohydrate_percent = carbohydrate_today / carbohydrate_target * 100;
 </script>
 
-<script>
-jQuery( function() {
-    jQuery . jqplot(
-        'jqPlot-sample',
-        [
-            [ [ carbohydrate_percent, '炭水化物' ], [ lipid_percent, '脂質' ], [ protein_percent, 'たんぱく質' ], [ energy_percent, 'エネルギー' ] ]
-        ],
-        {
-            seriesDefaults: {
-                renderer: jQuery . jqplot . BarRenderer,
-                rendererOptions: {
-                    barDirection: 'horizontal'
-                }
-            },
-            axes: {
-                yaxis: {
-                    renderer: jQuery . jqplot . CategoryAxisRenderer,
-                }
-            }
-        }
-    );
-} );
+<script type="text/javascript" src="/PhysicalDevelopment/resouces/jquery/dailynutrition/daily_nutrition_graph.js">
 </script>
 
-<input type="checkbox" name="no_subject_to_evaluation" value="no_subject_to_evaluation" onchange="myfunc(this.value)"/>評価対象外にする
+#parse("dailynutrition/notSubjectToEvaluation.vm")評価対象外にする
 
-<script>
-	function myfunc(value) {
-		var url = "http://localhost:8080/PhysicalDevelopment/notSubjectToEvaluation";
-		var xmlHttpRequest = new XMLHttpRequest();
-		xmlHttpRequest.open("POST", url);
-		xmlHttpRequest.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
-		xmlHttpRequest.send('judge=not');
-
-		xmlHttpRequest.onreadystatechange  = function() {
-			if(xmlHttpRequest.readyState === 4 && xmlHttpRequest.status === 200) {
-				console.log(xmlHttpRequest.responseText);
-				console.log("success!");
-			}
-		}
-		console.log("myfunc");
-	}
-</script>
-
-<script>
-$.ajax({
-	url: "https://api.github.com/search/repositories?q=javascript",
-	type: "GET",
-
-	success: function(data) {
-		console.log("success!");
-		console.log(data);
-	},
-
-	error: function(err) {
-
-	}
-});
+<script type="text/javascript" src="/PhysicalDevelopment/resouces/jquery/dailynutrition/ajax.js">
 </script>
 
 </body>

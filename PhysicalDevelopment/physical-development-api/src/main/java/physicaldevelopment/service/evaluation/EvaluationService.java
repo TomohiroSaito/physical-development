@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import physicaldevelopment.datasource.evaluation.EvaluationDao;
 import physicaldevelopment.model.account.AccountId;
 import physicaldevelopment.model.dailynutrition.DailyNutrientAmountId;
 import physicaldevelopment.model.dailynutrition.TotalNutrientAmountPerDay;
@@ -24,20 +25,27 @@ public class EvaluationService {
 	@Autowired
 	TargetNutritionService targetNutritionService;
 
+	@Autowired
+	EvaluationDao evaluationDao;
+
 	//評価計算
 	public Evaluation calcEvaluation(Date date, AccountId accountId) {
 		//目標栄養素の取得
 		 TargetNutrition targetNutrition = targetNutritionService.selectTargetNutrientAmount(accountId);
+
 		 //目標を入力していなかったらnullを返す？
 		 if(null == targetNutrition) {
 			 return null;
 		 }
+
 		 //1日の栄養素IDを取得
 		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutritionId(date, accountId);
+
 		//指定した日の食事登録がなければ0で作成した評価を返す
 		if(null == dailyNutrientAmountId) {
-			return new Evaluation(new Score(0), new EnergyHighAndLow(0), new NotSubjectToEvaluation());
+			return new Evaluation(new Score(0), new EnergyHighAndLow(0), new NotSubjectToEvaluation(false));
 		}
+
 		//1日の栄養素量の合計を取得
 		TotalNutrientAmountPerDay totalNutrientAmountPerDay = dailyNutritionService.createTotalNutrientAmountPerDay(dailyNutrientAmountId);
 
@@ -63,8 +71,21 @@ public class EvaluationService {
 		//評価を計算
 		int scoreEvaluation = calcScoreEvaluation(energyHighAndLow, proteinHighAndLow, lipidHighAndLow, carbohydrateHighAndLow);
 
-		//評価を作成して返す
-		return new Evaluation(new Score(scoreEvaluation), new EnergyHighAndLow(energyHighAndLow), dailyNutritionService.selectNotSubjectToEvaluation(dailyNutrientAmountId));
+		//評価を作成して登録
+		//後で修正
+		Evaluation evaluation = null;
+		//dailyNutritionService.selectNotSubjectToEvaluation(dailyNutrientAmountId)
+		//評価が存在しなければ新たに作成
+		if(evaluationDao.existEvaluation(dailyNutrientAmountId)) {
+			evaluationDao.updateEvaluation(dailyNutrientAmountId, new Score(scoreEvaluation), new EnergyHighAndLow(energyHighAndLow));
+			evaluation = evaluationDao.selectEvaluation(dailyNutrientAmountId);
+		//評価が存在すれば更新
+		} else {
+			evaluation = new Evaluation(new Score(scoreEvaluation), new EnergyHighAndLow(energyHighAndLow), new NotSubjectToEvaluation(false));
+			evaluationDao.insertEvaluation(dailyNutrientAmountId, evaluation);
+		}
+
+		return evaluation;
 
 	}
 
@@ -96,5 +117,15 @@ public class EvaluationService {
 		}
 
 		return score;
+	}
+
+	public void updateNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+			NotSubjectToEvaluation notSubjectToEvaluation) {
+		evaluationDao.updateNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
+	}
+
+	public void upsertNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+			NotSubjectToEvaluation notSubjectToEvaluation) {
+		evaluationDao.upsertNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
 	}
 }
