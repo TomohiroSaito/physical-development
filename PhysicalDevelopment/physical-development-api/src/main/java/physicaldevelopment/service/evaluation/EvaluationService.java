@@ -125,7 +125,7 @@ public class EvaluationService {
 	}
 
 	public void upsertNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
-			NotSubjectToEvaluation notSubjectToEvaluation) {
-		evaluationDao.upsertNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
+			Evaluation evaluation) {
+		evaluationDao.upsertNotSubjectToEvaluation(dailyNutrientAmountId, evaluation);
 	}
 }

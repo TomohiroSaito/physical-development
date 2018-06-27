@@ -41,7 +41,7 @@
 		WHERE
 			daily_nutrient_amount_id=#{dailyNutrientAmountId.dailyNutrientAmountId}
 	</select>
-	
+
 	<select id="upsertNotSubjectToEvaluation">
 		INSERT INTO
 			nutrition.evaluation
@@ -60,20 +60,9 @@
 			now(),
 			now()
 		)
-		ON CONFLICT ON CONSTRAINT
-			
-			INSERT INTO テーブル名 VALUES ('値１', '値２', ...）
-ON CONFLICT ON CONSTRAINT 制約名
-DO UPDATE SET カラム１='値', カラム２='値', ...;
-	</select>
-
-	<select id="existEvaluation" resultType="Integer">
-		SELECT
-			daily_nutrient_amount_id
-		FROM
-			nutrition.evaluation
-		WHERE
-			daily_nutrient_amount_id=#{dailyNutrientAmountId.dailyNutrientAmountId}
+		ON CONFLICT ON CONSTRAINT upst_pkey
+		DO UPDATE SET
+			not_subject_to_evaluation = #{evaluation.notSubjectToEvaluation.notSubjectToEvaluation}
 	</select>
 
 	<resultMap id="evaluationMap" type="physicaldevelopment.model.evaluation.Evaluation">

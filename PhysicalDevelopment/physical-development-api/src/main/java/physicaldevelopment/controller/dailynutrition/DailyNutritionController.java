@@ -84,9 +84,9 @@ public class DailyNutritionController {
 		Date date = new Date();
 		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutritionId(date, accountId);
 
-		evaluationService.upsertNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
 		Evaluation tempEvaluation = evaluationDao.selectEvaluation(dailyNutrientAmountId);
 		Evaluation evaluation = new Evaluation(tempEvaluation, notSubjectToEvaluation);
+		evaluationService.upsertNotSubjectToEvaluation(dailyNutrientAmountId, evaluation);
 		model.addAttribute("evaluation", evaluation);
 		return "dailynutrition/evaluation";
 	}
