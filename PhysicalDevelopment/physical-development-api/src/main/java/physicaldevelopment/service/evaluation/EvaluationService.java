@@ -124,8 +124,14 @@ public class EvaluationService {
 		evaluationDao.updateNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
 	}
 
-	public void upsertNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+//	public void upsertNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+//			NotSubjectToEvaluation notSubjectToEvaluation) {
+//		evaluationDao.upsertNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
+//	}
+
+	public void upsertEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
 			Evaluation evaluation) {
-		evaluationDao.upsertNotSubjectToEvaluation(dailyNutrientAmountId, evaluation);
+		// TODO 自動生成されたメソッド・スタブ
+
 	}
 }

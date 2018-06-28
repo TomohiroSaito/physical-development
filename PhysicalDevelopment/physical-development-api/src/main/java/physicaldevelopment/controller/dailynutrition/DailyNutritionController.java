@@ -45,7 +45,7 @@ public class DailyNutritionController {
 
 	@RequestMapping(path={"/", "toppage"})
 	public String toppage(Principal principal, Model model) {
-		//アカウントIDの取得
+		//会員IDの取得
 		Authentication auth = (Authentication)principal;
         AccountUserDetails accountUserDetails = (AccountUserDetails)auth.getPrincipal();
         LoginId loginId = new LoginId(accountUserDetails.getUsername());
@@ -76,17 +76,28 @@ public class DailyNutritionController {
 
 	@RequestMapping("/notSubjectToEvaluation")
 	public String notSubjectToEvaluation(Model model, NotSubjectToEvaluation notSubjectToEvaluation, Principal principal) {
+		//会員IDの取得
 		Authentication auth = (Authentication)principal;
         AccountUserDetails accountUserDetails = (AccountUserDetails)auth.getPrincipal();
         LoginId loginId = new LoginId(accountUserDetails.getUsername());
 		AccountId accountId = new AccountId(targetNutritionDao.selectAccountId(loginId));
 
+		//今日の日付を取得
 		Date date = new Date();
+
+		//日付と会員IDから1日の栄養素IDを取得
 		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutritionId(date, accountId);
 
+		//取得した1日の栄養素IDから栄養素モデルを取得
 		Evaluation tempEvaluation = evaluationDao.selectEvaluation(dailyNutrientAmountId);
+
+		//栄養素モデルの評価対象外を引数の評価対象外に更新
 		Evaluation evaluation = new Evaluation(tempEvaluation, notSubjectToEvaluation);
-		evaluationService.upsertNotSubjectToEvaluation(dailyNutrientAmountId, evaluation);
+
+		//評価テーブルが存在すれば更新、
+		//存在しなければ評価テーブルの挿入
+		evaluationService.upsertEvaluation(dailyNutrientAmountId, evaluation);
+
 		model.addAttribute("evaluation", evaluation);
 		return "dailynutrition/evaluation";
 	}
