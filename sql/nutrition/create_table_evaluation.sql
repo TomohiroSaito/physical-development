@@ -8,6 +8,6 @@ CREATE TABLE nutrition.evaluation (
   not_subject_to_evaluation BOOLEAN NOT NULL,
   created_at DATE NOT NULL,
   updated_at DATE NOT NULL,
-  PRIMARY KEY (daily_nutrient_amount_id),
+  CONSTRAINT upst_pkey PRIMARY KEY (daily_nutrient_amount_id),
   FOREIGN KEY (daily_nutrient_amount_id) REFERENCES nutrition.daily_nutrient_amount (daily_nutrient_amount_id)
 );

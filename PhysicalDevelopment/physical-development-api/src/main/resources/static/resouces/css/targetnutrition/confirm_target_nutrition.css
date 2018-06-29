@@ -1,0 +1,66 @@
+@CHARSET "UTF-8";
+
+table {
+	border-collapse: collapse;
+}
+
+td {
+	border: solid 1px;
+	border-right-style: hidden;
+	border-left-style: hidden;
+}
+
+.target-nutrition-table-line-top {
+	border-top-style: hidden;
+}
+
+.target-nutrition-table-data-title {
+	font-weight: bold;
+	font-size: 18px;
+/*	padding-right: 250px;*/
+	padding-left: 50px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.target-nutrition-table {
+	width: 800px;
+}
+
+/*.target-nutrition-table-button {
+	display: flex;
+	justify-content: space-between;
+}*/
+
+.target-nutrition-table-data-button {
+	border-bottom-style: hidden;
+	text-align: right;
+	border-radius: 5px;
+	padding: 8px 16px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 50px;
+	margin-right: 100px;
+/*	cursor: pointer;*/
+}
+
+.target-nutrition-table-data-title-transition {
+	border-top-style: hidden;
+	border-bottom-style: hidden;
+	text-align:left;
+	padding-left: 0;
+	margin: 50px;
+	display: inline-block;
+}
+
+.target-nutrition-table-input-text {
+	box-shadow: none;
+	border-radius: 10px;
+	padding: 8px 35px;
+}
+
+.target-nutrition-table-data-input-select {
+	border-radius: 5px;
+	padding: 2px 8px;
+	font-size: 16px;
+	margin: 0 10px;

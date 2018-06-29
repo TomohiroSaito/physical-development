@@ -1,0 +1,13 @@
+	<header class="header">
+			<h1 class="h1">
+				<a class="header-contents-a" href="/PhysicalDevelopment/">
+					<img class="header-logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG">
+				</a>
+			</h1>
+		<div class="header-nav-link">
+			<p class="header-nav-link-text"><a href="/PhysicalDevelopment/nutritionRegister" class="">食事登録</a></p>
+			<p class="header-nav-link-text"><a href="/PhysicalDevelopment/targetNutrition" class="">目標設定</a></p>
+			<p class="header-nav-link-text"><a href="/PhysicalDevelopment/" class="">1カ月の評価</a></p>
+			<p class="header-nav-link-text nav-link nomal-font"><a href="/PhysicalDevelopment/auth/logout" class="nav-link-text-normal">ログアウト</a></p>
+		</div>
+	</header>

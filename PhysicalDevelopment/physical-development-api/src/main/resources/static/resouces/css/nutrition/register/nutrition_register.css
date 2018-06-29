@@ -1,0 +1,88 @@
+@CHARSET "UTF-8";
+
+.nutrition-register-title-wrap {
+	display: flex;
+}
+
+.nutrition-register-form {
+	display: flex;
+}
+
+.nutrition-register-title-content {
+	font-size: 24px;
+	margin: 100px;
+}
+
+.select-input-type-wrap {
+	display: flex;
+/*	justify-content: center;*/
+	margin-left: 220px;
+}
+
+.select-input-type-text-auto {
+	margin: 0 50px 50px 0;
+}
+
+.select-input-type-text-manual {
+	margin: 0 0 50px 50px;
+}
+
+.nutrition-register-table-data-title {
+	font-weight: bold;
+	font-size: 18px;
+/*	padding-right: 250px;*/
+	padding-left: 50px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.nutrition-register-table {
+	width: 1040px;
+}
+
+/*.member-register-table-button {
+	display: flex;
+	justify-content: space-between;
+}*/
+
+.nutrition-register-table-data-button {
+	text-align: right;
+	border-radius: 5px;
+	padding: 8px 16px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 50px;
+	margin-right: 100px;
+/*	cursor: pointer;*/
+}
+
+.nutrition-register-button {
+	text-align: right;
+	border-radius: 5px;
+	padding: 8px 16px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 50px;
+	margin-left: 350px;
+/*	cursor: pointer;*/
+}
+
+.nutrition-register-table-data-title-transition {
+	text-align:left;
+	padding-left: 0;
+	margin-left: 100px;
+	margin-top: 50px;
+	display: inline-block;
+}
+
+.nutrition-register-table-input-text {
+	box-shadow: none;
+	border-radius: 10px;
+	padding: 8px 35px;
+}
+
+.nutrition-register-table-data-input-select {
+	border-radius: 5px;
+	padding: 2px 8px;
+	font-size: 16px;
+	margin: 0 10px;
