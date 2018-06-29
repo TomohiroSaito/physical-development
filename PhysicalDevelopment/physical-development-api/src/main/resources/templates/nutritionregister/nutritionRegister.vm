@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/style.css">
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/nutrition/register/nutrition_register.css">
+<title>ログイン</title>
+</head>
+<body>
+
+	#include("primitive/after_login_header.vm")
+
+	<div class="main-contents">
+		<div class="nutrition-register-title-wrap">
+			<h2 class="h2">食事登録</h2>
+			<form class="nutrition-register-form" action="/PhysicalDevelopment/confirmNutritionRegister" method="post">
+
+<script>
+
+//今日の日付データを変数に格納
+var today=new Date(${today});
+
+//年・月・日・曜日を取得する
+var year = today.getFullYear();
+var month = today.getMonth()+1;
+var day = today.getDate();
+document.write("<p class=\"nutrition-register-title-content\">");
+document.write(year+"年"+month+"月"+day+"日 ");
+document.write("<input class=\"year\" type=\"hidden\" name=\"yearMonthDay.year\" value=" + year + ">");
+document.write("<input class=\"month\" type=\"hidden\" name=\"yearMonthDay.month\" value=" + month + ">");
+document.write("<input class=\"day\" type=\"hidden\" name=\"yearMonthDay.day\" value=" + day + ">");
+document.write("</p>");
+
+</script>
+
+			<p class="nutrition-register-title-content">${orderOfMeals}食目</p>
+			<input type="hidden" name="strOrderOfMeals" value="${orderOfMeals}" />
+		</div>
+
+		<div class="select-input-type-wrap">
+			<span class="select-input-type-text-auto">
+				<input type="radio" name="inputType" value="AUTO" disabled="disabled" />
+				自動入力
+			</span>
+			<span class="select-input-type-text-manual">
+				<input type="radio" name="inputType" value="MANUAL" checked/>
+				手動入力
+			</span>
+		</div>
+
+			<table class="nutrition-register-table">
+				<tr class="nutrition-register-table-line">
+					<td class="nutrition-register-table-data-title">食事名</td>
+					<td class="nutrition-register-table-data-content">
+						<input class="nutrition-register-table-input-text" type="text" name="mealName.mealName">
+					</td>
+				</tr>
+				<tr class="nutrition-register-table-line">
+					<td class="nutrition-register-table-data-title">エネルギー</td>
+					<td class="nutrition-register-table-data-content">
+						<input class="nutrition-register-table-input-text" type="text" name="oneMealOfNutrients.energyNutrientAmount.nutrientAmount">
+					</td>
+				</tr>
+				<tr class="nutrition-register-table-line">
+					<td class="nutrition-register-table-data-title">たんぱく質</td>
+					<td class="nutrition-register-table-data-content">
+						<input class="nutrition-register-table-input-text" type="text" name="oneMealOfNutrients.proteinNutrientAmount.nutrientAmount">
+					</td>
+				</tr>
+				<tr class="nutrition-register-table-line">
+					<td class="nutrition-register-table-data-title">脂質</td>
+					<td class="nutrition-register-table-data-content">
+						<input class="nutrition-register-table-input-text" type="text" name="oneMealOfNutrients.lipidNutrientAmount.nutrientAmount">
+					</td>
+				</tr>
+				<tr class="nutrition-register-table-line">
+					<td class="nutrition-register-table-data-title">炭水化物</td>
+					<td class="nutrition-register-table-data-content">
+						<input class="nutrition-register-table-input-text" type="text" name="oneMealOfNutrients.carbohydrateNutrientAmount.nutrientAmount">
+					</td>
+				</tr>
+			</table>
+				<input class="nutrition-register-button" type="submit" value="登録">
+				</tr>
+
+		</form>
+	</div>
+</body>
+</html>

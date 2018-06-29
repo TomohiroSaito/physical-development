@@ -27,6 +27,8 @@ public interface EvaluationMapper {
 			@Param("energyHighAndLow") EnergyHighAndLow energyHighAndLow);
 
 	public void upsertNotSubjectToEvaluation(@Param("dailyNutrientAmountId") DailyNutrientAmountId dailyNutrientAmountId,
-			@Param("evaluation") Evaluation evaluation);
+			@Param("notSubjectToEvaluation") NotSubjectToEvaluation notSubjectToEvaluation);
+
+//	public void upsertEvaluation(@Param("dailyNutrientAmountId") DailyNutrientAmountId dailyNutrientAmountId, @Param("evaluation") Evaluation evaluation);
 
 }

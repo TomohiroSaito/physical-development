@@ -8,7 +8,7 @@ public class Evaluation {
 	public Evaluation(Evaluation evaluation, NotSubjectToEvaluation notSubjectToEvaluation) {
 		this.score = evaluation.getScore();
 		this.energyHighAndLow = evaluation.getEnergyHighAndLow();
-		this.notSubjectToEvaluation = evaluation.getNotSubjectToEvaluation();
+		this.notSubjectToEvaluation = notSubjectToEvaluation;
 	}
 	public Evaluation(Score score, EnergyHighAndLow energyHighAndLow,
 			NotSubjectToEvaluation notSubjectToEvaluation) {

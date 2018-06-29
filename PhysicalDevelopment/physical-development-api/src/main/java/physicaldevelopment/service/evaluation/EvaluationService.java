@@ -49,7 +49,47 @@ public class EvaluationService {
 		//1日の栄養素量の合計を取得
 		TotalNutrientAmountPerDay totalNutrientAmountPerDay = dailyNutritionService.createTotalNutrientAmountPerDay(dailyNutrientAmountId);
 
+		//評価を計算
+		Integer scoreEvaluation = calcScoreEvaluation(totalNutrientAmountPerDay, targetNutrition);
 
+		//評価モデルに格納するエネルギーの＋－値を計算
+		Integer energyHighAndLow = energyHighAndLowDayFromTarget(totalNutrientAmountPerDay, targetNutrition);
+
+		//評価を作成して登録
+		//後で修正
+		Evaluation evaluation = null;
+		if(evaluationDao.existEvaluation(dailyNutrientAmountId)) {
+
+			//評価が存在すれば更新
+			evaluationDao.updateEvaluation(dailyNutrientAmountId, new Score(scoreEvaluation), new EnergyHighAndLow(energyHighAndLow));
+			evaluation = evaluationDao.selectEvaluation(dailyNutrientAmountId);
+		} else {
+
+			//評価が存在しなければ新たに作成
+			evaluation = new Evaluation(new Score(scoreEvaluation), new EnergyHighAndLow(energyHighAndLow), new NotSubjectToEvaluation(false));
+			evaluationDao.insertEvaluation(dailyNutrientAmountId, evaluation);
+		}
+
+		return evaluation;
+
+	}
+
+	//1日の栄養素量と目標栄養素量を受け取り、パーセンテージを計算
+	private int highAndLowDayFromTarget(Integer dayNutrition, Integer targetNutrition) {
+		double persent = (double)dayNutrition / targetNutrition * 100;
+		return (int)Math.ceil(persent - 100);
+	}
+
+	//評価モデルに格納するエネルギーの＋－値を計算
+	private int energyHighAndLowDayFromTarget(TotalNutrientAmountPerDay totalNutrientAmountPerDay, TargetNutrition targetNutrition) {
+		int dayNutrition = totalNutrientAmountPerDay.getEnergyNutrientAmount().getNutrientAmount();
+		int integerTargetNutrition = targetNutrition.getEnergyTargetNutrientAmount().getNutrientAmount().getNutrientAmount();
+		double persent = (double)dayNutrition / integerTargetNutrition * 100;
+		return (int)Math.ceil(persent - 100);
+	}
+
+	//パーセンテージの範囲を受け取り、評価値を計算
+	private Integer calcScoreEvaluation(TotalNutrientAmountPerDay totalNutrientAmountPerDay, TargetNutrition targetNutrition) {
 		//1日の栄養素をそれぞれint型に取得
 		int dayEnergy = totalNutrientAmountPerDay.getEnergyNutrientAmount().getNutrientAmount();
 		int dayProtein = totalNutrientAmountPerDay.getProteinNutrientAmount().getNutrientAmount();
@@ -68,35 +108,6 @@ public class EvaluationService {
 		int lipidHighAndLow = highAndLowDayFromTarget(dayLipid, targetLipid);
 		int carbohydrateHighAndLow = highAndLowDayFromTarget(dayCarbohydrate, targetCarbohydrate);
 
-		//評価を計算
-		int scoreEvaluation = calcScoreEvaluation(energyHighAndLow, proteinHighAndLow, lipidHighAndLow, carbohydrateHighAndLow);
-
-		//評価を作成して登録
-		//後で修正
-		Evaluation evaluation = null;
-		//dailyNutritionService.selectNotSubjectToEvaluation(dailyNutrientAmountId)
-		//評価が存在しなければ新たに作成
-		if(evaluationDao.existEvaluation(dailyNutrientAmountId)) {
-			evaluationDao.updateEvaluation(dailyNutrientAmountId, new Score(scoreEvaluation), new EnergyHighAndLow(energyHighAndLow));
-			evaluation = evaluationDao.selectEvaluation(dailyNutrientAmountId);
-		//評価が存在すれば更新
-		} else {
-			evaluation = new Evaluation(new Score(scoreEvaluation), new EnergyHighAndLow(energyHighAndLow), new NotSubjectToEvaluation(false));
-			evaluationDao.insertEvaluation(dailyNutrientAmountId, evaluation);
-		}
-
-		return evaluation;
-
-	}
-
-	//1日の栄養素量と目標栄養素量を受け取り、パーセンテージを計算
-	private int highAndLowDayFromTarget(int dayNutrition, int targetNutrition) {
-		double persent = (double)dayNutrition / targetNutrition * 100;
-		return (int)Math.ceil(persent - 100);
-	}
-
-	//パーセンテージの範囲を受け取り、評価値を計算
-	private int calcScoreEvaluation(int energyHighAndLow, int proteinHighAndLow, int lipidHighAndLow, int carbohydrateHighAndLow) {
 		int scoreEnergy = calcScoreNutrition(energyHighAndLow);
 		int scoreProtein = calcScoreNutrition(proteinHighAndLow);
 		int scoreLipid = calcScoreNutrition(lipidHighAndLow);
@@ -108,9 +119,9 @@ public class EvaluationService {
 	//パーセンテージの範囲から評価値を計算
 	private int calcScoreNutrition(int highAndLow) {
 		int score = 0;
-		if(highAndLow < 10) {
+		if(-10 <= highAndLow && highAndLow <= 10 ) {
 			score = 2;
-		} else if(highAndLow < 20) {
+		} else if(-20 <= highAndLow && highAndLow <= 20) {
 			score = 1;
 		} else {
 			score = 0;
@@ -124,14 +135,13 @@ public class EvaluationService {
 		evaluationDao.updateNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
 	}
 
-//	public void upsertNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
-//			NotSubjectToEvaluation notSubjectToEvaluation) {
-//		evaluationDao.upsertNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
-//	}
-
-	public void upsertEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
-			Evaluation evaluation) {
-		// TODO 自動生成されたメソッド・スタブ
-
+	public void upsertNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+			NotSubjectToEvaluation notSubjectToEvaluation) {
+		evaluationDao.upsertNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
 	}
+
+//	public void upsertEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+//			Evaluation evaluation) {
+//		evaluationDao.upsertEvaluation(dailyNutrientAmountId, evaluation);
+//	}
 }

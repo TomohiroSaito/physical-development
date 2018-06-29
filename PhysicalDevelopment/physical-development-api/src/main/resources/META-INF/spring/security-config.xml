@@ -17,10 +17,9 @@
 			login-processing-url="/authentication"
 		 	username-parameter="loginId"
 		 	password-parameter="password"/>
-		<sec:intercept-url pattern="/logoutSuccess" access="permitAll"/>
 		<sec:intercept-url pattern="/login" access="permitAll"/>
 		<sec:intercept-url pattern="/logout" access="permitAll" />
-		<sec:intercept-url pattern="/memberRegistration" access="permitAll"/>
+		<sec:intercept-url pattern="/accountRegister" access="permitAll"/>
 		<sec:intercept-url pattern="/newMemberRegister" access="permitAll"/>
 		<sec:intercept-url pattern="/checkedMemberRegister" access="permitAll"/>
 		<sec:intercept-url pattern="/sample" access="permitAll"/>

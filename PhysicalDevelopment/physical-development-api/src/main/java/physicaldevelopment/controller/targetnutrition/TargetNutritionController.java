@@ -24,22 +24,23 @@ public class TargetNutritionController {
 	TargetNutritionService targetNutritionService;
 
 
-	@RequestMapping("/inputTargetNutrition")
-	public String inputTargetNutrition() {
-		return "targetnutrition/inputTargetNutrition";
+	@RequestMapping("/targetNutrition")
+	public String targetNutrition() {
+		return "targetnutrition/targetNutrition";
 	}
 
-	@RequestMapping(path="/checkTargetNutrition", method=RequestMethod.POST)
-	public String checkNutritionManualRegister(@ModelAttribute TargetNutrition targetNutrition , Model model) {
+	@RequestMapping(path="/confirmTargetNutrition", method=RequestMethod.POST)
+	public String confirmTargetNutrition(@ModelAttribute TargetNutrition targetNutrition , Model model) {
+		//
 		targetNutrition.getEnergyTargetNutrientAmount().getNutrientAmount().setNutrition(Nutrition.ENERGY);
 		targetNutrition.getProteinTargetNutrientAmount().getNutrientAmount().setNutrition(Nutrition.PROTEIN);
 		targetNutrition.getLipidTargetNutrientAmount().getNutrientAmount().setNutrition(Nutrition.LIPID);
 		targetNutrition.getCarbohydrateTargetNutrientAmount().getNutrientAmount().setNutrition(Nutrition.CARBOHYDRATE);
 		model.addAttribute("targetNutritionSession", targetNutrition);
-		return "targetnutrition/checkTargetNutrition";
+		return "targetnutrition/confirmTargetNutrition";
 	}
 
-	@RequestMapping("/confirmTargetNutrition")
+	@RequestMapping("/confirmedTargetNutrition")
 	public String confirmTargetNutrition(Model model, @ModelAttribute("targetNutritionSession") TargetNutrition targetNutrition, Principal principal) {
 		Authentication auth = (Authentication)principal;
         AccountUserDetails accountUserDetails = (AccountUserDetails)auth.getPrincipal();
@@ -47,7 +48,7 @@ public class TargetNutritionController {
         loginId.setLoginId(accountUserDetails.getUsername());
 		targetNutritionService.setTargetNutrition(targetNutrition, loginId);
 		model.addAttribute("message", "isert target succesess!!!");
-		return "redirect:";
+		return "redirect:/toppage";
 	}
 
 

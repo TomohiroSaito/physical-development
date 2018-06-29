@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/style.css">
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/nutrition/register/confirm_nutrition_register.css">
+<title>ログイン</title>
+</head>
+<body>
+
+	#include("primitive/after_login_header.vm")
+
+	<div class="main-contents">
+		<h2 class="h2">食事登録確認</h2>
+			<form class="nutrition-register-form" action="/PhysicalDevelopment/confirmedNutritionRegister" method="post">
+				<table class="nutrition-register-table">
+					<tr class="nutrition-register-table-line nutrition-register-table-line-top">
+						<td class="nutrition-register-table-data-title">食事名</td>
+						<td class="nutrition-register-table-data-content">
+							<p>${meal.mealName.mealName}</p>
+						</td>
+					</tr>
+					<tr class="nutrition-register-table-line">
+						<td class="nutrition-register-table-data-title">エネルギー</td>
+						<td class="nutrition-register-table-data-content">
+							<p>${meal.oneMealOfNutrients.energyNutrientAmount.nutrientAmount}</p>
+						</td>
+					</tr>
+					<tr class="nutrition-register-table-line">
+						<td class="nutrition-register-table-data-title">たんぱく質</td>
+						<td class="nutrition-register-table-data-content">
+							<p>${meal.oneMealOfNutrients.proteinNutrientAmount.nutrientAmount}</p>
+						</td>
+					</tr>
+					<tr class="nutrition-register-table-line">
+						<td class="nutrition-register-table-data-title">脂質</td>
+						<td class="nutrition-register-table-data-content">
+							<p>${meal.oneMealOfNutrients.lipidNutrientAmount.nutrientAmount}</p>
+						</td>
+					</tr>
+					<tr class="nutrition-register-table-line">
+						<td class="nutrition-register-table-data-title">炭水化物</td>
+						<td class="nutrition-register-table-data-content">
+							<p>${meal.oneMealOfNutrients.carbohydrateNutrientAmount.nutrientAmount}</p>
+						</td>
+					</tr>
+					<tr class="nutrition-register-table-line nutrition-register-table-button nutrition-register-table-line-bottom">
+						<td class="nutrition-register-table-data-title nutrition-register-table-data-title-transition">
+							<button class="nutrition-register-table-data-button" type="button" onclick="history.back()">戻る</button>
+						</td>
+						<td class="nutrition-register-table-data-content nutrition-register-table-data-button">
+							<input class="nutrition-register-table-data-button" type="submit" value="登録">
+						</td>
+					</tr>
+				</table>
+			</form>
+	</div>
+</body>
+</html>

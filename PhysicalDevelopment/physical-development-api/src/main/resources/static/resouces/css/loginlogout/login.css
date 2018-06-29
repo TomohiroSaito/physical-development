@@ -40,10 +40,16 @@
 
 .student-register-button {
 	font-size: 14px;
+	font-weight: bold;
 	width: 100px;
 	height: 30px;
 	float: right;
 	margin: 0 40px 0 0;
+}
+
+.a-link-text {
+	font-weight: normal;
+	font-size: 15px;
 }
 
 .login-table-data-title {
@@ -67,7 +73,7 @@
 .login-table-data-button {
 	text-align: right;
 	border-radius: 5px;
-	padding: 8px 16px;
+	padding: 8px 50px;
 	font-size: 18px;
 	font-weight: bold;
 	margin-top: 50px;

@@ -54,15 +54,15 @@
 			updated_at
 		) VALUES (
 			#{dailyNutrientAmountId.dailyNutrientAmountId},
-			#{evaluation.score.score},
-			#{evaluation.energyHighAndLow.energyHighAndLow},
-			#{evaluation.notSubjectToEvaluation.notSubjectToEvaluation},
+			0,
+			0,
+			#{notSubjectToEvaluation.notSubjectToEvaluation},
 			now(),
 			now()
 		)
 		ON CONFLICT ON CONSTRAINT upst_pkey
 		DO UPDATE SET
-			not_subject_to_evaluation = #{evaluation.notSubjectToEvaluation.notSubjectToEvaluation}
+			not_subject_to_evaluation = #{notSubjectToEvaluation.notSubjectToEvaluation}
 	</select>
 
 	<resultMap id="evaluationMap" type="physicaldevelopment.model.evaluation.Evaluation">

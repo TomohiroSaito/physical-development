@@ -47,8 +47,13 @@ public class EvaluationDaoImpl implements EvaluationDao {
 
 	@Override
 	public void upsertNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
-			Evaluation evaluation) {
-		evaluationMapper.upsertNotSubjectToEvaluation(dailyNutrientAmountId, evaluation);
+			NotSubjectToEvaluation notSubjectToEvaluation) {
+		evaluationMapper.upsertNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
 	}
+
+//	@Override
+//	public void upsertEvaluation(DailyNutrientAmountId dailyNutrientAmountId, Evaluation evaluation) {
+//		evaluationMapper.upsertEvaluation(dailyNutrientAmountId, evaluation);
+//	}
 
 }

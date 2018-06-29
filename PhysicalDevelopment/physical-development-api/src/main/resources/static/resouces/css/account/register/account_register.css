@@ -1,6 +1,16 @@
 @CHARSET "UTF-8";
 
+.error-message {
+	color: #F00;
+}
+
+.account-register-h2 {
+	font-size: 30px;
+	padding: 100px 0 50px 0;
+}
+
 .member-register-table-data-title {
+	width: 150px;
 	font-weight: bold;
 	font-size: 18px;
 /*	padding-right: 250px;*/
@@ -10,7 +20,8 @@
 }
 
 .member-register-table {
-	width: 1040px;
+	width: 800px;
+	margin: auto;
 }
 
 /*.member-register-table-button {
@@ -19,7 +30,6 @@
 }*/
 
 .member-register-table-data-button {
-	text-align: right;
 	border-radius: 5px;
 	padding: 8px 16px;
 	font-size: 18px;
@@ -27,6 +37,25 @@
 	margin-top: 50px;
 	margin-right: 100px;
 /*	cursor: pointer;*/
+}
+
+.buttom-wrap {
+	margin: 50px 200px;
+}
+
+.member-register-button {
+	border-radius: 5px;
+	padding: 8px 16px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 120px;
+}
+.member-register-back-button {
+	border-radius: 5px;
+	padding: 8px 16px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-right: 50px;
 }
 
 .member-register-table-data-title-transition {

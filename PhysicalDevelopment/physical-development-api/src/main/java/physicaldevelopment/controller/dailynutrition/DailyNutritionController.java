@@ -51,6 +51,7 @@ public class DailyNutritionController {
         LoginId loginId = new LoginId(accountUserDetails.getUsername());
 		AccountId accountId = new AccountId(targetNutritionDao.selectAccountId(loginId));
 
+		//今日の1日の栄養素IDを取得
 		Date today = new Date();
 		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutritionId(today, accountId);
 
@@ -60,18 +61,19 @@ public class DailyNutritionController {
 
 		//目標を設定していない場合は目標設定画面に遷移
 		if(null == targetNutrition) {
-			return "redirect:inputTargetNutrition";
+			return "redirect:targetNutrition";
 		}
 
+		//取得した1日の栄養、目標栄養、今日の日付から1日の栄養モデルを作成
 		DailyNutrition dailyNutrition = new DailyNutrition(totalNutrientAmountPerDay, targetNutrition, new YearMonthDay(today));
 		model.addAttribute("dailyNutrition", dailyNutrition);
 
 		//評価計算
 		Evaluation evaluation = evaluationService.calcEvaluation(today, accountId);
-		System.out.println();
+
 		model.addAttribute("evaluation", evaluation);
 		model.addAttribute("yearMonthDay", new YearMonthDay(today));
-		return "dailynutrition/dispDailyNutrition";
+		return "dailynutrition/dailyNutrition";
 	}
 
 	@RequestMapping("/notSubjectToEvaluation")
@@ -88,15 +90,12 @@ public class DailyNutritionController {
 		//日付と会員IDから1日の栄養素IDを取得
 		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutritionId(date, accountId);
 
-		//取得した1日の栄養素IDから栄養素モデルを取得
-		Evaluation tempEvaluation = evaluationDao.selectEvaluation(dailyNutrientAmountId);
-
-		//栄養素モデルの評価対象外を引数の評価対象外に更新
-		Evaluation evaluation = new Evaluation(tempEvaluation, notSubjectToEvaluation);
-
 		//評価テーブルが存在すれば更新、
 		//存在しなければ評価テーブルの挿入
-		evaluationService.upsertEvaluation(dailyNutrientAmountId, evaluation);
+		evaluationService.upsertNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
+
+		//取得した1日の栄養素IDから栄養素モデルを取得
+		Evaluation evaluation = evaluationDao.selectEvaluation(dailyNutrientAmountId);
 
 		model.addAttribute("evaluation", evaluation);
 		return "dailynutrition/evaluation";

@@ -23,6 +23,8 @@ public interface EvaluationDao {
 	void updateEvaluation(DailyNutrientAmountId dailyNutrientAmountId, Score score, EnergyHighAndLow energyHighAndLow);
 
 	void upsertNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
-			Evaluation evaluation);
+			NotSubjectToEvaluation notSubjectToEvaluation);
+
+//	void upsertEvaluation(DailyNutrientAmountId dailyNutrientAmountId, Evaluation evaluation);
 
 }

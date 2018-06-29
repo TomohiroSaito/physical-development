@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/style.css">
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/targetnutrition/target_nutrition.css">
+<title>ログイン</title>
+</head>
+<body>
+
+	#include("primitive/after_login_header.vm")
+
+	<div class="main-contents">
+		<h2 class="h2">目標設定</h2>
+		<form class="target-nutrition-form" action="/PhysicalDevelopment/confirmTargetNutrition" method="post">
+			<table class="target-nutrition-table">
+				<tr class="target-nutrition-table-line">
+					<td class="target-nutrition-table-data-title">エネルギー</td>
+					<td class="nutrition-register-table-data-content">
+						<input class="target-nutrition-input-text" type="text" name="energyTargetNutrientAmount.nutrientAmount.nutrientAmount">kcal
+					</td>
+				</tr>
+				<tr class="target-nutrition-table-line">
+					<td class="target-nutrition-table-data-title">たんぱく質</td>
+					<td class="nutrition-register-table-data-content">
+						<input class="target-nutrition-input-text" type="text" name="proteinTargetNutrientAmount.nutrientAmount.nutrientAmount">g
+					</td>
+				</tr>
+				<tr class="target-nutrition-table-line">
+					<td class="target-nutrition-table-data-title">脂質</td>
+					<td class="nutrition-register-table-data-content">
+						<input class="target-nutrition-input-text" type="text" name="lipidTargetNutrientAmount.nutrientAmount.nutrientAmount">g
+					</td>
+				</tr>
+				<tr class="target-nutrition-table-line">
+					<td class="target-nutrition-table-data-title">炭水化物</td>
+					<td class="nutrition-register-table-data-content">
+						<input class="target-nutrition-input-text" type="text" name="carbohydrateTargetNutrientAmount.nutrientAmount.nutrientAmount">g
+					</td>
+				</tr>
+				<tr class="target-nutrition-table-line">
+					<td class="nutrition-register-table-data-content">
+					</td>
+					<td>
+						<input class="target-nutrition-input-text target-nutrition-table-data-button" type="submit" value="設定">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

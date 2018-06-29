@@ -10,20 +10,8 @@ public class LoginController {
 
 	//ログイン画面の表示
 	@RequestMapping(path="/login", method=RequestMethod.GET)
-	public String viewLoginForm(Model model) {
-		return "login/loginForm";
+	public String viewLogin(Model model) {
+		return "login/login";
 	}
-
-//	@RequestMapping("/")
-//	public String hello(Model model) {
-//		model.addAttribute("message", "login success!!!!");
-//		return "showMessage";
-//	}
-
-//	//ログイン失敗時の処理
-//	@RequestMapping("/loginFailure")
-//	public String loginFailure() {
-//		return "loginFailure";
-//	}
 
 }

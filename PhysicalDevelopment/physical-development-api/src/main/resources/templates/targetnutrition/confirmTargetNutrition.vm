@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/style.css">
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/targetnutrition/confirm_target_nutrition.css">
+<title>ログイン</title>
+</head>
+<body>
+
+	#include("primitive/after_login_header.vm")
+
+	<div class="main-contents">
+		<h2 class="h2">目標設定確認</h2>
+			<form class="student-register-form" action="/PhysicalDevelopment/confirmedTargetNutrition" method="post">
+				<table class="target-nutrition-table">
+					<tr class="target-nutrition-table-line target-nutrition-table-line-top">
+						<td class="target-nutrition-table-data-title">エネルギー</td>
+						<td class="target-nutrition-table-data-content">
+							<p>${targetNutrition.energyTargetNutrientAmount.nutrientAmount.nutrientAmount}</p>
+						</td>
+					</tr>
+					<tr class="target-nutrition-table-line">
+						<td class="target-nutrition-table-data-title">たんぱく質</td>
+						<td class="target-nutrition-table-data-content">
+							<p>${targetNutrition.proteinTargetNutrientAmount.nutrientAmount.nutrientAmount}</p>
+						</td>
+					</tr>
+					<tr class="target-nutrition-table-line">
+						<td class="target-nutrition-table-data-title">脂質</td>
+						<td class="target-nutrition-table-data-content">
+							<p>${targetNutrition.lipidTargetNutrientAmount.nutrientAmount.nutrientAmount}</p>
+						</td>
+					</tr>
+					<tr class="target-nutrition-table-line">
+						<td class="target-nutrition-table-data-title">炭水化物</td>
+						<td class="target-nutrition-table-data-content">
+							<p>${targetNutrition.carbohydrateTargetNutrientAmount.nutrientAmount.nutrientAmount}</p>
+						</td>
+					</tr>
+					<tr class="target-nutrition-table-line target-nutrition-table-button target-nutrition-table-line-bottom">
+						<td class="target-nutrition-table-data-title target-nutrition-table-data-title-transition">
+							<button class="target-nutrition-table-data-button" type="button" onclick="history.back()">戻る</button>
+						</td>
+						<td class="target-nutrition-table-data-content target-nutrition-table-data-button">
+							<input class="target-nutrition-table-data-button" type="submit" value="設定">
+						</td>
+					</tr>
+				</table>
+			</form>
+	</div>
+</body>
+</html>

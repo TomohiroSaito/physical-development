@@ -6,6 +6,16 @@ table {
 	column-rule: solid 6px;
 }
 
+.daily-information {
+	display: flex;
+}
+
+.evaluation-score-paragraph {
+	vertical-align: middle;
+	height: 130px;
+	padding: 0 0 0 100px;
+}
+
 .daily-nutrition-title-wrap {
 	display: flex;
 	width: auto;
@@ -24,9 +34,9 @@ table {
 }
 
 .daily-information {
-	display: flex;
+/*	display: flex;*/
 	width: auto;
-	justify-content: space-between;
+/*	justify-content: space-between;*/
 }
 
 .evaluation-score-paragraph {
@@ -49,6 +59,7 @@ table {
 
 .daily-nutrition-table {
 	font-size: 20px;
+	margin-right: 420px;
 }
 
 .daily-nutrition-table-data-title {

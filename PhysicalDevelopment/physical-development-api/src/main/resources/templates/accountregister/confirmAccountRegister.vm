@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/style.css">
+<link rel="stylesheet"  type="text/css"  href="/PhysicalDevelopment/resouces/css/account/register/confirm_account_register.css">
+<title>会員登録確認</title>
+</head>
+<body>
+
+	<header class="header">
+			<h1 class="h1">
+				<a class="header-contents-a" href="/PhysicalDevelopment/">
+					<img class="header-logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG">
+				</a>
+			</h1>
+		<div class="header-nav-link">
+			<p class="header-nav-link-text nav-link nomal-font"><a href="/PhysicalDevelopment/login" class="nav-link-text-normal">ログイン</a></p>
+		</div>
+	</header>
+
+	<div class="main-contents">
+		<h2 class="h2">会員登録確認</h2>
+		<form class="member-register-form" action="/PhysicalDevelopment/checkedMemberRegister" method="post">
+			<table class="member-register-table">
+				<tr class="member-register-table-line member-register-table-line-top">
+		          <td class="member-register-table-data-title">性別</td>
+		          <td class="member-register-table-data-content">${account.sex.typeName}</td>
+		        </tr>
+		        <tr class="member-register-table-line">
+		          <td class="member-register-table-data-title">生年月日</td>
+		          <td class="member-register-table-data-content">${account.birthday.getBirthdayString()}</td>
+		        </tr>
+				<tr class="member-register-table-line">
+					<td class="member-register-table-data-title">ID</td>
+					<td class="member-register-table-data-content">${account.authentication.loginId.loginId}</td>
+				</tr>
+				<tr class="member-register-table-line">
+					<td class="member-register-table-data-title">パスワード</td>
+					<td class="member-register-table-data-content">${account.authentication.password.password}</td>
+				</tr>
+				<tr class="member-register-table-line member-register-table-button member-register-table-line-bottom">
+					<td class="member-register-table-data-title member-register-table-data-title-transition">
+						<button class="member-register-table-data-button" type="button" onclick="history.back()">戻る</button>
+					</td>
+					<td class="member-register-table-data-content member-register-table-data-button">
+						<button class="member-register-table-data-button" type="submit">会員登録</button>
+					</td>
+				</tr>
+			</table>
+
+	</div>
+</body>
+</html>

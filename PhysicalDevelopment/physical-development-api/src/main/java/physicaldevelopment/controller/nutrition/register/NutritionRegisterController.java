@@ -31,33 +31,42 @@ public class NutritionRegisterController {
 	@Autowired
 	TargetNutritionDao targetNutritionDao;
 
-	@RequestMapping("/inputNutritionRegister")
-	public String inputNutritionRegister(Model model, Principal principal) {
+	@RequestMapping("/nutritionRegister")
+	public String nutritionRegister(Model model, Principal principal) {
+		//ログインIDの取得
 		Authentication auth = (Authentication)principal;
         AccountUserDetails accountUserDetails = (AccountUserDetails)auth.getPrincipal();
         LoginId loginId = new LoginId(accountUserDetails.getUsername());
+
+        //今日の日付をJavaScript表示用にセット
         Date today = new Date();
         model.addAttribute("today", today.getTime());
-        YearMonthDay yearMonthDay = new YearMonthDay(today);
-		int orderOfMeals = mealRegisterService.selectNextOrderOfMeals(yearMonthDay, loginId);
-//		int orderOfMeals = 1;
+
+        //次の食順を取得
+        int orderOfMeals = mealRegisterService.selectNextOrderOfMeals(new YearMonthDay(today), loginId);
 		model.addAttribute("orderOfMeals", orderOfMeals);
-		return "nutritionregister/inputNutritionRegister";
+		return "nutritionregister/nutritionRegister";
 	}
 
-	@RequestMapping(path="/checkNutritionRegister", method=RequestMethod.POST)
-	public String checkNutritionRegister(@ModelAttribute Meal meal , Model model, String strOrderOfMeals) {
+	@RequestMapping(path="/confirmNutritionRegister", method=RequestMethod.POST)
+	public String confirmNutritionRegister(@ModelAttribute Meal meal , Model model, String strOrderOfMeals) {
+		//食順を画面から取得
 		meal.setOrderOfMeals(new OrderOfMeals(Integer.parseInt(strOrderOfMeals)));
+
+		//日付型に変換
 		meal.getYearMonthDay().asYearMonthDay();
+
+		//栄養モデル(enum)の作成
 		meal.getOneMealOfNutrients().getEnergyNutrientAmount().setNutrition(Nutrition.ENERGY);
 		meal.getOneMealOfNutrients().getProteinNutrientAmount().setNutrition(Nutrition.PROTEIN);
 		meal.getOneMealOfNutrients().getLipidNutrientAmount().setNutrition(Nutrition.LIPID);
 		meal.getOneMealOfNutrients().getCarbohydrateNutrientAmount().setNutrition(Nutrition.CARBOHYDRATE);
+
 		model.addAttribute("nutritionSession", meal);
-		return "nutritionregister/checkNutritionRegister";
+		return "nutritionregister/confirmNutritionRegister";
 	}
 
-	@RequestMapping("/confirmNutritionRegister")
+	@RequestMapping("/confirmedNutritionRegister")
 	public String confirmNutritionRegister(Model model, @ModelAttribute("nutritionSession") Meal meal, Principal principal) {
 		//会員IDの取得
 		Authentication auth = (Authentication)principal;
@@ -68,7 +77,7 @@ public class NutritionRegisterController {
 		//食事の登録
 		mealRegisterService.registerMeal(meal, accountId);
 		model.addAttribute("message", "isert meal succesess!!!");
-		return "redirect:";
+		return "redirect:/toppage";
 	}
 
 

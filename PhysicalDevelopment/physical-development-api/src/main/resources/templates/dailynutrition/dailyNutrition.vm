@@ -12,20 +12,8 @@
 <title>ログイン</title>
 </head>
 <body>
-	<header class="header">
-			<h1 class="h1">
-				<a class="header-contents-a" href="/PhysicalDevelopment/">
-					<img class="header-logo" src="/PhysicalDevelopment/resouces/photo/身体開発.JPG">
-				</a>
-			</h1>
-		<div class="header-nav-link">
-			<p class="header-nav-link-text"><a href="/PhysicalDevelopment/inputNutritionRegister" class="">食事登録</a></p>
-			<p class="header-nav-link-text"><a href="/PhysicalDevelopment/inputTargetNutrition" class="">目標設定</a></p>
-			<p class="header-nav-link-text"><a href="/PhysicalDevelopment/" class="">1カ月の評価</a></p>
-			<p class="header-nav-link-text nav-link nomal-font"><a href="/PhysicalDevelopment/auth/logout" class="nav-link-text-normal">ログアウト</a></p>
-		</div>
-	</header>
 
+	#include("primitive/after_login_header.vm")
 
 <script>
 var energy_target,protein_target,lipid_target,carbohydrate_target,energy_today,protein_today,lipid_today,carbohydrate_today,energy_remaining,protein_remaining,lipid_remaining,carbohydrate_remaining,target;
@@ -54,7 +42,7 @@ carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 				<a class="" href="/PhysicalDevelopment/">食事一覧</a>
 			</p>
 			<p class="daily-nutrition-link">
-				<a class="" href="/PhysicalDevelopment/inputTargetNutrition">目標設定</a>
+				<a class="" href="/PhysicalDevelopment/targetNutrition">目標設定</a>
 			</p>
 			<p class="daily-nutrition-link">
 				<a class="" href="/PhysicalDevelopment/">1ヵ月の評価</a>
@@ -68,27 +56,7 @@ carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 		<div id="evaluation">
 			#parse("dailynutrition/evaluation.vm")
 		</div>
-		<table class="daily-nutrition-table" rules="groups">
-
-			<tfoot>
-				<tr>
-					<td class="daily-nutrition-table-data-title">残り</td>
-					<td class="daily-nutrition-table-data-content">
-						エネルギー: <span id="energy_remaining"></span>kcal
-					</td>
-					<td class="daily-nutrition-table-data-content">
-						たんぱく質: <span id="protein_remaining"></span>g
-					</td>
-					<td class="daily-nutrition-table-data-content">
-						脂質: <span id="lipid_remaining"></span>g
-					</td>
-					<td class="daily-nutrition-table-data-content">
-						炭水化物: <span id="carbohydrate_remaining"></span>g
-					</td>
-				</tr>
-			</tfoot>
-
-			<tbody>
+<!--		<table class="daily-nutrition-table">
 				<tr>
 					<td class="daily-nutrition-table-data-title">目標</td>
 					<td class="daily-nutrition-table-data-content">
@@ -119,8 +87,70 @@ carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 						炭水化物: <span id="carbohydrate_today"></span>g
 					</td>
 				</tr>
-			</tbody>
-		</table>
+				<tr>
+					<td class="daily-nutrition-table-data-title">残り</td>
+					<td class="daily-nutrition-table-data-content">
+						エネルギー: <span id="energy_remaining"></span>kcal
+					</td>
+					<td class="daily-nutrition-table-data-content">
+						たんぱく質: <span id="protein_remaining"></span>g
+					</td>
+					<td class="daily-nutrition-table-data-content">
+						脂質: <span id="lipid_remaining"></span>g
+					</td>
+					<td class="daily-nutrition-table-data-content">
+						炭水化物: <span id="carbohydrate_remaining"></span>g
+					</td>
+				</tr>
+		</table> -->
+		<div class="daily-nutrition-information-wrap">
+				<p>
+					<span class="daily-nutrition-table-data-title">目標</span>
+					<span class="daily-nutrition-table-data-content">
+						エネルギー: <span id="energy_target"></span>kcal
+					</span>
+					<span class="daily-nutrition-table-data-content">
+						たんぱく質: <span id="protein_target"></span>g
+					</span>
+					<span class="daily-nutrition-table-data-content">
+						脂質: <span id="lipid_target"></span>g
+					</span>
+					<span class="daily-nutrition-table-data-content">
+						炭水化物: <span id="carbohydrate_target"></span>g
+					</span>
+				</p>
+				<p>
+					<span class="daily-nutrition-table-data-title">本日</span>
+					<span class="daily-nutrition-table-data-content">
+						エネルギー: <span id="energy_today"></span>kcal
+					</span>
+					<span class="daily-nutrition-table-data-content">
+						たんぱく質: <span id="protein_today"></span>g
+					</span>
+					<span class="daily-nutrition-table-data-content">
+						脂質: <span id="lipid_today"></span>g
+					</span>
+					<span class="daily-nutrition-table-data-content">
+						炭水化物: <span id="carbohydrate_today"></span>g
+					</span>
+				</p>
+				<p>
+					<span class="daily-nutrition-table-data-title">残り</span>
+					<span class="daily-nutrition-table-data-content">
+						エネルギー: <span id="energy_remaining"></span>kcal
+					</tdspan
+					<span class="daily-nutrition-table-data-content">
+						たんぱく質: <span id="protein_remaining"></span>g
+					</span>
+					<span class="daily-nutrition-table-data-content">
+						脂質: <span id="lipid_remaining"></span>g
+					</span>
+					<span class="daily-nutrition-table-data-content">
+						炭水化物: <span id="carbohydrate_remaining"></span>g
+					</span>
+				</p>
+			</div>
+
 	</div>
 
 	<div id="output">
@@ -140,12 +170,9 @@ lipid_percent = lipid_today / lipid_target * 100;
 carbohydrate_percent = carbohydrate_today / carbohydrate_target * 100;
 </script>
 
-<script type="text/javascript" src="/PhysicalDevelopment/resouces/jquery/dailynutrition/daily_nutrition_graph.js">
-</script>
-
 #parse("dailynutrition/notSubjectToEvaluation.vm")評価対象外にする
 
-<script type="text/javascript" src="/PhysicalDevelopment/resouces/jquery/dailynutrition/ajax.js">
+<script type="text/javascript" src="/PhysicalDevelopment/resouces/javascript/dailynutrition/daily_nutrition.js">
 </script>
 
 </body>
