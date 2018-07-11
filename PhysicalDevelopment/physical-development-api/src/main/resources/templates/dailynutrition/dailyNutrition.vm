@@ -134,6 +134,7 @@ carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 						炭水化物: <span id="carbohydrate_today"></span>g
 					</span>
 				</p>
+				<hr>
 				<p>
 					<span class="daily-nutrition-table-data-title">残り</span>
 					<span class="daily-nutrition-table-data-content">

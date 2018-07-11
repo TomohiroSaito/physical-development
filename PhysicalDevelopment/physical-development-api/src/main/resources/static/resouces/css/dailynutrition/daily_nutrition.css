@@ -39,6 +39,10 @@ table {
 /*	justify-content: space-between;*/
 }
 
+.daily-nutrition-information-wrap {
+	margin: auto;
+}
+
 .evaluation-score-paragraph {
 	display: flex;
 	align-items: center;
