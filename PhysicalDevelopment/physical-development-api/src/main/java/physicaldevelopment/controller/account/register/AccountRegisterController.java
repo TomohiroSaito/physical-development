@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import physicaldevelopment.model.account.Account;
 import physicaldevelopment.service.account.register.AccountRegisterService;
 
-@SessionAttributes(value="accountSession")
+@SessionAttributes(value = "accountSession")
 @Controller
 public class AccountRegisterController {
 	@Autowired
@@ -27,17 +27,18 @@ public class AccountRegisterController {
 		return "accountregister/accountRegister";
 	}
 
-	@RequestMapping(path="/newMemberRegister", method=RequestMethod.POST)
-	public String newMemberRegister(@Validated @ModelAttribute Account account , BindingResult bindingResult, Model model) {
-		//バリデーション
-		if(bindingResult.hasErrors()) {
+	@RequestMapping(path = "/newMemberRegister", method = RequestMethod.POST)
+	public String newMemberRegister(@Validated @ModelAttribute Account account,
+			BindingResult bindingResult, Model model) {
+		// バリデーション
+		if (bindingResult.hasErrors()) {
 			// 入力エラーがあれば、会員登録入力画面にエラーを渡す
 			List<ObjectError> errors = bindingResult.getAllErrors();
 			model.addAttribute("errors", errors);
 			return "accountregister/accountRegister";
 		}
 
-		//入力エラーがなければ、会員登録確認画面に遷移
+		// 入力エラーがなければ、会員登録確認画面に遷移
 		account.getBirthday().asBirthday();
 		model.addAttribute("accountSession", account);
 
@@ -45,9 +46,10 @@ public class AccountRegisterController {
 	}
 
 	@RequestMapping("/checkedMemberRegister")
-	public String checkedMemberRegister(Model model, @ModelAttribute("accountSession") Account account) {
-		//会員登録が完了すれば、トップページにリダイレクト
-		//※この処理いらない？
+	public String checkedMemberRegister(Model model,
+			@ModelAttribute("accountSession") Account account) {
+		// 会員登録が完了すれば、トップページにリダイレクト
+		// ※この処理いらない？
 		accountRegisterService.registerAccount(account);
 		model.addAttribute("message", "isert succesess!!!");
 		return "redirect:";

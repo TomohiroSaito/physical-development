@@ -18,14 +18,17 @@ public class DailyNutritionDaoImpl implements DailyNutritionDao {
 
 	@Override
 	public DailyNutrientAmountId selectNextDailyNutrientAmountId() {
-		DailyNutrientAmountId dailyNutrientAmountId = new DailyNutrientAmountId(dailyNutritionMapper.selectNextDailyNutrientAmountId());
+		DailyNutrientAmountId dailyNutrientAmountId = new DailyNutrientAmountId(
+				dailyNutritionMapper.selectNextDailyNutrientAmountId());
 		return dailyNutrientAmountId;
 	}
 
 	@Override
-	public void insertDailyNutrition(DailyNutrientAmountId nextDailyNutrientAmountId, AccountId accountId,
-			Date date) {
-		dailyNutritionMapper.insertDailyNutrition(nextDailyNutrientAmountId, accountId, date);
+	public void insertDailyNutrition(
+			DailyNutrientAmountId nextDailyNutrientAmountId,
+			AccountId accountId, Date date) {
+		dailyNutritionMapper.insertDailyNutrition(nextDailyNutrientAmountId,
+				accountId, date);
 	}
 
 	@Override
@@ -34,33 +37,45 @@ public class DailyNutritionDaoImpl implements DailyNutritionDao {
 	}
 
 	@Override
-	public DailyNutrientAmountId selectDailyNutrientAmountId(Date date, AccountId accountId) {
-		return dailyNutritionMapper.selectDailyNutrientAmountId(date, accountId);
+	public DailyNutrientAmountId selectDailyNutrientAmountId(Date date,
+			AccountId accountId) {
+		return dailyNutritionMapper
+				.selectDailyNutrientAmountId(date, accountId);
 	}
 
 	@Override
-	public NutrientAmount selectEnergyTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId) {
-		return dailyNutritionMapper.selectEnergyTotalNutrientAmountPerDay(dailyNutrientAmountId);
+	public NutrientAmount selectEnergyTotalNutrientAmountPerDay(
+			DailyNutrientAmountId dailyNutrientAmountId) {
+		return dailyNutritionMapper
+				.selectEnergyTotalNutrientAmountPerDay(dailyNutrientAmountId);
 	}
 
 	@Override
-	public NutrientAmount selectProteinTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId) {
-		return dailyNutritionMapper.selectProteinTotalNutrientAmountPerDay(dailyNutrientAmountId);
+	public NutrientAmount selectProteinTotalNutrientAmountPerDay(
+			DailyNutrientAmountId dailyNutrientAmountId) {
+		return dailyNutritionMapper
+				.selectProteinTotalNutrientAmountPerDay(dailyNutrientAmountId);
 	}
 
 	@Override
-	public NutrientAmount selectLipidTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId) {
-		return dailyNutritionMapper.selectLipidTotalNutrientAmountPerDay(dailyNutrientAmountId);
+	public NutrientAmount selectLipidTotalNutrientAmountPerDay(
+			DailyNutrientAmountId dailyNutrientAmountId) {
+		return dailyNutritionMapper
+				.selectLipidTotalNutrientAmountPerDay(dailyNutrientAmountId);
 	}
 
 	@Override
-	public NutrientAmount selectCarbohydrateTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId) {
-		return dailyNutritionMapper.selectCarbohydrateTotalNutrientAmountPerDay(dailyNutrientAmountId);
+	public NutrientAmount selectCarbohydrateTotalNutrientAmountPerDay(
+			DailyNutrientAmountId dailyNutrientAmountId) {
+		return dailyNutritionMapper
+				.selectCarbohydrateTotalNutrientAmountPerDay(dailyNutrientAmountId);
 	}
 
 	@Override
-	public NotSubjectToEvaluation selectNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId) {
-		return dailyNutritionMapper.selectNotSubjectToEvaluation(dailyNutrientAmountId);
+	public NotSubjectToEvaluation selectNotSubjectToEvaluation(
+			DailyNutrientAmountId dailyNutrientAmountId) {
+		return dailyNutritionMapper
+				.selectNotSubjectToEvaluation(dailyNutrientAmountId);
 	}
 
 }

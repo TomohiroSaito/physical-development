@@ -23,33 +23,41 @@ public class TargetNutritionController {
 	@Autowired
 	TargetNutritionService targetNutritionService;
 
-
 	@RequestMapping("/targetNutrition")
 	public String targetNutrition() {
 		return "targetnutrition/targetNutrition";
 	}
 
-	@RequestMapping(path="/confirmTargetNutrition", method=RequestMethod.POST)
-	public String confirmTargetNutrition(@ModelAttribute TargetNutrition targetNutrition , Model model) {
+	@RequestMapping(path = "/confirmTargetNutrition", method = RequestMethod.POST)
+	public String confirmTargetNutrition(
+			@ModelAttribute TargetNutrition targetNutrition, Model model) {
 		//
-		targetNutrition.getEnergyTargetNutrientAmount().getNutrientAmount().setNutrition(Nutrition.ENERGY);
-		targetNutrition.getProteinTargetNutrientAmount().getNutrientAmount().setNutrition(Nutrition.PROTEIN);
-		targetNutrition.getLipidTargetNutrientAmount().getNutrientAmount().setNutrition(Nutrition.LIPID);
-		targetNutrition.getCarbohydrateTargetNutrientAmount().getNutrientAmount().setNutrition(Nutrition.CARBOHYDRATE);
+		targetNutrition.getEnergyTargetNutrientAmount().getNutrientAmount()
+				.setNutrition(Nutrition.ENERGY);
+		targetNutrition.getProteinTargetNutrientAmount().getNutrientAmount()
+				.setNutrition(Nutrition.PROTEIN);
+		targetNutrition.getLipidTargetNutrientAmount().getNutrientAmount()
+				.setNutrition(Nutrition.LIPID);
+		targetNutrition.getCarbohydrateTargetNutrientAmount()
+				.getNutrientAmount().setNutrition(Nutrition.CARBOHYDRATE);
 		model.addAttribute("targetNutritionSession", targetNutrition);
 		return "targetnutrition/confirmTargetNutrition";
 	}
 
 	@RequestMapping("/confirmedTargetNutrition")
-	public String confirmTargetNutrition(Model model, @ModelAttribute("targetNutritionSession") TargetNutrition targetNutrition, Principal principal) {
-		Authentication auth = (Authentication)principal;
-        AccountUserDetails accountUserDetails = (AccountUserDetails)auth.getPrincipal();
-        LoginId loginId = new LoginId();;
-        loginId.setLoginId(accountUserDetails.getUsername());
+	public String confirmTargetNutrition(
+			Model model,
+			@ModelAttribute("targetNutritionSession") TargetNutrition targetNutrition,
+			Principal principal) {
+		Authentication auth = (Authentication) principal;
+		AccountUserDetails accountUserDetails = (AccountUserDetails) auth
+				.getPrincipal();
+		LoginId loginId = new LoginId();
+		;
+		loginId.setLoginId(accountUserDetails.getUsername());
 		targetNutritionService.setTargetNutrition(targetNutrition, loginId);
 		model.addAttribute("message", "isert target succesess!!!");
 		return "redirect:/toppage";
 	}
-
 
 }

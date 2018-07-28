@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import physicaldevelopment.model.account.Account;
 import physicaldevelopment.service.account.AccountService;
 
-public class InputLoginIdValidator implements ConstraintValidator<LoginIdValid, Account> {
+public class InputLoginIdValidator implements
+		ConstraintValidator<LoginIdValid, Account> {
 
 	@Autowired
 	private AccountService accountService;
@@ -23,11 +24,11 @@ public class InputLoginIdValidator implements ConstraintValidator<LoginIdValid, 
 
 	@Override
 	public boolean isValid(Account account, ConstraintValidatorContext context) {
-		if(accountService.existLoginId(account.getAuthentication().getLoginId())) {
+		if (accountService.existLoginId(account.getAuthentication()
+				.getLoginId())) {
 			return false;
 		}
 		return true;
 	}
-
 
 }

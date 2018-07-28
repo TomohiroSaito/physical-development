@@ -3,7 +3,9 @@ package physicaldevelopment.model.evaluation;
 public class EnergyHighAndLow {
 	private Integer energyHighAndLow;
 
-	public EnergyHighAndLow() {}
+	public EnergyHighAndLow() {
+	}
+
 	public EnergyHighAndLow(Integer energyHighAndLow) {
 		this.energyHighAndLow = energyHighAndLow;
 	}

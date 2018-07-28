@@ -11,20 +11,25 @@ import physicaldevelopment.model.evaluation.Score;
 @Repository
 public interface EvaluationDao {
 
-	void insertEvaluation(DailyNutrientAmountId dailyNutrientAmountId, Evaluation evaluation);
+	void insertEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+			Evaluation evaluation);
 
-	void updateNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+	void updateNotSubjectToEvaluation(
+			DailyNutrientAmountId dailyNutrientAmountId,
 			NotSubjectToEvaluation notSubjectToEvaluation);
 
 	Boolean existEvaluation(DailyNutrientAmountId dailyNutrientAmountId);
 
 	Evaluation selectEvaluation(DailyNutrientAmountId dailyNutrientAmountId);
 
-	void updateEvaluation(DailyNutrientAmountId dailyNutrientAmountId, Score score, EnergyHighAndLow energyHighAndLow);
+	void updateEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+			Score score, EnergyHighAndLow energyHighAndLow);
 
-	void upsertNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+	void upsertNotSubjectToEvaluation(
+			DailyNutrientAmountId dailyNutrientAmountId,
 			NotSubjectToEvaluation notSubjectToEvaluation);
 
-//	void upsertEvaluation(DailyNutrientAmountId dailyNutrientAmountId, Evaluation evaluation);
+	// void upsertEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+	// Evaluation evaluation);
 
 }

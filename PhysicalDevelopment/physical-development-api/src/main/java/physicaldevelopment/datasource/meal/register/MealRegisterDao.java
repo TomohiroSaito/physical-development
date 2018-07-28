@@ -7,23 +7,29 @@ import physicaldevelopment.model.nutrition.NutrientAmount;
 import physicaldevelopment.model.primitive.YearMonthDay;
 
 public interface MealRegisterDao {
-	void registerMeal(Meal meal, Integer dailyNutrientAmount, Integer manualEntryOfNutrientsId);
+	void registerMeal(Meal meal, Integer dailyNutrientAmount,
+			Integer manualEntryOfNutrientsId);
 
 	Integer selectNextMealId();
 
 	Integer selectNextManualEntryOfNutrients();
 
-	Integer selectDailyNutrientAmountId(YearMonthDay yearMonthDay, AccountId accountId);
+	Integer selectDailyNutrientAmountId(YearMonthDay yearMonthDay,
+			AccountId accountId);
 
 	Integer selectMaxOrderOfMeals(DailyNutrientAmountId dailyNutrientAmountId);
 
-	void insertEnergyMealManual(Meal meal, Integer manualEntryOfNutrientsId, NutrientAmount energyNutrientAmount);
+	void insertEnergyMealManual(Meal meal, Integer manualEntryOfNutrientsId,
+			NutrientAmount energyNutrientAmount);
 
-	void insertProteinMealManual(Meal meal, Integer manualEntryOfNutrientsId, NutrientAmount proteinNutrientAmount);
+	void insertProteinMealManual(Meal meal, Integer manualEntryOfNutrientsId,
+			NutrientAmount proteinNutrientAmount);
 
-	void insertCarbohydrateMealManual(Meal meal, Integer manualEntryOfNutrientsId,
+	void insertCarbohydrateMealManual(Meal meal,
+			Integer manualEntryOfNutrientsId,
 			NutrientAmount carbohydrateNutrientAmount);
 
-	void insertLipidMealManual(Meal meal, Integer manualEntryOfNutrientsId, NutrientAmount lipidNutrientAmount);
+	void insertLipidMealManual(Meal meal, Integer manualEntryOfNutrientsId,
+			NutrientAmount lipidNutrientAmount);
 
 }

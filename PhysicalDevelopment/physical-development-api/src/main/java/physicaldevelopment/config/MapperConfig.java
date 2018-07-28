@@ -1,4 +1,5 @@
 package physicaldevelopment.config;
+
 //package sankutyu.config;
 //
 //import org.springframework.context.annotation.Configuration;
@@ -8,4 +9,4 @@ package physicaldevelopment.config;
 //@ImportResource("classpath:/physicaldevelopment/mapper/AccountRegisterMapper.xml")
 //public class MapperConfig {
 //
-//}
+// }

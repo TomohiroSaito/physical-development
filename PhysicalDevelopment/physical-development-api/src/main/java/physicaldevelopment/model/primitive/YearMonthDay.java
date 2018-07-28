@@ -9,7 +9,8 @@ public class YearMonthDay {
 	private String month;
 	private String day;
 
-	public YearMonthDay() {}
+	public YearMonthDay() {
+	}
 
 	public YearMonthDay(Date yearMonthDay) {
 		this.yearMonthDay = yearMonthDay;
@@ -19,7 +20,7 @@ public class YearMonthDay {
 		int intYear = Integer.parseInt(year);
 		int intMonth = Integer.parseInt(month);
 		int intDay = Integer.parseInt(day);
-		this.yearMonthDay = new Date(intYear-1900, intMonth-1, intDay);
+		this.yearMonthDay = new Date(intYear - 1900, intMonth - 1, intDay);
 	}
 
 	@Override

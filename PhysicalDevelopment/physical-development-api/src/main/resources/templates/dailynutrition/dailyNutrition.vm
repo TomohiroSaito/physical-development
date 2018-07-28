@@ -56,53 +56,6 @@ carbohydrate_remaining = carbohydrate_target - carbohydrate_today;
 		<div id="evaluation">
 			#parse("dailynutrition/evaluation.vm")
 		</div>
-<!--		<table class="daily-nutrition-table">
-				<tr>
-					<td class="daily-nutrition-table-data-title">目標</td>
-					<td class="daily-nutrition-table-data-content">
-						エネルギー: <span id="energy_target"></span>kcal
-					</td>
-					<td class="daily-nutrition-table-data-content">
-						たんぱく質: <span id="protein_target"></span>g
-					</td>
-					<td class="daily-nutrition-table-data-content">
-						脂質: <span id="lipid_target"></span>g
-					</td>
-					<td class="daily-nutrition-table-data-content">
-						炭水化物: <span id="carbohydrate_target"></span>g
-					</td>
-				</tr>
-				<tr>
-					<td class="daily-nutrition-table-data-title">本日</td>
-					<td class="daily-nutrition-table-data-content">
-						エネルギー: <span id="energy_today"></span>kcal
-					</td>
-					<td class="daily-nutrition-table-data-content">
-						たんぱく質: <span id="protein_today"></span>g
-					</td>
-					<td class="daily-nutrition-table-data-content">
-						脂質: <span id="lipid_today"></span>g
-					</td>
-					<td class="daily-nutrition-table-data-content">
-						炭水化物: <span id="carbohydrate_today"></span>g
-					</td>
-				</tr>
-				<tr>
-					<td class="daily-nutrition-table-data-title">残り</td>
-					<td class="daily-nutrition-table-data-content">
-						エネルギー: <span id="energy_remaining"></span>kcal
-					</td>
-					<td class="daily-nutrition-table-data-content">
-						たんぱく質: <span id="protein_remaining"></span>g
-					</td>
-					<td class="daily-nutrition-table-data-content">
-						脂質: <span id="lipid_remaining"></span>g
-					</td>
-					<td class="daily-nutrition-table-data-content">
-						炭水化物: <span id="carbohydrate_remaining"></span>g
-					</td>
-				</tr>
-		</table> -->
 		<div class="daily-nutrition-information-wrap">
 				<p>
 					<span class="daily-nutrition-table-data-title">目標</span>

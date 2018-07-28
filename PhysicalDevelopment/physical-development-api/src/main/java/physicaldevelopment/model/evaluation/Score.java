@@ -3,7 +3,8 @@ package physicaldevelopment.model.evaluation;
 public class Score {
 	private Integer score;
 
-	public Score() {}
+	public Score() {
+	}
 
 	public Score(Integer score) {
 		this.score = score;

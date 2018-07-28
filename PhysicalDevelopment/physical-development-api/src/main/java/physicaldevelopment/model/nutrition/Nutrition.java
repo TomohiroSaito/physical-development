@@ -1,10 +1,7 @@
 package physicaldevelopment.model.nutrition;
 
 public enum Nutrition {
-	ENERGY("エネルギー"),
-	PROTEIN("たんぱく質"),
-	LIPID("脂質"),
-	CARBOHYDRATE("炭水化物");
+	ENERGY("エネルギー"), PROTEIN("たんぱく質"), LIPID("脂質"), CARBOHYDRATE("炭水化物");
 
 	private final String typeName;
 

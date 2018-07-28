@@ -26,32 +26,54 @@ public class TargetNutritionDaoImpl implements TargetNutritionDao {
 	}
 
 	@Override
-	public void insertEnergyTargetNutrition(AccountId accountId, TargetNutrition targetNutrition) {
-		TargetNutrientAmount energyTargetNutrientAmount = targetNutrition.getEnergyTargetNutrientAmount();
-		targetNutritionMapper.insertTargetNutrition(accountId, targetNutrition, energyTargetNutrientAmount.getNutrientAmount(), targetNutrition.getEnergyTargetNutrientAmount().getTargetNutrientAmountId());
+	public void insertEnergyTargetNutrition(AccountId accountId,
+			TargetNutrition targetNutrition) {
+		TargetNutrientAmount energyTargetNutrientAmount = targetNutrition
+				.getEnergyTargetNutrientAmount();
+		targetNutritionMapper.insertTargetNutrition(accountId, targetNutrition,
+				energyTargetNutrientAmount.getNutrientAmount(), targetNutrition
+						.getEnergyTargetNutrientAmount()
+						.getTargetNutrientAmountId());
 	}
 
 	@Override
-	public void insertProteinTargetNutrition(AccountId accountId, TargetNutrition targetNutrition) {
-		TargetNutrientAmount proteinTargetNutrientAmount = targetNutrition.getProteinTargetNutrientAmount();
-		targetNutritionMapper.insertTargetNutrition(accountId, targetNutrition, proteinTargetNutrientAmount.getNutrientAmount(), targetNutrition.getProteinTargetNutrientAmount().getTargetNutrientAmountId());
+	public void insertProteinTargetNutrition(AccountId accountId,
+			TargetNutrition targetNutrition) {
+		TargetNutrientAmount proteinTargetNutrientAmount = targetNutrition
+				.getProteinTargetNutrientAmount();
+		targetNutritionMapper.insertTargetNutrition(accountId, targetNutrition,
+				proteinTargetNutrientAmount.getNutrientAmount(),
+				targetNutrition.getProteinTargetNutrientAmount()
+						.getTargetNutrientAmountId());
 	}
 
 	@Override
-	public void insertLipidTargetNutrition(AccountId accountId, TargetNutrition targetNutrition) {
-		TargetNutrientAmount lipidTargetNutrientAmount = targetNutrition.getLipidTargetNutrientAmount();
-		targetNutritionMapper.insertTargetNutrition(accountId, targetNutrition, lipidTargetNutrientAmount.getNutrientAmount(), targetNutrition.getLipidTargetNutrientAmount().getTargetNutrientAmountId());
+	public void insertLipidTargetNutrition(AccountId accountId,
+			TargetNutrition targetNutrition) {
+		TargetNutrientAmount lipidTargetNutrientAmount = targetNutrition
+				.getLipidTargetNutrientAmount();
+		targetNutritionMapper.insertTargetNutrition(accountId, targetNutrition,
+				lipidTargetNutrientAmount.getNutrientAmount(), targetNutrition
+						.getLipidTargetNutrientAmount()
+						.getTargetNutrientAmountId());
 	}
 
 	@Override
-	public void insertCarbohydrateTargetNutrition(AccountId accountId, TargetNutrition targetNutrition) {
-		TargetNutrientAmount carbohydrateTargetNutrientAmount = targetNutrition.getCarbohydrateTargetNutrientAmount();
-		targetNutritionMapper.insertTargetNutrition(accountId, targetNutrition, carbohydrateTargetNutrientAmount.getNutrientAmount(), targetNutrition.getCarbohydrateTargetNutrientAmount().getTargetNutrientAmountId());
+	public void insertCarbohydrateTargetNutrition(AccountId accountId,
+			TargetNutrition targetNutrition) {
+		TargetNutrientAmount carbohydrateTargetNutrientAmount = targetNutrition
+				.getCarbohydrateTargetNutrientAmount();
+		targetNutritionMapper.insertTargetNutrition(accountId, targetNutrition,
+				carbohydrateTargetNutrientAmount.getNutrientAmount(),
+				targetNutrition.getCarbohydrateTargetNutrientAmount()
+						.getTargetNutrientAmountId());
 	}
 
 	@Override
-	public void insertLatestTargetNutrientAmount(TargetNutrientAmountId targetNutrientAmountId) {
-		targetNutritionMapper.insertLatestTargetNutrientAmount(targetNutrientAmountId);
+	public void insertLatestTargetNutrientAmount(
+			TargetNutrientAmountId targetNutrientAmountId) {
+		targetNutritionMapper
+				.insertLatestTargetNutrientAmount(targetNutrientAmountId);
 	}
 
 	@Override
@@ -70,33 +92,43 @@ public class TargetNutritionDaoImpl implements TargetNutritionDao {
 	}
 
 	@Override
-	public TargetNutrientAmount selectCarbohydrateTargetNutrition(AccountId accountId) {
-		return targetNutritionMapper.selectCarbohydrateTargetNutrition(accountId);
+	public TargetNutrientAmount selectCarbohydrateTargetNutrition(
+			AccountId accountId) {
+		return targetNutritionMapper
+				.selectCarbohydrateTargetNutrition(accountId);
 	}
 
 	@Override
-	public TargetNutrientAmountId selectEnergyTargetNutritionId(AccountId accountId) {
+	public TargetNutrientAmountId selectEnergyTargetNutritionId(
+			AccountId accountId) {
 		return targetNutritionMapper.selectEnergyTargetNutritionId(accountId);
 	}
 
 	@Override
-	public TargetNutrientAmountId selectProteinTargetNutritionId(AccountId accountId) {
+	public TargetNutrientAmountId selectProteinTargetNutritionId(
+			AccountId accountId) {
 		return targetNutritionMapper.selectProteinTargetNutritionId(accountId);
 	}
 
 	@Override
-	public TargetNutrientAmountId selectLipidTargetNutritionId(AccountId accountId) {
+	public TargetNutrientAmountId selectLipidTargetNutritionId(
+			AccountId accountId) {
 		return targetNutritionMapper.selectLipidTargetNutritionId(accountId);
 	}
 
 	@Override
-	public TargetNutrientAmountId selectCarbohydrateTargetNutritionId(AccountId accountId) {
-		return targetNutritionMapper.selectCarbohydrateTargetNutritionId(accountId);
+	public TargetNutrientAmountId selectCarbohydrateTargetNutritionId(
+			AccountId accountId) {
+		return targetNutritionMapper
+				.selectCarbohydrateTargetNutritionId(accountId);
 	}
 
 	@Override
-	public void updateLatestTargetNutrientAmount(TargetNutrientAmountId targetNutrientAmountId, TargetNutrientAmountId existTargetNutrientAmountId) {
-		targetNutritionMapper.updateLatestTargetNutrientAmount(targetNutrientAmountId, existTargetNutrientAmountId);
+	public void updateLatestTargetNutrientAmount(
+			TargetNutrientAmountId targetNutrientAmountId,
+			TargetNutrientAmountId existTargetNutrientAmountId) {
+		targetNutritionMapper.updateLatestTargetNutrientAmount(
+				targetNutrientAmountId, existTargetNutrientAmountId);
 	}
 
 }

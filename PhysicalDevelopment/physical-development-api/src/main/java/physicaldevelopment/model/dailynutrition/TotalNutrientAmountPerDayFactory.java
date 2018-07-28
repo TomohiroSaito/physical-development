@@ -17,8 +17,10 @@ public class TotalNutrientAmountPerDayFactory extends Factory {
 
 	@Override
 	protected Product createProduct(Date date, AccountId accountId) {
-		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutritionId(date, accountId);
-		TotalNutrientAmountPerDay totalNutrientAmountPerDay = dailyNutritionService.createTotalNutrientAmountPerDay(dailyNutrientAmountId);
+		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService
+				.selectDailyNutritionId(date, accountId);
+		TotalNutrientAmountPerDay totalNutrientAmountPerDay = dailyNutritionService
+				.createTotalNutrientAmountPerDay(dailyNutrientAmountId);
 		return new TotalNutrientAmountPerDay();
 	}
 

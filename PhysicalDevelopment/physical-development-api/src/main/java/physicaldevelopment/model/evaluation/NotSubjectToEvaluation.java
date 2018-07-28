@@ -3,7 +3,9 @@ package physicaldevelopment.model.evaluation;
 public class NotSubjectToEvaluation {
 	private Boolean notSubjectToEvaluation;
 
-	public NotSubjectToEvaluation() {}
+	public NotSubjectToEvaluation() {
+	}
+
 	public NotSubjectToEvaluation(Boolean notSubjectToEvaluation) {
 		this.notSubjectToEvaluation = notSubjectToEvaluation;
 	}

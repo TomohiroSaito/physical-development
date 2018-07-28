@@ -12,5 +12,6 @@ public abstract class Factory {
 	}
 
 	protected abstract Product createProduct(Date date, AccountId accountId);
+
 	protected abstract void registerProduct(Product product);
 }

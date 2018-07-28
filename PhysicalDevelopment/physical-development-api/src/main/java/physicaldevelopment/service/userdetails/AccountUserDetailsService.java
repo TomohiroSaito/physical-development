@@ -18,21 +18,24 @@ import physicaldevelopment.service.account.AccountService;
 @Service
 public class AccountUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    AccountService accountService;
+	@Autowired
+	AccountService accountService;
 
-    @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username)
-                    throws UsernameNotFoundException {
-            Account account = Optional.ofNullable(accountService.findOne(username))
-                            .orElseThrow(() -> new UsernameNotFoundException("user not found."));
-            return new AccountUserDetails(account, getAuthorities(account));
-    }
+	@Transactional(readOnly = true)
+	public UserDetails loadUserByUsername(String username)
+			throws UsernameNotFoundException {
+		Account account = Optional.ofNullable(accountService.findOne(username))
+				.orElseThrow(
+						() -> new UsernameNotFoundException("user not found."));
+		return new AccountUserDetails(account, getAuthorities(account));
+	}
 
-    private Collection<GrantedAuthority> getAuthorities(Account account) {
-            if(account.isAdmin()) {
-                    return AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIN");
-            } else {
-                    return AuthorityUtils.createAuthorityList("ROLE_USER");
-            }
-    }}
+	private Collection<GrantedAuthority> getAuthorities(Account account) {
+		if (account.isAdmin()) {
+			return AuthorityUtils
+					.createAuthorityList("ROLE_USER", "ROLE_ADMIN");
+		} else {
+			return AuthorityUtils.createAuthorityList("ROLE_USER");
+		}
+	}
+}

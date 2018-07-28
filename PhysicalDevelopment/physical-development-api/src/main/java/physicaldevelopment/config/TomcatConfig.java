@@ -16,7 +16,8 @@ public class TomcatConfig {
 	}
 
 	private Connector ajpConnector() {
-		Connector connector = new Connector("org.apache.coyote.ajp.AjpNioProtocol");
+		Connector connector = new Connector(
+				"org.apache.coyote.ajp.AjpNioProtocol");
 		connector.setAttribute("maxThreads", 100);
 		connector.setProtocol("AJP/1.3");
 		connector.setPort(8009);

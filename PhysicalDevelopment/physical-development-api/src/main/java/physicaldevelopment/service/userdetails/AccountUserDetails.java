@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import physicaldevelopment.model.account.Account;
 
-
 public class AccountUserDetails implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
@@ -15,8 +14,8 @@ public class AccountUserDetails implements UserDetails {
 	private final Account account;
 	private final Collection<GrantedAuthority> authorities;
 
-	public AccountUserDetails(
-			Account account, Collection<GrantedAuthority> authorities) {
+	public AccountUserDetails(Account account,
+			Collection<GrantedAuthority> authorities) {
 		this.account = account;
 		this.authorities = authorities;
 	}

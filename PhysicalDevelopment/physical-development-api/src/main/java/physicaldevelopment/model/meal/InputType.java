@@ -1,8 +1,7 @@
 package physicaldevelopment.model.meal;
 
 public enum InputType {
-	AUTO("自動入力"),
-	MANUAL("手動入力");
+	AUTO("自動入力"), MANUAL("手動入力");
 
 	private final String typeName;
 

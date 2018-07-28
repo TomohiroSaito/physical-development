@@ -8,20 +8,26 @@ public class Authentication {
 	@Valid
 	private Password password;
 
-	public Authentication() {}
+	public Authentication() {
+	}
+
 	public Authentication(LoginId loginId, Password password) {
 		this.loginId = loginId;
 		this.password = password;
 	}
+
 	public LoginId getLoginId() {
 		return loginId;
 	}
+
 	public void setLoginId(LoginId loginId) {
 		this.loginId = loginId;
 	}
+
 	public Password getPassword() {
 		return password;
 	}
+
 	public void setPassword(Password password) {
 		this.password = password;
 	}

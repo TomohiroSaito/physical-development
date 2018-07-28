@@ -16,44 +16,52 @@ public class EvaluationDaoImpl implements EvaluationDao {
 	EvaluationMapper evaluationMapper;
 
 	@Override
-	public void insertEvaluation(DailyNutrientAmountId dailyNutrientAmountId, Evaluation evaluation) {
+	public void insertEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+			Evaluation evaluation) {
 		evaluationMapper.insertEvaluation(dailyNutrientAmountId, evaluation);
 	}
 
 	@Override
-	public void updateNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+	public void updateNotSubjectToEvaluation(
+			DailyNutrientAmountId dailyNutrientAmountId,
 			NotSubjectToEvaluation notSubjectToEvaluation) {
-		evaluationMapper.updateNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
+		evaluationMapper.updateNotSubjectToEvaluation(dailyNutrientAmountId,
+				notSubjectToEvaluation);
 	}
 
 	@Override
 	public Boolean existEvaluation(DailyNutrientAmountId dailyNutrientAmountId) {
-		if(evaluationMapper.existEvaluation(dailyNutrientAmountId) == null) {
+		if (evaluationMapper.existEvaluation(dailyNutrientAmountId) == null) {
 			return false;
 		}
 		return true;
 	}
 
 	@Override
-	public Evaluation selectEvaluation(DailyNutrientAmountId dailyNutrientAmountId) {
+	public Evaluation selectEvaluation(
+			DailyNutrientAmountId dailyNutrientAmountId) {
 		return evaluationMapper.selectEvaluation(dailyNutrientAmountId);
 	}
 
 	@Override
-	public void updateEvaluation(DailyNutrientAmountId dailyNutrientAmountId, Score score,
-			EnergyHighAndLow energyHighAndLow) {
-		evaluationMapper.updateEvaluation(dailyNutrientAmountId, score, energyHighAndLow);
+	public void updateEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+			Score score, EnergyHighAndLow energyHighAndLow) {
+		evaluationMapper.updateEvaluation(dailyNutrientAmountId, score,
+				energyHighAndLow);
 	}
 
 	@Override
-	public void upsertNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+	public void upsertNotSubjectToEvaluation(
+			DailyNutrientAmountId dailyNutrientAmountId,
 			NotSubjectToEvaluation notSubjectToEvaluation) {
-		evaluationMapper.upsertNotSubjectToEvaluation(dailyNutrientAmountId, notSubjectToEvaluation);
+		evaluationMapper.upsertNotSubjectToEvaluation(dailyNutrientAmountId,
+				notSubjectToEvaluation);
 	}
 
-//	@Override
-//	public void upsertEvaluation(DailyNutrientAmountId dailyNutrientAmountId, Evaluation evaluation) {
-//		evaluationMapper.upsertEvaluation(dailyNutrientAmountId, evaluation);
-//	}
+	// @Override
+	// public void upsertEvaluation(DailyNutrientAmountId dailyNutrientAmountId,
+	// Evaluation evaluation) {
+	// evaluationMapper.upsertEvaluation(dailyNutrientAmountId, evaluation);
+	// }
 
 }

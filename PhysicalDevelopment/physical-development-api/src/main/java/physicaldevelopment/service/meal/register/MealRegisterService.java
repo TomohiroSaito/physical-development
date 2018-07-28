@@ -32,31 +32,46 @@ public class MealRegisterService {
 
 	public void registerMeal(Meal meal, AccountId accountId) {
 		Integer mealId = mealRegisterDao.selectNextMealId();
-		Integer dailyNutrientAmountId = mealRegisterDao.selectDailyNutrientAmountId(meal.getYearMonthDay(), accountId);
+		Integer dailyNutrientAmountId = mealRegisterDao
+				.selectDailyNutrientAmountId(meal.getYearMonthDay(), accountId);
 		meal.setMealId(new MealId(mealId));
-		Integer manualEntryOfNutrientsId = mealRegisterDao.selectNextManualEntryOfNutrients();
-		mealRegisterDao.registerMeal(meal, dailyNutrientAmountId, manualEntryOfNutrientsId);
-		mealRegisterDao.insertEnergyMealManual(meal, manualEntryOfNutrientsId, meal.getOneMealOfNutrients().getEnergyNutrientAmount());
-		manualEntryOfNutrientsId = mealRegisterDao.selectNextManualEntryOfNutrients();
-		mealRegisterDao.insertProteinMealManual(meal, manualEntryOfNutrientsId, meal.getOneMealOfNutrients().getProteinNutrientAmount());
-		manualEntryOfNutrientsId = mealRegisterDao.selectNextManualEntryOfNutrients();
-		mealRegisterDao.insertLipidMealManual(meal, manualEntryOfNutrientsId, meal.getOneMealOfNutrients().getLipidNutrientAmount());
-		manualEntryOfNutrientsId = mealRegisterDao.selectNextManualEntryOfNutrients();
-		mealRegisterDao.insertCarbohydrateMealManual(meal, manualEntryOfNutrientsId, meal.getOneMealOfNutrients().getCarbohydrateNutrientAmount());
+		Integer manualEntryOfNutrientsId = mealRegisterDao
+				.selectNextManualEntryOfNutrients();
+		mealRegisterDao.registerMeal(meal, dailyNutrientAmountId,
+				manualEntryOfNutrientsId);
+		mealRegisterDao.insertEnergyMealManual(meal, manualEntryOfNutrientsId,
+				meal.getOneMealOfNutrients().getEnergyNutrientAmount());
+		manualEntryOfNutrientsId = mealRegisterDao
+				.selectNextManualEntryOfNutrients();
+		mealRegisterDao.insertProteinMealManual(meal, manualEntryOfNutrientsId,
+				meal.getOneMealOfNutrients().getProteinNutrientAmount());
+		manualEntryOfNutrientsId = mealRegisterDao
+				.selectNextManualEntryOfNutrients();
+		mealRegisterDao.insertLipidMealManual(meal, manualEntryOfNutrientsId,
+				meal.getOneMealOfNutrients().getLipidNutrientAmount());
+		manualEntryOfNutrientsId = mealRegisterDao
+				.selectNextManualEntryOfNutrients();
+		mealRegisterDao.insertCarbohydrateMealManual(meal,
+				manualEntryOfNutrientsId, meal.getOneMealOfNutrients()
+						.getCarbohydrateNutrientAmount());
 
-		//※日付の修正（今日ではなく、渡された日にする）
-		//評価の再計算
+		// ※日付の修正（今日ではなく、渡された日にする）
+		// 評価の再計算
 		evaluationService.calcEvaluation(new Date(), accountId);
 	}
 
 	public int selectNextOrderOfMeals(YearMonthDay yearMonthDay, LoginId loginId) {
-		AccountId accountId = new AccountId(targetNutritionDao.selectAccountId(loginId));
-		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService.selectDailyNutritionId(yearMonthDay.getYearMonthDay(), accountId);
-		Integer maxOrderOfMeals = mealRegisterDao.selectMaxOrderOfMeals(dailyNutrientAmountId);
-		if(null == maxOrderOfMeals) {
+		AccountId accountId = new AccountId(
+				targetNutritionDao.selectAccountId(loginId));
+		DailyNutrientAmountId dailyNutrientAmountId = dailyNutritionService
+				.selectDailyNutritionId(yearMonthDay.getYearMonthDay(),
+						accountId);
+		Integer maxOrderOfMeals = mealRegisterDao
+				.selectMaxOrderOfMeals(dailyNutrientAmountId);
+		if (null == maxOrderOfMeals) {
 			maxOrderOfMeals = 0;
 		}
-		return 	maxOrderOfMeals + 1;
+		return maxOrderOfMeals + 1;
 
 	}
 }

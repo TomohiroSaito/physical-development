@@ -3,7 +3,8 @@ package physicaldevelopment.model.targetnutrition;
 public class TargetNutrientAmountId {
 	private Integer targetNutrientAmountId;
 
-	public TargetNutrientAmountId() {}
+	public TargetNutrientAmountId() {
+	}
 
 	public TargetNutrientAmountId(Integer targetNutrientAmountId) {
 		this.targetNutrientAmountId = targetNutrientAmountId;

@@ -19,7 +19,7 @@ public class AccountService {
 
 	public boolean existLoginId(LoginId loginId) {
 		Integer countLoginId = accountDao.existLoginId(loginId);
-		if(countLoginId == 0 || countLoginId == null) {
+		if (countLoginId == 0 || countLoginId == null) {
 			return false;
 		}
 		return true;

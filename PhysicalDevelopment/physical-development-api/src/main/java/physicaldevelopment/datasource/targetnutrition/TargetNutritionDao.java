@@ -12,15 +12,20 @@ public interface TargetNutritionDao {
 
 	int selectAccountId(LoginId loginId);
 
-	void insertEnergyTargetNutrition(AccountId accountId, TargetNutrition targetNutrition);
+	void insertEnergyTargetNutrition(AccountId accountId,
+			TargetNutrition targetNutrition);
 
-	void insertProteinTargetNutrition(AccountId accountId, TargetNutrition targetNutrition);
+	void insertProteinTargetNutrition(AccountId accountId,
+			TargetNutrition targetNutrition);
 
-	void insertLipidTargetNutrition(AccountId accountId, TargetNutrition targetNutrition);
+	void insertLipidTargetNutrition(AccountId accountId,
+			TargetNutrition targetNutrition);
 
-	void insertCarbohydrateTargetNutrition(AccountId accountId, TargetNutrition targetNutrition);
+	void insertCarbohydrateTargetNutrition(AccountId accountId,
+			TargetNutrition targetNutrition);
 
-	void insertLatestTargetNutrientAmount(TargetNutrientAmountId targetNutrientAmountId);
+	void insertLatestTargetNutrientAmount(
+			TargetNutrientAmountId targetNutrientAmountId);
 
 	TargetNutrientAmount selectEnergyTargetNutrition(AccountId accountId);
 
@@ -36,8 +41,11 @@ public interface TargetNutritionDao {
 
 	TargetNutrientAmountId selectLipidTargetNutritionId(AccountId accountId);
 
-	TargetNutrientAmountId selectCarbohydrateTargetNutritionId(AccountId accountId);
+	TargetNutrientAmountId selectCarbohydrateTargetNutritionId(
+			AccountId accountId);
 
-	void updateLatestTargetNutrientAmount(TargetNutrientAmountId existTargetNutrientAmountId, TargetNutrientAmountId existTargetNutrientAmountId2);
+	void updateLatestTargetNutrientAmount(
+			TargetNutrientAmountId existTargetNutrientAmountId,
+			TargetNutrientAmountId existTargetNutrientAmountId2);
 
 }

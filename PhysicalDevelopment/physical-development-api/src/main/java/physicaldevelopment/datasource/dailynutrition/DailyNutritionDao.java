@@ -10,21 +10,27 @@ import physicaldevelopment.model.nutrition.NutrientAmount;
 public interface DailyNutritionDao {
 	DailyNutrientAmountId selectNextDailyNutrientAmountId();
 
-	void insertDailyNutrition(DailyNutrientAmountId nextDailyNutrientAmountId, AccountId accountId,
-			Date date);
+	void insertDailyNutrition(DailyNutrientAmountId nextDailyNutrientAmountId,
+			AccountId accountId, Date date);
 
-	//後で消す
+	// 後で消す
 	void insertEvaluation(DailyNutrientAmountId dailyNutrientAmountId);
 
-	DailyNutrientAmountId selectDailyNutrientAmountId(Date date, AccountId accountId);
+	DailyNutrientAmountId selectDailyNutrientAmountId(Date date,
+			AccountId accountId);
 
-	NutrientAmount selectEnergyTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId);
+	NutrientAmount selectEnergyTotalNutrientAmountPerDay(
+			DailyNutrientAmountId dailyNutrientAmountId);
 
-	NutrientAmount selectProteinTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId);
+	NutrientAmount selectProteinTotalNutrientAmountPerDay(
+			DailyNutrientAmountId dailyNutrientAmountId);
 
-	NutrientAmount selectLipidTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId);
+	NutrientAmount selectLipidTotalNutrientAmountPerDay(
+			DailyNutrientAmountId dailyNutrientAmountId);
 
-	NutrientAmount selectCarbohydrateTotalNutrientAmountPerDay(DailyNutrientAmountId dailyNutrientAmountId);
+	NutrientAmount selectCarbohydrateTotalNutrientAmountPerDay(
+			DailyNutrientAmountId dailyNutrientAmountId);
 
-	NotSubjectToEvaluation selectNotSubjectToEvaluation(DailyNutrientAmountId dailyNutrientAmountId);
+	NotSubjectToEvaluation selectNotSubjectToEvaluation(
+			DailyNutrientAmountId dailyNutrientAmountId);
 }

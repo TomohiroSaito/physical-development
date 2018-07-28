@@ -7,8 +7,6 @@ import physicaldevelopment.datasource.account.register.AccountRegisterDao;
 import physicaldevelopment.model.account.Account;
 import physicaldevelopment.model.account.AccountId;
 
-
-
 @Service
 public class AccountRegisterService {
 	@Autowired
@@ -16,7 +14,9 @@ public class AccountRegisterService {
 
 	public void registerAccount(Account account) {
 		int accountId = accountRegisterDao.selectNextAccountId();
-		Account newAccount = new Account(new AccountId(accountId), account.getAuthentication(), account.getBirthday(), account.getSex());
+		Account newAccount = new Account(new AccountId(accountId),
+				account.getAuthentication(), account.getBirthday(),
+				account.getSex());
 		accountRegisterDao.registerAccount(newAccount);
 	}
 }
